@@ -1,0 +1,82 @@
+{
+  "grass": {
+    "asset": "Grass004",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "dirt": {
+    "asset": "Ground037",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "asphalt": {
+    "asset": "Asphalt010",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "paving": {
+    "asset": "PavingStones130",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "concrete": {
+    "asset": "Concrete034",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "brick": {
+    "asset": "Bricks085",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "plaster": {
+    "asset": "PaintedPlaster017",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "rooftiles": {
+    "asset": "RoofingTiles006",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "bark": {
+    "asset": "Bark012",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  },
+  "metal": {
+    "asset": "Metal032",
+    "maps": [
+      "color",
+      "normal",
+      "rough"
+    ]
+  }
+}

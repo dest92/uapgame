@@ -13,8 +13,21 @@
 | Universal Base Characters (Superhero_Male_FullBody) | Quaternius — https://quaternius.com | CC0 1.0 | `public/models/character/student.glb` (ropa pintada por shader) |
 | Universal Animation Library (8 clips) | Quaternius — https://quaternius.com | CC0 1.0 | `public/models/character/animations.glb` |
 
-## Texturas
-(Se completa en el Hito 3 con las texturas CC0 de ambientCG / Poly Haven.)
+## Texturas (ambientCG, CC0 1.0 — https://ambientcg.com)
+Generadas por `tools/fetch-textures.ts` (KTX2/Basis ETC1S en `public/textures/`).
+
+| Textura | Asset | Autor | Licencia | Uso |
+|---|---|---|---|---|
+| grass | [Grass004](https://ambientcg.com/view?id=Grass004) | ambientCG | CC0 1.0 | césped (terreno) |
+| dirt | [Ground037](https://ambientcg.com/view?id=Ground037) | ambientCG | CC0 1.0 | tierra/grava (terreno, pista) |
+| asphalt | [Asphalt010](https://ambientcg.com/view?id=Asphalt010) | ambientCG | CC0 1.0 | calles |
+| paving | [PavingStones130](https://ambientcg.com/view?id=PavingStones130) | ambientCG | CC0 1.0 | veredas y senderos |
+| concrete | [Concrete034](https://ambientcg.com/view?id=Concrete034) | ambientCG | CC0 1.0 | cordones, losas, techos planos |
+| brick | [Bricks085](https://ambientcg.com/view?id=Bricks085) | ambientCG | CC0 1.0 | fachadas de ladrillo |
+| plaster | [PaintedPlaster017](https://ambientcg.com/view?id=PaintedPlaster017) | ambientCG | CC0 1.0 | fachadas revocadas |
+| rooftiles | [RoofingTiles006](https://ambientcg.com/view?id=RoofingTiles006) | ambientCG | CC0 1.0 | techos de tejas |
+| bark | [Bark012](https://ambientcg.com/view?id=Bark012) | ambientCG | CC0 1.0 | troncos de árboles |
+| metal | [Metal032](https://ambientcg.com/view?id=Metal032) | ambientCG | CC0 1.0 | faroles, techos metálicos |
 
 ## Referencias fotográficas
 Las fotos de `reference/web/` se usan **solo como referencia visual** (proporciones, pisos, techos, colores) y

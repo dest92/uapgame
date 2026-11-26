@@ -22,7 +22,8 @@
     "data:fetch-terrain": "tsx tools/fetch-terrain.ts",
     "data:build-info": "tsx tools/build-buildings-info.ts",
     "data:character": "tsx tools/build-character.ts",
-    "assets:fetch": "node tools/fetch-quaternius.mjs"
+    "assets:fetch": "node tools/fetch-quaternius.mjs",
+    "check:size": "tsx tools/check-bundle-size.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.21.0",

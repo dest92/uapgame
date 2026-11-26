@@ -85,3 +85,15 @@ a.panel__src { color: var(--ui-accent); }
 .tbtn--use { right: 200px; bottom: 40px; background: var(--ui-accent); color: #111; }
 .tbtn--on { background: var(--ui-accent); color: #111; }
 @media (pointer: coarse) { .minimap { top: 16px; bottom: auto; width: 128px; height: 128px; } .panel { top: auto; height: 62vh; } }
+
+/* Menú de ajustes */
+.menu__toggle { position: absolute; left: 18px; bottom: 18px; width: 42px; height: 42px; color: var(--ui-text); font-size: 20px; cursor: pointer; }
+.menu { position: absolute; left: 18px; bottom: 70px; width: 270px; padding: 16px; display: none; gap: 10px; flex-direction: column; font-size: 13px; }
+.menu--open { display: flex; }
+.menu__title { font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 11px; color: var(--ui-accent); }
+.menu__row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.menu__select { background: rgba(255,255,255,.08); color: var(--ui-text); border: 1px solid var(--ui-border); border-radius: 8px; padding: 5px 8px; font: inherit; }
+.menu__range { width: 100%; accent-color: var(--ui-accent); }
+.menu__value { font-variant-numeric: tabular-nums; color: var(--ui-text); }
+.menu__meta { color: var(--ui-muted); font-size: 11px; }
+@media (pointer: coarse) { .menu__toggle { left: auto; right: 156px; top: 16px; bottom: auto; } .menu { left: auto; right: 16px; top: 66px; bottom: auto; } }
