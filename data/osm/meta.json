@@ -1,0 +1,28 @@
+{
+  "fetchedAt": "2026-11-26T22:48:22.228Z",
+  "source": "osm-api-0.6",
+  "failedAttempts": [
+    {
+      "source": "overpass:overpass-api.de",
+      "error": "fetch failed"
+    },
+    {
+      "source": "overpass:overpass.kumi.systems",
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "source": "overpass:overpass.private.coffee",
+      "error": "The operation was aborted due to timeout"
+    }
+  ],
+  "campusId": "way/388521975",
+  "bbox": {
+    "west": -60.47185292279106,
+    "south": -32.07710271022552,
+    "east": -60.46224327720895,
+    "north": -32.069689689774485
+  },
+  "marginMeters": 100,
+  "features": 368,
+  "attribution": "© OpenStreetMap contributors — ODbL 1.0 (https://www.openstreetmap.org/copyright)"
+}

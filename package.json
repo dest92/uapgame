@@ -19,7 +19,8 @@
     "data:build-info": "tsx tools/build-buildings-info.ts",
     "data:textures": "tsx tools/fetch-textures.ts",
     "data": "npm run data:fetch-osm && npm run data:build-world && npm run data:build-info",
-    "postinstall": "tsx tools/copy-decoders.ts"
+    "postinstall": "tsx tools/copy-decoders.ts",
+    "data:fetch-terrain": "tsx tools/fetch-terrain.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.21.0",
@@ -36,6 +37,7 @@
     "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.74.0",
+    "undici": "^8.13.1",
     "vite": "^8.4.0",
     "vitest": "^5.1.2"
   }

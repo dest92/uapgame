@@ -1,0 +1,16 @@
+{
+  "source": "IGN Argentina — mosaico_alos_30:mdt_argentina_alos_30m vía WMS GetFeatureInfo (https://imagenes.ign.gob.ar/geoserver/ows)",
+  "license": "Datos abiertos del IGN — citar \"Instituto Geográfico Nacional de la República Argentina\"",
+  "fetchedAt": "2026-11-26T22:51:50.951Z",
+  "bbox": {
+    "west": -60.47185292279106,
+    "south": -32.07710271022552,
+    "east": -60.46224327720895,
+    "north": -32.069689689774485
+  },
+  "cols": 27,
+  "rows": 25,
+  "stepMeters": 35,
+  "min": 44,
+  "max": 75
+}
