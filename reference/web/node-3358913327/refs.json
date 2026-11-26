@@ -1,0 +1,101 @@
+{
+  "osmId": "node/3358913327",
+  "name": "Sanatorio Adventista del Plata",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://cdn.prod.website-files.com/672e306014aea328bb0c6ec9/69989afe7ad117cf0081b648_frente-SAP-webclip.jpg",
+      "sourcePageUrl": "https://www.sanatorioadventista.org.ar/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "acceso principal actual: pilono alto revestido en piedra beige con cartel 'Sanatorio Adventista del Plata'",
+        "gran marquesina plana en voladizo sobre columnas revestidas en piedra",
+        "volumen de muro cortina de vidrio reflectante oscuro a ambos lados",
+        "escalinata ancha con barandas metálicas; 3 mástiles con banderas",
+        "palmeras pindó y césped"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://cdn.prod.website-files.com/672e306014aea328bb0c6ec9/6998996fbf299c762905c685_Frente%20SAP%20feb%202026_poster.0000000.jpg",
+      "sourcePageUrl": "https://www.sanatorioadventista.org.ar/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "frente 2026 en 3/4: pilono de piedra, marquesina, volumen curvo vidriado",
+        "detrás a la izquierda: bloque de 4 pisos con bandas de revoque naranja-salmón y ladrillo, ventanas horizontales",
+        "rampas y escaleras con barandas, conos naranjas, vereda de hormigón"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://cdn.prod.website-files.com/672e306014aea328bb0c6ec9/67a32cf93341c5b3a6572ddd_fachada-33.jpg",
+      "sourcePageUrl": "https://www.sanatorioadventista.org.ar/institucional",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "volumen cilíndrico de vidrio reflectante con aleros planos claros",
+        "edificio curvo a la izquierda de ladrillo con bandas de revoque salmón, ~4 niveles",
+        "rampa con baranda metálica, farola de poste con luminaria, palmeras"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://cdn.prod.website-files.com/672e306014aea328bb0c6ec9/699894b9c4ab8e7011f3735b_frente-SAP-calle.jpg",
+      "sourcePageUrl": "https://www.sanatorioadventista.org.ar/institucional",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "muro-cartel bajo gris-beige con logo en la calle",
+        "acceso vehicular de adoquín/laja rosada, canteros",
+        "al fondo el pilono de piedra y la marquesina"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://cdn.prod.website-files.com/672e306014aea328bb0c6ec9/674a09f15d666769d5620a70_fachada%20antigua%20SAP.jpg",
+      "sourcePageUrl": "https://www.sanatorioadventista.org.ar/institucional",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "edificio histórico de 2 pisos: galería continua de pilares en planta baja y balcón con balaustrada arriba",
+        "revoque color salmón/terracota, aleros de tejas rojas",
+        "monolito '1908–2008' con logo IASD",
+        "jardín con árboles grandes, palmera y senderos"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Iglesia_del_Sanatorio_Adventista_del_Plata.jpg/1280px-Iglesia_del_Sanatorio_Adventista_del_Plata.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Iglesia_del_Sanatorio_Adventista_del_Plata.jpg",
+      "author": "Gonzalo Blasco",
+      "license": "CC BY-SA 3.0",
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "iglesia adventista frente al Sanatorio (2009), no es el sanatorio en sí",
+        "techo a dos aguas muy empinado (forma de A) de pizarra/tejuela gris oscura con borde blanco",
+        "muros de ladrillo visto marrón claro, franja vertical de ventanas en el hastial",
+        "campanario/torre de ladrillo con remate blanco",
+        "cartel 'Ingreso emergencias' y ala baja de ladrillo con alero blanco a la izquierda",
+        "farolas de doble brazo rojas en la calle"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 4,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "glass",
+    "wallColor": "#3c4651",
+    "trimColor": "#c9b58f",
+    "windowStyle": "muro cortina reflectante en el acceso; ventanas horizontales en bandas en el bloque de 4 pisos",
+    "confidence": "high",
+    "notes": "Complejo: acceso moderno (pilono de piedra beige + marquesina + volúmenes vidriados), bloque curvo de ~4 pisos con ladrillo y revoque salmón (#d9825a), y edificio histórico de 2 pisos con galería y tejas. El nodo OSM es un punto; usar el acceso como fachada principal."
+  }
+}

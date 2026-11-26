@@ -16,11 +16,11 @@
     "data:fetch-osm": "tsx tools/fetch-osm.ts",
     "data:build-world": "tsx tools/build-world.ts",
     "data:collect-refs": "tsx tools/collect-refs.ts",
-    "data:build-info": "tsx tools/build-buildings-info.ts",
     "data:textures": "tsx tools/fetch-textures.ts",
-    "data": "npm run data:fetch-osm && npm run data:build-world && npm run data:build-info",
+    "data": "npm run data:fetch-osm && npm run data:fetch-terrain && npm run data:build-world && npm run data:collect-refs",
     "postinstall": "tsx tools/copy-decoders.ts",
-    "data:fetch-terrain": "tsx tools/fetch-terrain.ts"
+    "data:fetch-terrain": "tsx tools/fetch-terrain.ts",
+    "data:build-info": "tsx tools/build-buildings-info.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.21.0",
@@ -33,6 +33,7 @@
     "@types/three": "^0.187.0",
     "eslint": "^10.15.0",
     "geotiff": "^3.0.5",
+    "globals": "^17.14.0",
     "osmtogeojson": "^3.0.0-beta.5",
     "tsx": "^4.23.15",
     "typescript": "~6.0.2",

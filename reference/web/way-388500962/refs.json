@@ -1,0 +1,16 @@
+{
+  "osmId": "way/388500962",
+  "name": "Profesorado de Educación Física (PEF) / Gimnasio",
+  "refs": [],
+  "summary": {
+    "levels": null,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
+    "confidence": "low",
+    "notes": "sin referencias confiables. Una vista aérea (campus-general/02) muestra una nave con bóveda de cañón y hastial de ladrillo que podría ser el gimnasio, sin confirmar."
+  }
+}

@@ -17,6 +17,10 @@ describe('resolveHeight (WLD-3)', () => {
     expect(resolveHeight({ building: 'yes' }, { levels: 4 })).toMatchObject({ levels: 4, source: 'reference' });
     expect(resolveHeight({ building: 'yes', 'building:levels': '2' }, { levels: 4 }).levels).toBe(2);
   });
+  it('WLD-3: altura estimada de referencia (sin pisos) también tiene prioridad sobre defaults', () => {
+    expect(resolveHeight({ building: 'yes' }, { levels: null, height: 13.5 })).toMatchObject({ height: 13.5, source: 'reference' });
+    expect(resolveHeight({ building: 'yes', height: '8' }, { height: 13.5 }).height).toBe(8);
+  });
   it('WLD-3: defaults por tipo', () => {
     expect(resolveHeight({ building: 'house' }).levels).toBe(1);
     expect(resolveHeight({ building: 'dormitory' }).levels).toBe(3);

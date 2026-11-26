@@ -1,6 +1,6 @@
 # Información faltante
 
-Generado por `tools/build-world.ts` el 2026-11-26T22:52:43.985Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
+Generado por `tools/build-world.ts` el 2026-11-26T23:14:51.712Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
 
 ## Edificios sin nombre en OSM (6)
 
@@ -11,13 +11,10 @@ Generado por `tools/build-world.ts` el 2026-11-26T22:52:43.985Z. Completar en OS
 - `way/1123197238` — Edificio sin identificar (OSM way 1123197238): OSM no tiene `name`.
 - `way/1230711279` — Edificio sin identificar (OSM way 1230711279): OSM no tiene `name`.
 
-## Edificios sin referencias fotográficas (materiales genéricos) (44)
+## Edificios sin referencias fotográficas (materiales genéricos) (37)
 
 - `relation/16816367` — Edificio sin identificar (OSM relation 16816367): materiales genéricos por tipo.
 - `way/327779295` — Terminal de Ómnibus y Colectivos: materiales genéricos por tipo.
-- `way/388495172` — Biblioteca I. Mohr: materiales genéricos por tipo.
-- `way/388495176` — Facultad de Ciencias de la Salud (FCS): materiales genéricos por tipo.
-- `way/388500961` — Templo UAP: materiales genéricos por tipo.
 - `way/388500962` — Profesorado de Educación Física (PEF): materiales genéricos por tipo.
 - `way/388500965` — Auditorio Mayor UAP: materiales genéricos por tipo.
 - `way/388500976` — Edificio sin identificar (OSM way 388500976): materiales genéricos por tipo.
@@ -30,15 +27,11 @@ Generado por `tools/build-world.ts` el 2026-11-26T22:52:43.985Z. Completar en OS
 - `way/388510368` — Hogar de Señoritas (Ex Varones VIEJO): materiales genéricos por tipo.
 - `way/388510369` — Hogar de Señoritas VIEJO: materiales genéricos por tipo.
 - `way/388510374` — Centro de Apoyo Estudiantil (CAE): materiales genéricos por tipo.
-- `way/388510375` — Pabellón de Música OGDEN: materiales genéricos por tipo.
 - `way/388512618` — Edificio Humanidades: materiales genéricos por tipo.
 - `way/388512619` — Edificio de Tutorías: materiales genéricos por tipo.
-- `way/388512621` — Salón de los Pioneros: materiales genéricos por tipo.
-- `way/388521981` — Aulas Nuevas (Ex Teológico): materiales genéricos por tipo.
 - `way/388521982` — Lincoln Hall: materiales genéricos por tipo.
 - `way/388521983` — Aulas Humanidades: materiales genéricos por tipo.
 - `way/388521993` — Administración UAP: materiales genéricos por tipo.
-- `way/388521996` — Pórtico (Entrada) Universidad Adventista del Plata (Ex CAP): materiales genéricos por tipo.
 - `way/388521999` — Municipalidad de Libertador San Martín: materiales genéricos por tipo.
 - `way/388522000` — Polideportivo Municipal "Juan Goltz": materiales genéricos por tipo.
 - `way/388522001` — Salón "Circular" Municipal: materiales genéricos por tipo.
@@ -58,13 +51,10 @@ Generado por `tools/build-world.ts` el 2026-11-26T22:52:43.985Z. Completar en OS
 - `way/1123197238` — Edificio sin identificar (OSM way 1123197238): materiales genéricos por tipo.
 - `way/1230711279` — Edificio sin identificar (OSM way 1230711279): materiales genéricos por tipo.
 
-## Alturas estimadas (sin `height`/`building:levels` ni referencia) (44)
+## Alturas estimadas (sin `height`/`building:levels` ni referencia) (37)
 
 - `relation/16816367` — Edificio sin identificar (OSM relation 16816367): 2 niveles por defecto (college).
 - `way/327779295` — Terminal de Ómnibus y Colectivos: 2 niveles por defecto (yes).
-- `way/388495172` — Biblioteca I. Mohr: 2 niveles por defecto (yes).
-- `way/388495176` — Facultad de Ciencias de la Salud (FCS): 2 niveles por defecto (yes).
-- `way/388500961` — Templo UAP: 2 niveles por defecto (yes).
 - `way/388500962` — Profesorado de Educación Física (PEF): 2 niveles por defecto (yes).
 - `way/388500965` — Auditorio Mayor UAP: 2 niveles por defecto (yes).
 - `way/388500976` — Edificio sin identificar (OSM way 388500976): 2 niveles por defecto (yes).
@@ -77,15 +67,11 @@ Generado por `tools/build-world.ts` el 2026-11-26T22:52:43.985Z. Completar en OS
 - `way/388510368` — Hogar de Señoritas (Ex Varones VIEJO): 3 niveles por defecto (dormitory).
 - `way/388510369` — Hogar de Señoritas VIEJO: 3 niveles por defecto (dormitory).
 - `way/388510374` — Centro de Apoyo Estudiantil (CAE): 2 niveles por defecto (school).
-- `way/388510375` — Pabellón de Música OGDEN: 2 niveles por defecto (school).
 - `way/388512618` — Edificio Humanidades: 2 niveles por defecto (school).
 - `way/388512619` — Edificio de Tutorías: 2 niveles por defecto (school).
-- `way/388512621` — Salón de los Pioneros: 1 niveles por defecto (church).
-- `way/388521981` — Aulas Nuevas (Ex Teológico): 2 niveles por defecto (college).
 - `way/388521982` — Lincoln Hall: 2 niveles por defecto (yes).
 - `way/388521983` — Aulas Humanidades: 2 niveles por defecto (yes).
 - `way/388521993` — Administración UAP: 2 niveles por defecto (yes).
-- `way/388521996` — Pórtico (Entrada) Universidad Adventista del Plata (Ex CAP): 2 niveles por defecto (yes).
 - `way/388521999` — Municipalidad de Libertador San Martín: 2 niveles por defecto (yes).
 - `way/388522000` — Polideportivo Municipal "Juan Goltz": 2 niveles por defecto (yes).
 - `way/388522001` — Salón "Circular" Municipal: 2 niveles por defecto (yes).

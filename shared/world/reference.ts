@@ -1,6 +1,8 @@
 /** Resumen extraído de las referencias fotográficas (`reference/web/<osmKey>/refs.json`). */
 export interface ReferenceSummary {
   readonly levels?: number | null;
+  /** Altura estimada en metros desde fotos (cuando no hay pisos discernibles). */
+  readonly height?: number | null;
   readonly roof?: string | null;
   readonly roofColor?: string | null;
   readonly wallMaterial?: string | null;

@@ -1,0 +1,34 @@
+{
+  "osmId": "way/388495176",
+  "name": "Facultad de Ciencias de la Salud (FCS)",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/01/portada_edit-2.png",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "acceso de la Facultad de Ciencias de la Salud",
+        "bloque de acceso de revoque crema con letras 'Universidad Adventista del Plata – Facultad de Ciencias de la Salud'",
+        "hall vidriado de doble altura con carpintería de aluminio claro y puerta doble vidriada",
+        "2 niveles; techo plano con borde/alero fino gris verdoso",
+        "ala derecha 'Edificio Thomas Tooma & Marta Kalbermatter': ladrillo visto rojo con banda de revoque crema y puertas-ventana blancas",
+        "patio de hormigón lavado marrón rojizo con bancos de hormigón ondulados",
+        "al fondo a la izquierda: volumen alto con revestimiento terracota y cubierta de chapa gris verdosa"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 2,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "brick",
+    "wallColor": "#9a5844",
+    "trimColor": "#ece5cf",
+    "windowStyle": "hall de acceso con muro cortina en retícula; puertas-ventana blancas en planta baja",
+    "confidence": "medium",
+    "notes": "Una sola foto del acceso; combina ladrillo visto rojo y revoque crema. No se verificó la extensión completa del polígono OSM."
+  }
+}

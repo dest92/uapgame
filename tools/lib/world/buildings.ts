@@ -27,12 +27,13 @@ export function buildBuilding(f: OsmFeature, ctx: BuildingContext, missing: Miss
   const c = centroid(footprint);
   if (!bboxContains(ctx.bounds, c)) return null;
 
-  const ref = ctx.references.get(f.id);
+  const poiIds = ctx.pois.filter((p) => pointInPolygon(p.position, footprint)).map((p) => p.id);
+  // REF-4: referencia propia del edificio o, si no, la de un POI ubicado dentro.
+  const ref = ctx.references.get(f.id) ?? poiIds.map((id) => ctx.references.get(id)).find((r) => r !== undefined);
   const heightInfo = resolveHeight(f.tags, ref);
   const roof = resolveRoof(f.tags, heightInfo.height, ref);
   const nameInfo = resolveName(f.tags, f.id);
   const kind = f.tags['building'] ?? 'yes';
-  const poiIds = ctx.pois.filter((p) => pointInPolygon(p.position, footprint)).map((p) => p.id);
   const entrance = computeEntrance(footprint, ctx.paths);
 
   if (!nameInfo.identified) {

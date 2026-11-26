@@ -1,0 +1,77 @@
+{
+  "osmId": "way/388495172",
+  "name": "Biblioteca I. Mohr",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/04/EdificioChaij_UAP.jpg",
+      "sourcePageUrl": "https://biblioteca.uap.edu.ar/ (biblioteca de medios WordPress, título 'EdificioChaij_UAP')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista frontal lejana del edificio Fernando Chaij (sede de la biblioteca Mohr)",
+        "volumen central más alto con frontón triangular (remate a dos aguas) sobre el acceso",
+        "paño vidriado oscuro central de doble altura sobre la entrada",
+        "letras 'Edificio Fernando Chaij' sobre el acceso",
+        "alas laterales con techo plano y bandas de ventanas; 3 niveles aprox.",
+        "revestimiento/revoque color arena-beige claro",
+        "fuente circular baja frente al edificio, palmeras pindó, coníferas, césped amplio y senderos de hormigón"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/06/CrRamos_MagDuffy_PrLopes_CrBoidi_recorrenelcampus.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "acceso al edificio Fernando Chaij visto desde sendero de hormigón recto",
+        "muro cortina vidriado con carpintería oscura en el cuerpo central",
+        "hilera de palmeras pindó a ambos lados del acceso",
+        "farola de globo blanco sobre poste junto al sendero",
+        "césped a ambos lados del sendero"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/10/BibliotecaAbierta_EDIT_PORTADA.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (noticia 'La UAP celebra su Biblioteca abierta', 2025-10)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "gráfica con superposición azul: usar solo para forma",
+        "fachada clara (blanco/gris claro) con paño vidriado central y letras 'Fernando Ch...'",
+        "escalinata de hormigón con barandas metálicas al acceso",
+        "torre/ala derecha con ventana vertical angosta y planta baja con columnas (galería)",
+        "palmeras altas frente a la fachada"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/06/Biblioteca_Lema_EDIT_PORTADA.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (noticia concurso lema del centenario de la Biblioteca E. Irving Mohr, 2026-06)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "ilustración estilizada (colores no confiables)",
+        "confirma silueta: cuerpo central con frontón a dos aguas, muro cortina en retícula, alas laterales planas",
+        "escalones al frente y palmeras"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 3,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "plaster",
+    "wallColor": "#cfc5a6",
+    "trimColor": "#2e3236",
+    "windowStyle": "muro cortina vidriado oscuro en el cuerpo central; bandas horizontales de ventanas en las alas",
+    "confidence": "medium",
+    "notes": "Edificio Fernando Chaij (inaugurado 2001 según búsqueda web). Alas con techo plano; el cuerpo central del acceso remata en frontón triangular (tipo gable frontal). Color de muro varía entre fotos (beige en 2015, más claro en 2025). Niveles estimados visualmente."
+  }
+}

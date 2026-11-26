@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
-import { heroAssetsPlugin } from './vite-plugins/heroAssets';
+import { heroAssetsPlugin } from './vite-plugins/heroAssets.ts';
 
 const publicDir = fileURLToPath(new URL('./public', import.meta.url));
 

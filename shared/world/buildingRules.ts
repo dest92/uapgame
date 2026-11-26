@@ -52,7 +52,11 @@ export function resolveHeight(tags: Tags, ref?: ReferenceSummary): HeightInfo {
   }
   const refLevels = ref?.levels ?? undefined;
   if (refLevels !== undefined && refLevels > 0) {
-    return { height: refLevels * LEVEL_HEIGHT, minHeight, levels: refLevels, source: 'reference' };
+    return { height: ref?.height ?? refLevels * LEVEL_HEIGHT, minHeight, levels: refLevels, source: 'reference' };
+  }
+  const refHeight = ref?.height ?? undefined;
+  if (refHeight !== undefined && refHeight > 0) {
+    return { height: refHeight, minHeight, levels: Math.max(1, Math.round(refHeight / LEVEL_HEIGHT)), source: 'reference' };
   }
   const d = TYPE_DEFAULTS[tags['building'] ?? ''] ?? GENERIC_DEFAULT;
   return { height: d.height ?? d.levels * d.levelHeight, minHeight, levels: d.levels, source: 'default' };

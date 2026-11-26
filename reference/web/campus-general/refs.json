@@ -1,0 +1,119 @@
+{
+  "osmId": null,
+  "name": "Campus general",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/09/Escanear0012.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, título 'Campus')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "senderos de hormigón entre césped, canteros con flores rojas y agaves",
+        "reloj de pie sobre poste negro, bancos, cesto amarillo",
+        "edificio de 2 pisos color salmón/rosado con galería al fondo (no identificado)",
+        "fresnos/árboles caducos, cipreses y mástil"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/DJI_20260401153037_0011_D-scaled.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/direccion-proyectos-edilicios/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista aérea con dron (2026) de un sector del campus y el pueblo",
+        "nave con bóveda de cañón de chapa gris y hastial de ladrillo (no identificada)",
+        "edificio bajo de techo curvo/ovalado de chapa clara a la izquierda (no identificado)",
+        "naves industriales con chapa oxidada y bloques de ladrillo (ex fábrica)",
+        "arbolado denso, calles internas asfaltadas, árboles jóvenes en hilera, postes de tendido eléctrico"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/DJI_20260401152712_0003_D-scaled.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/direccion-proyectos-edilicios/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista aérea baja: calle asfaltada con árboles jóvenes de copa redonda en hilera, césped y eucaliptos",
+        "camino de ripio, farola de poste fino"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/02/UAP-Edificio-Facultad-Salud_Odontologia_edit.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la carrera de Odontología UAP', 2025-02)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "Centro Odontológico Universitario (no asignado a ningún polígono de la lista)",
+        "3 pisos de ladrillo visto rojo con ventanas en bandas y jambas de revoque gris claro",
+        "acceso con muro cortina de 3 alturas y marquesina gris de forma trapezoidal",
+        "techo plano con borde de chapa verde"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/09/Inauguracion_edificio_IDEC.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "edificio IDEC (no en la lista): ladrillo visto rojo, marquesina plana negra, acceso vidriado; referencia de estilo"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/06/chicos-campus.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (banner 'chicos campus', 2015)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "césped amplio con árboles de tronco grueso y árboles caducos",
+        "edificio claro de varios pisos al fondo desenfocado"
+      ]
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/09/Vista-aerea_EDIT_portada.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Vista aerea', 2026-09)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "fotografía aérea histórica (blanco y negro/sepia), solo contexto histórico",
+        "edificios blancos de 2-3 pisos con techos planos, uno con torre",
+        "caminos con hileras de árboles y campos cultivados"
+      ]
+    },
+    {
+      "file": "08.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/09/Panoramica_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Panoramica', 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "fotografía aérea histórica del campus y el pueblo; contexto de trama y arbolado"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": null,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
+    "confidence": "medium",
+    "notes": "Paleta recurrente: ladrillo visto rojo, revoques crema/salmón, tejas rojo-anaranjadas en edificios antiguos, chapa gris en naves. Vegetación: palmeras pindó, cipreses/coníferas, eucaliptos, fresnos, lapachos; césped amplio con senderos de hormigón; farolas de globo blanco y de luminaria cónica."
+  }
+}

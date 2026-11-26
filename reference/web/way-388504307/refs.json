@@ -1,0 +1,16 @@
+{
+  "osmId": "way/388504307",
+  "name": "Torre UAP (water tower)",
+  "refs": [],
+  "summary": {
+    "levels": null,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
+    "confidence": "low",
+    "notes": "sin referencias confiables"
+  }
+}

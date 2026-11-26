@@ -1,0 +1,5 @@
+# Reference images are not redistributed; only JSON/README are tracked
+*.jpg
+*.jpeg
+*.png
+*.webp

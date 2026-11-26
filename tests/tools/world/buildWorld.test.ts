@@ -39,7 +39,8 @@ const campus = {
 describe('buildWorld (spec 003)', () => {
   const { world, missing } = buildWorld({
     geojson: fc, campus, marginMeters: 100,
-    references: new Map([['way/2', { levels: 3, roof: 'gable', wallMaterial: 'brick', wallColor: '#8a4b33', roofColor: '#7a2e1f' }]]),
+    references: new Map<string, import('@shared/world/reference').ReferenceSummary>([
+      ['node/6', { wallMaterial: 'glass', wallColor: '#3c4651' }],['way/2', { levels: 3, roof: 'gable', wallMaterial: 'brick', wallColor: '#8a4b33', roofColor: '#7a2e1f' }]]),
     generatedAt: '2026-11-26T00:00:00Z',
   });
 
@@ -70,6 +71,14 @@ describe('buildWorld (spec 003)', () => {
     expect(b.name).toBe('Edificio sin identificar (OSM way 2)');
     expect(b.poiIds).toEqual(['node/6']);
     expect(missing.some((m) => m.id === 'way/2' && m.issue === 'sin-nombre')).toBe(true);
+  });
+  it('REF-4: una referencia asociada a un POI se aplica al edificio que lo contiene', () => {
+    // way/2 tiene su propia referencia; probamos con un edificio que solo contiene el POI.
+    const { world: w2 } = buildWorld({
+      geojson: fc, campus, marginMeters: 100, generatedAt: 'x',
+      references: new Map([['node/6', { wallMaterial: 'glass', wallColor: '#3c4651' }]]),
+    });
+    expect(w2.buildings.find((x) => x.id === 'way/2')!.appearance).toMatchObject({ wallMaterial: 'glass', source: 'reference' });
   });
   it('WLD-5: edificio sin referencias registrado en missing-info', () => {
     expect(missing.some((m) => m.id === 'way/1' && m.issue === 'sin-referencias')).toBe(true);

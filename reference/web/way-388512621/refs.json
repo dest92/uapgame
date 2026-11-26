@@ -1,0 +1,46 @@
+{
+  "osmId": "way/388512621",
+  "name": "Salón de los Pioneros",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Iglesia_de_los_Pioneros.jpg/1280px-Iglesia_de_los_Pioneros.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Iglesia_de_los_Pioneros.jpg",
+      "author": "Themidget17",
+      "license": "CC BY-SA 4.0",
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "'Iglesia de los Pioneros, on campus at the UAP' (descripción en Commons); OSM la marca building=church",
+        "fachada neogótica plana con remate escalonado y 6 pilastras terminadas en pináculos apuntados",
+        "muros blancos con pilastras color durazno/rosado (2014)",
+        "puerta central con arco apuntado y puerta doble de madera",
+        "óculo circular con parteluces y ventanas lanceoladas; ventanas rectangulares en nivel inferior",
+        "solado de piedra laja irregular gris; cipreses y árboles altos alrededor"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/05/CampamentoEstudiantil_pioneros.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'CampamentoEstudiantil_pioneros', 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "estado 2018: muros rosados con pilastras blancas (colores invertidos respecto de 2014)",
+        "misma composición: óculo, ventanas apuntadas, pilastras con pináculos",
+        "piso de piedra laja"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 1,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": "plaster",
+    "wallColor": "#f4f1ec",
+    "trimColor": "#e8b9a0",
+    "windowStyle": "ventanas lanceoladas (arco apuntado), óculo central, ventanas rectangulares bajas",
+    "confidence": "medium",
+    "notes": "Identificado como 'Iglesia de los Pioneros' (Commons) = 'Salón de los Pioneros' (OSM, building=church). Nave de un nivel alto con dos filas de ventanas; techo no visible desde el frente. Paleta cambió entre 2014 y 2018."
+  }
+}

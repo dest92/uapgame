@@ -1,0 +1,74 @@
+{
+  "osmId": "way/388521996",
+  "name": "Pórtico (Entrada) Universidad Adventista del Plata (Ex CAP)",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/ENTRANCE_UAP.jpg/1280px-ENTRANCE_UAP.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:ENTRANCE_UAP.jpg",
+      "author": "Themidget17",
+      "license": "CC BY-SA 4.0",
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista desde la calle del pórtico de acceso (2014)",
+        "escultura-arco: dos pilares troncopiramidales revestidos en piedra laja color arena/ocre unidos por una cinta curva de hormigón blanco que forma un arco y bucles",
+        "detrás a la derecha: edificio de 2 pisos de ladrillo visto rojo con ventanas de persianas/celosías blancas horizontales, techo plano",
+        "a la derecha: edificio de revoque color salmón con techo de tejas y ventanas blancas (no identificado)",
+        "garita de control con techo plano y base de ladrillo",
+        "mástil con bandera argentina, reja metálica verde, vereda de baldosa roja y cordón amarillo, cartel 'Universidad Adventista del Plata'",
+        "coníferas grandes y palmeras"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/10/Portico_portada.EDIT_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (noticia 'La internacionalización como puente de universidades', 2025-10)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista frontal del pórtico con el edificio de ladrillo detrás",
+        "edificio de ladrillo de 2 pisos con ventanas de celosía de aluminio blanco/gris y techo plano",
+        "garita vidriada con techo plano oscuro",
+        "acceso vehicular de hormigón, cordones amarillos, cantero con muro bajo de ladrillo"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/08/portico-nuevo_edit.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (noticia sobre nota de Infobae, 2026-08)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "estado 2026: plaza de acceso con adoquines grises y bancos marrones de formas orgánicas",
+        "tótem 'UAP' gris",
+        "letras 'Universidad Adventista del Plata' sobre la fachada de ladrillo",
+        "farolas de columna gris con luminaria cónica",
+        "reja metálica verde y bicicletero"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/05/1.-Portico.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, '1.-Portico')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista en contrapicado de la escultura (2018); confirma piedra laja en pilares y cinta blanca"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 2,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "brick",
+    "wallColor": "#8c4c38",
+    "trimColor": "#e9e6df",
+    "windowStyle": "ventanas rectangulares con celosías/persianas horizontales de aluminio claro",
+    "confidence": "medium",
+    "notes": "El polígono OSM se llama 'Pórtico (Ex CAP)' y está tagueado building=yes: se asume que corresponde al edificio de ladrillo de 2 pisos junto al arco escultórico (no verificado). El arco: pilares de piedra laja arena + cinta de hormigón blanco."
+  }
+}

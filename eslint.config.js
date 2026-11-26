@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import globals from 'globals';
 
 /** Reglas de capas: el dominio y el código compartido no conocen motores ni DOM de render. */
 const ENGINE_LIBS = [
@@ -15,6 +16,10 @@ export default tseslint.config(
   { ignores: ['dist/**', 'node_modules/**', 'public/**', 'coverage/**', 'reference/**'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  { files: ['tools/**/*.{ts,mjs}', '*.{js,ts}', 'vite-plugins/**/*.ts'], languageOptions: { globals: globals.node } },
+  { files: ['src/**/*.ts'], languageOptions: { globals: globals.browser } },
+  // Los callbacks de page.evaluate() corren en el navegador.
+  { files: ['tools/e2e/**/*.mjs'], languageOptions: { globals: { ...globals.node, ...globals.browser } } },
   {
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],

@@ -1,0 +1,33 @@
+{
+  "osmId": "way/388521981",
+  "name": "Aulas Nuevas (Ex Teológico) / Facultad de Teología",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/08/Facultad-de-Teolog%C3%ADa_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Facultad de Teología_edit', 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "acceso con pórtico curvo (semicircular) de 1 nivel sobre columnas cilíndricas blancas",
+        "letras 'Facultad de Teología' sobre el borde de la losa del pórtico",
+        "fachada de revoque blanco/crema con puertas vidriadas de aluminio",
+        "a la izquierda, cuerpo de 2-3 niveles con ventanas rectangulares",
+        "a la derecha, volumen alto curvo/cilíndrico blanco (no identificado)",
+        "frente de ripio/grava con bolardos bajos y césped"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 2,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "plaster",
+    "wallColor": "#efeae0",
+    "trimColor": "#f7f7f5",
+    "windowStyle": "ventanas rectangulares; acceso vidriado bajo pórtico curvo con columnas",
+    "confidence": "low",
+    "notes": "La foto muestra el cartel 'Facultad de Teología' (2018) pero no se pudo confirmar que corresponda al polígono OSM 'Aulas Nuevas (Ex Teológico)'. Niveles estimados."
+  }
+}

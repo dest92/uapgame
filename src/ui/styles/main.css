@@ -1,0 +1,35 @@
+:root {
+  --ui-bg: rgba(12, 16, 22, 0.62);
+  --ui-bg-strong: rgba(10, 13, 18, 0.86);
+  --ui-border: rgba(255, 255, 255, 0.12);
+  --ui-text: #f2f4f7;
+  --ui-muted: #a9b3c1;
+  --ui-accent: #f5b942;
+  --ui-radius: 14px;
+  --ui-blur: blur(14px) saturate(140%);
+  --ui-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0f14; font-family: var(--ui-font); color: var(--ui-text); }
+#app { position: fixed; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; }
+#app canvas { display: block; width: 100%; height: 100%; outline: none; }
+.hud { position: absolute; inset: 0; pointer-events: none; }
+.hud > * { pointer-events: auto; }
+.glass { background: var(--ui-bg); border: 1px solid var(--ui-border); border-radius: var(--ui-radius); backdrop-filter: var(--ui-blur); -webkit-backdrop-filter: var(--ui-blur); box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+
+/* Pantalla de carga */
+.loading { position: absolute; inset: 0; z-index: 50; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; padding: 8vh 7vw;
+  background: radial-gradient(120% 90% at 20% 10%, #1d2a3a 0%, #0b0f14 60%); transition: opacity .8s ease; }
+.loading--done { opacity: 0; pointer-events: none; }
+.loading__kicker { text-transform: uppercase; letter-spacing: .32em; font-size: 12px; color: var(--ui-accent); }
+.loading__title { margin: 6px 0 4px; font-size: clamp(40px, 8vw, 92px); font-weight: 800; letter-spacing: -.03em; line-height: .95; }
+.loading__subtitle { color: var(--ui-muted); font-size: 15px; }
+.loading__bar { height: 3px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; max-width: 520px; }
+.loading__bar-fill { height: 100%; background: linear-gradient(90deg, var(--ui-accent), #ffdf9a); transform-origin: left; transform: scaleX(0); transition: transform .3s ease; }
+.loading__label { font-size: 13px; color: var(--ui-muted); min-height: 1.2em; }
+.loading--error .loading__label { color: #ff8a80; }
+
+/* Atribución */
+.attribution { position: absolute; right: 8px; bottom: 6px; font-size: 11px; color: rgba(255,255,255,.75); text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.attribution a { color: inherit; }

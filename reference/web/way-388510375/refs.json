@@ -1,0 +1,58 @@
+{
+  "osmId": "way/388510375",
+  "name": "Pabellón de Música OGDEN",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/02/Escuela-de-Musica-UAP_edit.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la Escuela de Música UAP', 2025-02)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "2 pisos, revoque liso color crema",
+        "aleros perimetrales de tejas cerámicas rojo-anaranjadas (techo a cuatro aguas bajo) con parapeto central escalonado con relieve 'C.A.P. 1898'",
+        "bow-window (ventanal saliente) en el primer piso con texto 'Pabellón de Música OGDEN'",
+        "galería de acceso en planta baja con columnas cilíndricas color rosado-marrón y techo de tejas",
+        "ventanas de carpintería blanca con vidrios repartidos",
+        "piso exterior de piedra laja irregular y baldosas cerámicas",
+        "árbol de lapacho rosado a la izquierda"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/05/PabellonMusica.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PabellonMusica', 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "estado 2018: pintura amarillo ocre con molduras salmón (luego repintado crema)",
+        "mismo parapeto 'C.A.P. 1898', bow-window y galería con columnas",
+        "mástiles con banderas al frente"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/06/Ignauguracion_EDIT_Portada_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "nuevo hall de ingreso (2026): puertas dobles y paños fijos vidriados con aluminio claro, muro claro, piso de piedra laja"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": 2,
+    "roof": "hip",
+    "roofColor": "#b85a32",
+    "wallMaterial": "plaster",
+    "wallColor": "#efe5d0",
+    "trimColor": "#b48c80",
+    "windowStyle": "ventanas rectangulares blancas con vidrios repartidos; bow-window en primer piso",
+    "confidence": "high",
+    "notes": "Edificio histórico (el relieve dice C.A.P. 1898). Techo de tejas con parapeto escalonado en el frente. Pintura cambió de amarillo ocre (2018) a crema (2025)."
+  }
+}

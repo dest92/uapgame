@@ -1,0 +1,65 @@
+{
+  "osmId": "way/388500961",
+  "name": "Templo UAP",
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/07/templo_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'templo_edit')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "fachada principal frontal, cielo despejado",
+        "volumen blanco liso (revoque/hormigón pintado) muy alto, techo no visible (parapetos rectos)",
+        "fachada escalonada: dos pilonos altos de esquinas redondeadas flanquean el cuerpo central",
+        "grupos de 3 ventanas altas y angostas con remate apuntado, vidrio azul oscuro",
+        "paneles decorativos rectangulares dorados/ocre en el pilono derecho",
+        "logo IASD y texto 'Universidad Adventista del Plata' en el pilono izquierdo",
+        "planta baja con accesos vidriados bajo marquesinas planas blancas",
+        "alas laterales bajas con zócalo de piedra gris y volúmenes extremos color arena",
+        "explanada de hormigón gris claro con dibujos de baldosas"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/05/Grupo_SBTS2017_frenteTemplo.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Grupo_SBTS2017_frenteTemplo')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "vista en 3/4 de la fachada con grupo de personas (escala humana: la fachada supera ~8 veces la altura de una persona, estimado)",
+        "mismos pilonos blancos, ventanas apuntadas y paneles ocre",
+        "zócalo de piedra laja gris en planta baja del lateral izquierdo",
+        "explanada con dibujo geométrico de baldosas gris claro y gris medio"
+      ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/12/PanoramicaTemplo.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PanoramicaTemplo')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-26",
+      "extracted": [
+        "interior: planta en abanico con bancos de madera curvos y piso inclinado",
+        "balcón/galería superior perimetral",
+        "muro de piedra detrás de la plataforma, paredes crema"
+      ]
+    }
+  ],
+  "summary": {
+    "levels": null,
+    "roof": "flat",
+    "roofColor": null,
+    "wallMaterial": "plaster",
+    "wallColor": "#f1efe9",
+    "trimColor": "#c49a4e",
+    "windowStyle": "ventanas altas y angostas con remate apuntado en grupos de 3; accesos vidriados en planta baja",
+    "confidence": "high",
+    "notes": "Nave única de gran altura (equivalente a ~4 pisos, estimado; interior con balcón). Techo no visible desde la calle: se modela plano tras parapetos. Zócalo de piedra gris en alas laterales.",
+    "height": 13.5,
+    "heightRationale": "02.jpg: la fachada supera ~8 veces la altura de una persona (≈1.7 m) → ≈13.5 m. Decisión de modelado documentada (Hito 1)."
+  }
+}

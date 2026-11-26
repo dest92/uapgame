@@ -1,0 +1,16 @@
+{
+  "osmId": "relation/16816367",
+  "name": "IAP (Instituto Adventista del Plata)",
+  "refs": [],
+  "summary": {
+    "levels": null,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
+    "confidence": "low",
+    "notes": "sin referencias confiables"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "osmId": "way/388512618",
+  "name": "Edificio Humanidades",
+  "refs": [],
+  "summary": {
+    "levels": null,
+    "roof": null,
+    "roofColor": null,
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
+    "confidence": "low",
+    "notes": "sin referencias confiables"
+  }
+}
