@@ -9,3 +9,12 @@
 - **VEG-4** Pasto instanciado con viento en shader (TSL), densidad según calidad.
 - **MAT-1** Materiales PBR por edificio derivados de las referencias (color de pared/techo/material); sin referencias → genéricos y anotado en `missing-info.md`.
 - **ROAD-1** Calles con calzada + cordón + vereda (geometría con bordes), senderos con borde levemente elevado.
+- **VEG-5** Arbolado de vereda: a ambos lados de las calles cada 13 m, a ancho/2 + 2.2 m, descartando puntos dentro de edificios/canchas/agua. (Decisión: OSM no tiene `natural=tree` en el campus; las calles de Libertador San Martín son arboladas según las referencias generales.)
+- **LAMP-1** Faroles cada ~32 m a un costado de las calles; cabezal emisivo controlado por `night` (bloom).
+- **WATER-1** Áreas `water` (piletas, fuentes) como superficies planas reflectivas.
+
+## Decisiones técnicas
+- AO: GTAO a media resolución multiplicando el color final (una sola pasada de geometría con MRT), en vez de `builtinAOContext` (que requiere pre-pasada).
+- Bloom con umbral alto (2.2 en HDR) para que solo florezcan el sol, faroles y ventanas encendidas.
+- IBL: PMREM del cielo, regenerado solo cuando la hora cambia > 0.2 h.
+- Texturas de follaje generadas en canvas en runtime (0 bytes de descarga).
