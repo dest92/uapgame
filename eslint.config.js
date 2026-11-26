@@ -7,6 +7,8 @@ const ENGINE_LIBS = [
   { group: ['three', 'three/*'], message: 'Esta capa no puede depender de Three.js.' },
   { group: ['@dimforge/*'], message: 'Esta capa no puede depender de Rapier.' },
 ];
+/** Rutas relativas a capas de infraestructura de src/ (no afecta a @shared/*). */
+const infra = (...names) => names.flatMap((n) => [`../${n}/**`, `../../${n}/**`, `../../../${n}/**`]);
 const layer = (files, patterns) => ({
   files,
   rules: { 'no-restricted-imports': ['error', { patterns }] },
@@ -32,14 +34,14 @@ export default tseslint.config(
   ]),
   layer(['src/domain/**/*.ts', 'src/core/**/*.ts'], [
     ...ENGINE_LIBS,
-    { group: ['**/render/**', '**/world/**', '**/physics/**', '**/player/**', '**/ui/**'], message: 'domain/core no dependen de capas de infraestructura.' },
+    { group: infra('render', 'world', 'physics', 'player', 'ui', 'gameplay', 'app'), message: 'domain/core no dependen de capas de infraestructura.' },
   ]),
   layer(['src/ui/**/*.ts'], [
     ...ENGINE_LIBS,
-    { group: ['**/render/**', '**/physics/**', '**/world/**'], message: 'La UI solo conoce domain/core.' },
+    { group: infra('render', 'physics', 'world', 'player'), message: 'La UI solo conoce domain/core.' },
   ]),
   layer(['src/physics/**/*.ts'], [
     { group: ['three', 'three/*'], message: 'La física no depende del render.' },
-    { group: ['**/render/**', '**/ui/**'], message: 'La física no depende del render ni la UI.' },
+    { group: infra('render', 'ui'), message: 'La física no depende del render ni la UI.' },
   ]),
 );

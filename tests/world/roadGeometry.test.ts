@@ -25,6 +25,23 @@ describe('RoadGeometryBuilder (ROAD-1)', () => {
     expect(rise(road)).toBeCloseTo(0.15, 5);
     expect(rise({ ...road, class: 'path', highway: 'footway', width: 2 })).toBeLessThan(0.1);
   });
+  it('ROAD-1: ninguna normal es nula (caras verticales del cordón iluminadas)', () => {
+    const g = buildRoadGeometry(road, flat);
+    for (const geo of [g.surface, g.curb]) {
+      for (let i = 0; i < geo.normals.length; i += 3) {
+        expect(Math.hypot(geo.normals[i]!, geo.normals[i + 1]!, geo.normals[i + 2]!)).toBeCloseTo(1, 5);
+      }
+    }
+  });
+  it('ROAD-1: la cara interior del cordón mira hacia la calzada', () => {
+    const g = buildRoadGeometry(road, flat);
+    // Calle a lo largo de +X; normal izquierda = +Z... el cordón en z=+3 (o −3) debe mirar al centro (z=0).
+    for (let i = 0; i < g.curb.positions.length; i += 3) {
+      const z = g.curb.positions[i + 2]!;
+      const nz = g.curb.normals[i + 2]!;
+      if (Math.abs(Math.abs(z) - 3) < 1e-6 && Math.abs(nz) > 0.5) expect(Math.sign(nz)).toBe(-Math.sign(z));
+    }
+  });
   it('sigue el terreno', () => {
     const slope = { heightAt: (x: number) => x * 0.1 };
     const g = buildRoadGeometry(road, slope);

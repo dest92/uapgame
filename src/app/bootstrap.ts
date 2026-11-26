@@ -1,32 +1,51 @@
 import worldUrl from '../../data/world.json?url';
+import infoUrl from '../../data/buildings-info.json?url';
 import heroAssets from 'virtual:hero-assets';
+import type { BuildingInfoFile } from '@shared/info/types';
+import { EventBus } from '../core/events/EventBus';
+import type { GameEvents } from '../core/events/GameEvents';
+import { InputHub } from '../core/input/InputHub';
+import { KeyboardMouseSource } from '../core/input/KeyboardMouseSource';
 import { GameLoop } from '../core/loop/GameLoop';
+import { GameState } from '../core/state/GameState';
+import { InteractionSystem } from '../gameplay/InteractionSystem';
+import { AssetLoader } from '../render/assets/AssetLoader';
+import { backendLabel } from '../render/backend';
+import { BasicMaterialLibrary } from '../render/materials/BasicMaterialLibrary';
 import { createRenderer } from '../render/RendererFactory';
 import { RenderSystem } from '../render/RenderSystem';
-import { SceneContext } from '../render/scene/SceneContext';
 import { addBasicLighting } from '../render/scene/BasicLighting';
-import { BasicMaterialLibrary } from '../render/materials/BasicMaterialLibrary';
-import { backendLabel } from '../render/backend';
+import { SceneContext } from '../render/scene/SceneContext';
+import { LoadingScreen } from '../ui/LoadingScreen';
+import { TouchControls } from '../ui/TouchControls';
 import { loadWorld } from '../world/WorldLoader';
 import { buildWorldScene } from '../world/WorldBuilder';
-import { LoadingScreen } from '../ui/LoadingScreen';
-import { mountAttribution } from '../ui/Attribution';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { APP_CONFIG } from './config';
+import { createPhysics } from './createPhysics';
+import { createPlayer } from './createPlayer';
+import { createUi } from './createUi';
+
+const isTouch = (): boolean => matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
 
 /** Raíz de composición: crea e inyecta dependencias. Sin lógica de juego. */
 export async function bootstrap(container: HTMLElement): Promise<void> {
   const loading = new LoadingScreen(container);
+  const stage = (label: string, p: number): void => loading.progress(label, p);
   try {
-    loading.progress('Inicializando renderer…', 0.05);
+    stage('Inicializando renderer…', 0.03);
     const canvas = document.createElement('canvas');
+    canvas.tabIndex = 0;
     container.prepend(canvas);
     const { renderer, backend } = await createRenderer(canvas, true);
     document.documentElement.dataset['backend'] = backendLabel(backend);
 
-    loading.progress('Descargando datos del campus…', 0.1);
-    const world = await loadWorld(worldUrl, (p) => loading.progress('Descargando datos del campus…', 0.1 + p * 0.3));
+    stage('Descargando datos del campus…', 0.08);
+    const [world, info] = await Promise.all([
+      loadWorld(worldUrl, (p) => stage('Descargando datos del campus…', 0.08 + p * 0.2)),
+      fetch(infoUrl).then((r) => r.json() as Promise<BuildingInfoFile>),
+    ]);
 
-    loading.progress('Generando edificios, calles y terreno…', 0.45);
+    stage('Generando edificios, calles y terreno…', 0.3);
     const ctx = new SceneContext();
     addBasicLighting(ctx.scene);
     const built = buildWorldScene(world, new BasicMaterialLibrary(), {
@@ -35,18 +54,34 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     });
     ctx.scene.add(built.root);
 
-    const controls = new OrbitControls(ctx.camera, canvas);
-    ctx.camera.position.set(-260, 220, 320);
-    controls.target.set(0, built.terrain.heightAt(0, 0), 0);
-    controls.update();
+    stage('Preparando física…', 0.45);
+    const physics = await createPhysics(world, built.terrain);
 
+    const bus = new EventBus<GameEvents>();
+    const state = new GameState();
+    const touch = isTouch();
+    const input = new InputHub().add(new KeyboardMouseSource(canvas, bus));
+    const loop = new GameLoop().add(input);
+
+    stage('Cargando personaje…', 0.55);
+    const assets = new AssetLoader(renderer, (l, t) => stage('Cargando personaje…', 0.55 + (l / t) * 0.2));
+    const player = await createPlayer({ world, terrain: built.terrain, physics, state, input, assets, ctx, loop });
+
+    const targets = world.buildings.map((b) => ({ id: b.id, name: b.name, entrance: b.entrance.position }));
+    loop.add(new InteractionSystem(bus, input, state, APP_CONFIG.playerEntityId, targets));
     const renderSystem = new RenderSystem(renderer, ctx, container);
-    loading.progress('Compilando shaders…', 0.85);
-    await renderer.compileAsync(ctx.scene, ctx.camera);
+    const ui = createUi({
+      container, bus, world, info, state, touch, backendLabel: backendLabel(backend),
+      cameraYaw: () => player.camera.orbit.yaw,
+      stats: () => ({ drawCalls: renderer.info.render.drawCalls, triangles: renderer.info.render.triangles, backend: backendLabel(backend), quality: 'medium' }),
+    });
+    if (touch) input.add(new TouchControls(ui.hud, canvas));
+    loop.add(ui.system).add(renderSystem);
 
-    mountAttribution(container, `Terreno: IGN Argentina · Render: ${backendLabel(backend)}`);
-    new GameLoop().add({ update: () => controls.update() }).add(renderSystem).start();
-    loading.progress('Listo', 1);
+    stage('Compilando shaders…', 0.85);
+    await renderer.compileAsync(ctx.scene, ctx.camera);
+    loop.start();
+    stage('Listo', 1);
     loading.hide();
   } catch (err) {
     console.error(err);

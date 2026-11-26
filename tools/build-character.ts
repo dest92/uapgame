@@ -7,13 +7,14 @@
  */
 import { NodeIO, type Document } from '@gltf-transform/core';
 import { ALL_EXTENSIONS, EXTMeshoptCompression } from '@gltf-transform/extensions';
-import { dedup, prune, quantize, resample, weld } from '@gltf-transform/functions';
+import { dedup, mergeDocuments, prune, quantize, resample, unpartition, weld } from '@gltf-transform/functions';
 import { MeshoptEncoder, MeshoptDecoder } from 'meshoptimizer';
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { compressTexturesKtx2 } from './lib/assets/ktx2';
 
 const UBC = '.cache/quaternius/ubc/Universal Base Characters[Standard]/Base Characters/Godot - UE/Superhero_Male_FullBody.gltf';
+const HAIR = '.cache/quaternius/ubc/Universal Base Characters[Standard]/Hairstyles/Rigged to Head Bone/glTF (Godot -Unreal)/Hair_SimpleParted.gltf';
 const UAL = '.cache/quaternius/ual/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb';
 const OUT = 'public/models/character';
 /** Clips que usa el juego (MOV-5) + interacción. */
@@ -28,6 +29,32 @@ function patchMissingUris(gltfPath: string): string {
   const out = gltfPath.replace(/\.gltf$/, '.patched.gltf');
   writeFileSync(out, JSON.stringify(json));
   return out;
+}
+
+/**
+ * Fusiona un peinado riggeado (mismo esqueleto de 65 huesos) en el personaje:
+ * el mesh del pelo pasa a usar el skin del cuerpo y se descarta su esqueleto duplicado.
+ */
+async function addHair(io: NodeIO, character: Document): Promise<void> {
+  const hair = await io.read(HAIR);
+  const root = character.getRoot();
+  const [mainScene] = root.listScenes();
+  const [mainSkin] = root.listSkins();
+  if (!mainScene || !mainSkin) throw new Error('El personaje no tiene escena/skin');
+  const bodyNodes = new Set(root.listNodes());
+  mergeDocuments(character, hair);
+  const names = mainSkin.listJoints().map((j) => j.getName());
+  for (const node of root.listNodes()) {
+    if (bodyNodes.has(node) || !node.getMesh()) continue;
+    const joints = node.getSkin()?.listJoints().map((j) => j.getName()) ?? [];
+    if (joints.join() !== names.join()) throw new Error('El peinado no comparte el orden de huesos');
+    node.setSkin(mainSkin);
+    mainScene.addChild(node);
+  }
+  for (const scene of root.listScenes()) if (scene !== mainScene) scene.dispose();
+  for (const skin of root.listSkins()) if (skin !== mainSkin) skin.dispose();
+  for (const node of root.listNodes()) if (!bodyNodes.has(node) && !node.getMesh()) node.dispose();
+  await character.transform(unpartition());
 }
 
 async function finish(io: NodeIO, doc: Document, path: string): Promise<void> {
@@ -47,6 +74,7 @@ async function main(): Promise<void> {
 
   const character = await io.read(patchMissingUris(UBC));
   for (const anim of character.getRoot().listAnimations()) anim.dispose();
+  await addHair(io, character);
   await compressTexturesKtx2(character, { color: 1024, normal: 512, data: 512 });
   await finish(io, character, `${OUT}/student.glb`);
 

@@ -45,28 +45,40 @@ function norm(v: Vec2): Vec2 {
   return l < 1e-9 ? { x: 1, z: 0 } : { x: v.x / l, z: v.z / l };
 }
 
-/** Tira de quads entre dos offsets laterales a alturas dadas. */
+/** Hacia dónde mira una tira: arriba o lateral (múltiplo de la normal izquierda del eje). */
+type Facing = 'up' | 1 | -1;
+
+/** Tira de quads entre dos offsets laterales a alturas dadas, con normales y winding coherentes. */
 function strip(
   g: GeometryData, pts: readonly Vec2[], sides: ReturnType<typeof sideNormals>, h: HeightSampler,
-  o0: number, o1: number, y0: number, y1: number, color: readonly [number, number, number], up: boolean,
+  o0: number, o1: number, y0: number, y1: number, color: readonly [number, number, number], facing: Facing,
 ): void {
   let dist = 0;
   const base = g.positions.length / 3;
   pts.forEach((p, i) => {
     if (i > 0) dist += Math.hypot(p.x - pts[i - 1]!.x, p.z - pts[i - 1]!.z);
     const { n, scale } = sides[i]!;
+    const normal: [number, number, number] = facing === 'up' ? [0, 1, 0] : [n.x * facing, 0, n.z * facing];
     for (const [o, y] of [[o0, y0], [o1, y1]] as const) {
       const x = p.x + n.x * o * scale;
       const z = p.z + n.z * o * scale;
-      const normal: [number, number, number] = up ? [0, 1, 0] : [Math.sign(o1 - o0) * -n.x, 0, Math.sign(o1 - o0) * -n.z];
       pushVertex(g, { p: [x, h.heightAt(x, z) + y, z], n: normal, uv: [o, dist], color });
     }
   });
   for (let i = 0; i < pts.length - 1; i++) {
     const a = base + i * 2;
-    // Orden para que la cara mire hacia arriba (izquierda→derecha con avance).
-    g.indices.push(a, a + 2, a + 1, a + 1, a + 2, a + 3);
+    const tri: [number, number, number][] = [[a, a + 2, a + 1], [a + 1, a + 2, a + 3]];
+    for (const t of tri) g.indices.push(...(facesNormal(g, t) ? t : ([t[0], t[2], t[1]] as const)));
   }
+}
+
+/** ¿La cara geométrica del triángulo apunta en la dirección de la normal del vértice? */
+function facesNormal(g: GeometryData, [a, b, c]: readonly [number, number, number]): boolean {
+  const P = (k: number, j: number): number => g.positions[k * 3 + j]!;
+  const u = [P(b, 0) - P(a, 0), P(b, 1) - P(a, 1), P(b, 2) - P(a, 2)];
+  const v = [P(c, 0) - P(a, 0), P(c, 1) - P(a, 1), P(c, 2) - P(a, 2)];
+  const n = [u[1]! * v[2]! - u[2]! * v[1]!, u[2]! * v[0]! - u[0]! * v[2]!, u[0]! * v[1]! - u[1]! * v[0]!];
+  return n[0]! * g.normals[a * 3]! + n[1]! * g.normals[a * 3 + 1]! + n[2]! * g.normals[a * 3 + 2]! >= 0;
 }
 
 /** Calzada + cordones (ROAD-1). UV en metros: u lateral, v longitudinal. */
@@ -81,12 +93,12 @@ export function buildRoadGeometry(road: RoadData, terrain: HeightSampler): RoadG
   const color = surfaceColor(road.surface);
   const curbColor = surfaceColor(road.class === 'road' ? 'concrete' : 'curb');
 
-  strip(surface, pts, sides, terrain, half, -half, lift, lift, color, true);
+  strip(surface, pts, sides, terrain, half, -half, lift, lift, color, 'up');
   for (const s of [1, -1] as const) {
-    // Cara vertical interior del cordón y su tapa.
-    strip(curb, pts, sides, terrain, s * half, s * half, lift, lift + c.height, curbColor, false);
-    strip(curb, pts, sides, terrain, s * (half + c.width), s * half, lift + c.height, lift + c.height, curbColor, true);
-    strip(curb, pts, sides, terrain, s * (half + c.width), s * (half + c.width), lift + c.height, lift - 0.05, curbColor, false);
+    // Cara interior (mira a la calzada), tapa y cara exterior del cordón.
+    strip(curb, pts, sides, terrain, s * half, s * half, lift, lift + c.height, curbColor, -s as 1 | -1);
+    strip(curb, pts, sides, terrain, s * (half + c.width), s * half, lift + c.height, lift + c.height, curbColor, 'up');
+    strip(curb, pts, sides, terrain, s * (half + c.width), s * (half + c.width), lift + c.height, lift - 0.05, curbColor, s);
   }
   return { surface, curb };
 }

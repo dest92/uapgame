@@ -6,7 +6,11 @@ export interface GameEvents extends Record<string, unknown> {
   'interaction:target': { buildingId: string; name: string } | null;
   'interaction:open': { buildingId: string };
   'interaction:close': undefined;
+  /** Pedido de interacción desde la UI (tap en el hint). */
+  'interaction:request': undefined;
   'settings:quality': QualityLevel;
   'settings:timeOfDay': number;
   'debug:toggle': undefined;
+  /** Esc / M: cerrar panel o abrir menú. */
+  'ui:escape': undefined;
 }
