@@ -69,6 +69,7 @@ export class SkySystem implements GameSystem {
     this.sun.shadow.mapSize.set(q.shadowMapSize, q.shadowMapSize);
     this.sun.shadow.map?.dispose();
     this.sun.shadow.map = null;
+    this.csm?.dispose();
     if (q.cascades > 1) {
       this.csm = new CSMShadowNode(this.sun, { cascades: q.cascades, maxFar: q.shadowDistance, mode: 'practical', lightMargin: 120 });
       this.csm.fade = true;
