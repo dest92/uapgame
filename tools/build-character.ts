@@ -31,7 +31,7 @@ function patchMissingUris(gltfPath: string): string {
 }
 
 async function finish(io: NodeIO, doc: Document, path: string): Promise<void> {
-  await doc.transform(dedup(), prune(), weld(), quantize({ quantizeSkin: false }));
+  await doc.transform(dedup(), prune(), weld(), quantize());
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({ method: EXTMeshoptCompression.EncoderMethod.QUANTIZE });
   await io.write(path, doc);
   console.log(`✓ ${path} (${(statSync(path).size / 1024).toFixed(0)} KB)`);
