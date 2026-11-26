@@ -1,0 +1,808 @@
+{
+  "generatedAt": "2026-11-26T23:21:41.607Z",
+  "note": "Archivo editable a mano. Para que el generador no pise una entrada, poné \"manual\": true; los campos con \"source\": \"manual\" y las descripciones manuales también se preservan. No inventar datos institucionales.",
+  "buildings": {
+    "relation/16816367": {
+      "name": {
+        "value": "Edificio sin identificar (OSM relation 16816367)",
+        "source": "OSM relation/16816367 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Banco Santander Rio (Universitarios)",
+          "source": "OSM node/3917136224"
+        }
+      ],
+      "references": []
+    },
+    "way/327779295": {
+      "name": {
+        "value": "Terminal de Ómnibus y Colectivos",
+        "source": "OSM way/327779295"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Terminal de ómnibus",
+          "source": "OSM way/327779295"
+        }
+      ],
+      "references": []
+    },
+    "way/388495172": {
+      "name": {
+        "value": "Biblioteca I. Mohr",
+        "source": "OSM way/388495172"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Biblioteca",
+          "source": "OSM way/388495172"
+        },
+        {
+          "label": "Pisos",
+          "value": "3",
+          "source": "https://biblioteca.uap.edu.ar/ (biblioteca de medios WordPress, título 'EdificioChaij_UAP')"
+        }
+      ],
+      "references": [
+        "https://biblioteca.uap.edu.ar/ (biblioteca de medios WordPress, título 'EdificioChaij_UAP')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress)",
+        "https://uap.edu.ar/ (noticia 'La UAP celebra su Biblioteca abierta', 2025-10)",
+        "https://uap.edu.ar/ (noticia concurso lema del centenario de la Biblioteca E. Irving Mohr, 2026-06)"
+      ]
+    },
+    "way/388495176": {
+      "name": {
+        "value": "Facultad de Ciencias de la Salud (FCS)",
+        "source": "OSM way/388495176"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Institución educativa",
+          "source": "OSM way/388495176"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Centro Interdisciplinario de Simulación en Salud",
+          "source": "OSM node/3916879644"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Decanato FCS",
+          "source": "OSM node/3916879645"
+        },
+        {
+          "label": "Pisos",
+          "value": "2",
+          "source": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)"
+        }
+      ],
+      "references": [
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)"
+      ]
+    },
+    "way/388500961": {
+      "name": {
+        "value": "Templo UAP",
+        "source": "OSM way/388500961"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Lugar de culto",
+          "source": "OSM way/388500961"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Facultad de Teología (FT)",
+          "source": "OSM node/3916879507"
+        }
+      ],
+      "references": [
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'templo_edit')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Grupo_SBTS2017_frenteTemplo')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PanoramicaTemplo')"
+      ]
+    },
+    "way/388500962": {
+      "name": {
+        "value": "Profesorado de Educación Física (PEF)",
+        "source": "OSM way/388500962"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Institución educativa",
+          "source": "OSM way/388500962"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Gimnasio PEF",
+          "source": "OSM node/3917171176"
+        }
+      ],
+      "references": []
+    },
+    "way/388500965": {
+      "name": {
+        "value": "Auditorio Mayor UAP",
+        "source": "OSM way/388500965"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Uso",
+          "value": "Centro deportivo",
+          "source": "OSM way/388500965"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Gimnasio de Musculación",
+          "source": "OSM node/3917171178"
+        }
+      ],
+      "references": []
+    },
+    "way/388500976": {
+      "name": {
+        "value": "Edificio sin identificar (OSM way 388500976)",
+        "source": "OSM way/388500976 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Cafetería",
+          "source": "OSM way/388500976"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Comedor Pequeño (Comedorcito) para Eventos",
+          "source": "OSM node/3917171174"
+        }
+      ],
+      "references": []
+    },
+    "way/388500978": {
+      "name": {
+        "value": "Hogar de Señoritas Nuevo",
+        "source": "OSM way/388500978"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388500980": {
+      "name": {
+        "value": "Tecnología y Operaciones (TyO)",
+        "source": "OSM way/388500980"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Tecnología / IT",
+          "source": "OSM way/388500980"
+        }
+      ],
+      "references": []
+    },
+    "way/388500981": {
+      "name": {
+        "value": "Edificio sin identificar (OSM way 388500981)",
+        "source": "OSM way/388500981 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388504305": {
+      "name": {
+        "value": "Supermercado CEAPÉ",
+        "source": "OSM way/388504305"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Comercio",
+          "value": "Supermercado",
+          "source": "OSM way/388504305"
+        }
+      ],
+      "references": []
+    },
+    "way/388504306": {
+      "name": {
+        "value": "Supermercado CEAPÉ",
+        "source": "OSM way/388504306"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Comercio",
+          "value": "Supermercado",
+          "source": "OSM way/388504306"
+        }
+      ],
+      "references": []
+    },
+    "way/388510367": {
+      "name": {
+        "value": "Hogar de Varones NUEVO",
+        "source": "OSM way/388510367"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388510368": {
+      "name": {
+        "value": "Hogar de Señoritas (Ex Varones VIEJO)",
+        "source": "OSM way/388510368"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388510369": {
+      "name": {
+        "value": "Hogar de Señoritas VIEJO",
+        "source": "OSM way/388510369"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Lavadero UAP",
+          "source": "OSM node/3926972947"
+        }
+      ],
+      "references": []
+    },
+    "way/388510374": {
+      "name": {
+        "value": "Centro de Apoyo Estudiantil (CAE)",
+        "source": "OSM way/388510374"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388510375": {
+      "name": {
+        "value": "Pabellón de Música OGDEN",
+        "source": "OSM way/388510375"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Pisos",
+          "value": "2",
+          "source": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la Escuela de Música UAP', 2025-02)"
+        }
+      ],
+      "references": [
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la Escuela de Música UAP', 2025-02)",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PabellonMusica', 2018)",
+        "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/"
+      ]
+    },
+    "way/388512618": {
+      "name": {
+        "value": "Edificio Humanidades",
+        "source": "OSM way/388512618"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Centro de Multimedia",
+          "source": "OSM node/3917067322"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Adventist Colleges Abroad (ACA)",
+          "source": "OSM node/3917067323"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Aula Comunicación Social (Aula Granix)",
+          "source": "OSM node/3926945621"
+        }
+      ],
+      "references": []
+    },
+    "way/388512619": {
+      "name": {
+        "value": "Edificio de Tutorías",
+        "source": "OSM way/388512619"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388512621": {
+      "name": {
+        "value": "Salón de los Pioneros",
+        "source": "OSM way/388512621"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Centro de Estudiantes Colportores (IDEC)",
+          "source": "OSM node/3917136200"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Placas Conmemorativas Varias",
+          "source": "OSM node/3917171180"
+        },
+        {
+          "label": "Pisos",
+          "value": "1",
+          "source": "https://commons.wikimedia.org/wiki/File:Iglesia_de_los_Pioneros.jpg"
+        }
+      ],
+      "references": [
+        "https://commons.wikimedia.org/wiki/File:Iglesia_de_los_Pioneros.jpg",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'CampamentoEstudiantil_pioneros', 2018)"
+      ]
+    },
+    "way/388521981": {
+      "name": {
+        "value": "Aulas Nuevas (Ex Teológico)",
+        "source": "OSM way/388521981"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Pisos",
+          "value": "2",
+          "source": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Facultad de Teología_edit', 2018)"
+        }
+      ],
+      "references": [
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Facultad de Teología_edit', 2018)"
+      ]
+    },
+    "way/388521982": {
+      "name": {
+        "value": "Lincoln Hall",
+        "source": "OSM way/388521982"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Admisión & Alumnos Internacionales",
+          "source": "OSM node/3917136199"
+        }
+      ],
+      "references": []
+    },
+    "way/388521983": {
+      "name": {
+        "value": "Aulas Humanidades",
+        "source": "OSM way/388521983"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388521993": {
+      "name": {
+        "value": "Administración UAP",
+        "source": "OSM way/388521993"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Recursos Humanos",
+          "source": "OSM node/3917136209"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Decanato FHECIS",
+          "source": "OSM node/3917136211"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Secretaría General",
+          "source": "OSM node/3917136226"
+        }
+      ],
+      "references": []
+    },
+    "way/388521996": {
+      "name": {
+        "value": "Pórtico (Entrada) Universidad Adventista del Plata (Ex CAP)",
+        "source": "OSM way/388521996"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Pisos",
+          "value": "2",
+          "source": "https://commons.wikimedia.org/wiki/File:ENTRANCE_UAP.jpg"
+        }
+      ],
+      "references": [
+        "https://commons.wikimedia.org/wiki/File:ENTRANCE_UAP.jpg",
+        "https://uap.edu.ar/ (noticia 'La internacionalización como puente de universidades', 2025-10)",
+        "https://uap.edu.ar/ (noticia sobre nota de Infobae, 2026-08)",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, '1.-Portico')"
+      ]
+    },
+    "way/388521999": {
+      "name": {
+        "value": "Municipalidad de Libertador San Martín",
+        "source": "OSM way/388521999"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Municipalidad",
+          "source": "OSM way/388521999"
+        }
+      ],
+      "references": []
+    },
+    "way/388522000": {
+      "name": {
+        "value": "Polideportivo Municipal \"Juan Goltz\"",
+        "source": "OSM way/388522000"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Uso",
+          "value": "Centro deportivo",
+          "source": "OSM way/388522000"
+        },
+        {
+          "label": "Dentro funciona",
+          "value": "Dispensario y Primeros Auxilios",
+          "source": "OSM node/3917136414"
+        }
+      ],
+      "references": []
+    },
+    "way/388522001": {
+      "name": {
+        "value": "Salón \"Circular\" Municipal",
+        "source": "OSM way/388522001"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388524877": {
+      "name": {
+        "value": "Talleres UAP",
+        "source": "OSM way/388524877"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Dentro funciona",
+          "value": "Cerrajería",
+          "source": "OSM node/3926945622"
+        }
+      ],
+      "references": []
+    },
+    "way/388524884": {
+      "name": {
+        "value": "Ex Fábrica Alimentos CEAPÉ",
+        "source": "OSM way/388524884"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388524885": {
+      "name": {
+        "value": "Alimentos Puiggari (Oficinas Centrales)",
+        "source": "OSM way/388524885"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388524886": {
+      "name": {
+        "value": "Tallers y Depósitos UAP",
+        "source": "OSM way/388524886"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/388526213": {
+      "name": {
+        "value": "Prevención y Seguridad",
+        "source": "OSM way/388526213"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Seguridad",
+          "source": "OSM way/388526213"
+        }
+      ],
+      "references": []
+    },
+    "way/389529649": {
+      "name": {
+        "value": "Edificio sin identificar (OSM way 389529649)",
+        "source": "OSM way/389529649 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Cafetería",
+          "source": "OSM way/389529649"
+        }
+      ],
+      "references": []
+    },
+    "way/389529650": {
+      "name": {
+        "value": "INIS (Instituto de Desarrollo para pasantes de Sistemas)",
+        "source": "OSM way/389529650"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/389529653": {
+      "name": {
+        "value": "Garage Vehículo Bomberos UAP",
+        "source": "OSM way/389529653"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Bomberos",
+          "source": "OSM way/389529653"
+        }
+      ],
+      "references": []
+    },
+    "way/389529654": {
+      "name": {
+        "value": "Parques y Jardines (Depto.)",
+        "source": "OSM way/389529654"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/389529664": {
+      "name": {
+        "value": "Gerencia de Servicios",
+        "source": "OSM way/389529664"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Gestión",
+          "source": "OSM way/389529664"
+        }
+      ],
+      "references": []
+    },
+    "way/389529666": {
+      "name": {
+        "value": "CIPCA",
+        "source": "OSM way/389529666"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Investigación",
+          "source": "OSM way/389529666"
+        }
+      ],
+      "references": []
+    },
+    "way/389529667": {
+      "name": {
+        "value": "CIPCA Aux.",
+        "source": "OSM way/389529667"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Oficina",
+          "value": "Investigación",
+          "source": "OSM way/389529667"
+        }
+      ],
+      "references": []
+    },
+    "way/389691711": {
+      "name": {
+        "value": "Iglesia Adventista Central",
+        "source": "OSM way/389691711"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [
+        {
+          "label": "Tipo",
+          "value": "Lugar de culto",
+          "source": "OSM way/389691711"
+        }
+      ],
+      "references": []
+    },
+    "way/1123197238": {
+      "name": {
+        "value": "Edificio sin identificar (OSM way 1123197238)",
+        "source": "OSM way/1123197238 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    },
+    "way/1230711279": {
+      "name": {
+        "value": "Edificio sin identificar (OSM way 1230711279)",
+        "source": "OSM way/1230711279 (sin name)"
+      },
+      "description": {
+        "value": null,
+        "source": null
+      },
+      "fields": [],
+      "references": []
+    }
+  }
+}

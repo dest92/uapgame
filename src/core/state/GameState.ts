@@ -5,7 +5,7 @@ export interface Vec3 {
 }
 
 export type EntityKind = 'player' | 'remote-player' | 'npc';
-export type AnimState = 'idle' | 'walk' | 'run' | 'jump' | 'fall';
+export type AnimState = 'idle' | 'walk' | 'jog' | 'run' | 'jump' | 'fall';
 
 /** Entidad serializable: sin referencias a motores (STATE-1). */
 export interface Entity {

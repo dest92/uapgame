@@ -16,3 +16,4 @@ reference/web/**/*.avif
 # Descargas crudas de texturas (se versionan solo las optimizadas en public/textures)
 .cache/
 public/libs/
+.cache/
