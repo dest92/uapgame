@@ -1,0 +1,18 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+.vite/
+test-results/
+# Referencias fotográficas de terceros: solo referencia visual, NO se redistribuyen.
+# Se versionan los refs.json / README, nunca las imágenes.
+reference/web/**/*.jpg
+reference/web/**/*.jpeg
+reference/web/**/*.png
+reference/web/**/*.webp
+reference/web/**/*.gif
+reference/web/**/*.avif
+# Descargas crudas de texturas (se versionan solo las optimizadas en public/textures)
+.cache/
+public/libs/

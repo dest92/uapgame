@@ -1,0 +1,42 @@
+{
+  "name": "uap-campus-poc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "POC jugable del campus de la Universidad Adventista del Plata — Ache Systems",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "node tools/e2e/smoke.mjs",
+    "data:fetch-osm": "tsx tools/fetch-osm.ts",
+    "data:build-world": "tsx tools/build-world.ts",
+    "data:collect-refs": "tsx tools/collect-refs.ts",
+    "data:build-info": "tsx tools/build-buildings-info.ts",
+    "data:textures": "tsx tools/fetch-textures.ts",
+    "data": "npm run data:fetch-osm && npm run data:build-world && npm run data:build-info",
+    "postinstall": "tsx tools/copy-decoders.ts"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.21.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^22.20.7",
+    "@types/three": "^0.187.0",
+    "eslint": "^10.15.0",
+    "geotiff": "^3.0.5",
+    "osmtogeojson": "^3.0.0-beta.5",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.74.0",
+    "vite": "^8.4.0",
+    "vitest": "^5.1.2"
+  }
+}

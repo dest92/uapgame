@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["tools", "shared", "tests", "vite.config.ts", "vitest.config.ts", "vite-plugins"]
+}
