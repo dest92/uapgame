@@ -161,8 +161,9 @@ export function straightSkeleton(footprint: readonly Vec2[]): Skeleton | null {
         }
       }
     });
-    if (!best) return null;
-    const ev: Event = best;
+    const found = best as Event | null;
+    if (!found) return null;
+    const ev: Event = found;
     T += ev.t;
     for (const loop of loops) for (const v of loop) {
       v.x += v.vx * ev.t;
