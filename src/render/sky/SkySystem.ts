@@ -98,7 +98,7 @@ export class SkySystem implements GameSystem {
     const d = new Vector3(s.direction.x, s.direction.y, s.direction.z);
     for (const sky of [this.sky, this.envSky]) sky.sunPosition.value.copy(d);
 
-    this.sun.intensity = 3.4 * mix.sun;
+    this.sun.intensity = 2.6 * mix.sun;
     this.sun.color.copy(lerpColor('#fff3e0', '#ffae66', mix.golden));
     this.moon.intensity = 0.35 * mix.night;
     this.hemi.intensity = 0.12 + 0.3 * mix.sun + 0.12 * mix.night;
@@ -107,7 +107,7 @@ export class SkySystem implements GameSystem {
     this.fog.color.copy(lerpColor('#0d1422', '#cbd9e3', mix.sun).lerp(new Color('#e3b48a'), mix.golden * 0.6));
     this.fog.density = 0.0007 + 0.0003 * mix.golden;
     this.scene.environmentIntensity = 0.06 + 0.5 * mix.sun;
-    this.renderer.toneMappingExposure = 0.9 + 0.6 * mix.night;
+    this.renderer.toneMappingExposure = 0.72 + 0.6 * mix.night;
     sceneUniforms.night.value = mix.night;
 
     if (Math.abs(this.hour - this.envHour) > ENV_REFRESH_HOURS) this.refreshEnvironment();
