@@ -1,5 +1,5 @@
 import { RenderPipeline, type PerspectiveCamera, type Scene, type WebGPURenderer } from 'three/webgpu';
-import { float, mix, mrt, normalView, output, pass, screenUV, smoothstep, vec3, vec4, length, luminance } from 'three/tsl';
+import { float, mix, mrt, normalView, output, pass, screenUV, smoothstep, vec3, vec4, length, luminance, interleavedGradientNoise, screenCoordinate } from 'three/tsl';
 import { ao } from 'three/addons/tsl/display/GTAONode.js';
 import { bloom } from 'three/addons/tsl/display/BloomNode.js';
 import type { QualityProfile } from '../../domain/quality/QualityProfiles';
@@ -29,11 +29,17 @@ export function createPostPipeline(renderer: WebGPURenderer, scene: Scene, camer
 
   if (q.bloom) result = result.add(bloom(color, 0.12, 0.35, 2.2).rgb);
 
-  // Grading: leve contraste y saturación + viñeta.
+  // Grading (técnica de Voidlight): sombras frías y algo desaturadas, luces cálidas, + saturación global.
   const lum = luminance(result);
-  result = mix(vec3(lum), result, float(1.18));
+  const shadowW = smoothstep(0.35, 0.0, lum);
+  const highW = smoothstep(0.45, 1.6, lum);
+  result = mix(result, mix(vec3(lum), result, float(0.8)).mul(vec3(0.94, 0.98, 1.06)), shadowW.mul(0.6));
+  result = result.mul(mix(vec3(1), vec3(1.05, 1.01, 0.94), highW));
+  result = mix(vec3(luminance(result)), result, float(1.15));
   const vignette = smoothstep(0.95, 0.35, length(screenUV.sub(0.5)).mul(1.25));
   result = result.mul(mix(float(0.82), float(1), vignette));
+  // Dither para evitar banding en el cielo y degradés.
+  result = result.add(interleavedGradientNoise(screenCoordinate.xy).sub(0.5).mul(1 / 255));
   pipeline.outputNode = vec4(result, 1);
   return { render: () => pipeline.render() };
 }
