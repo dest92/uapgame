@@ -19,6 +19,11 @@ js = open(os.path.join(src, js_path)).read().replace('</script', '<\\/script')
 css = open(os.path.join(src, css_path)).read()
 for p in (js_path, css_path):
     os.remove(os.path.join(out, p))
+# Con el JS inline, import.meta.url es la página: los assets referenciados como
+# new URL('x.json', import.meta.url) deben quedar junto a la página, no en assets/.
+for f in os.listdir(os.path.join(out, 'assets')):
+    shutil.move(os.path.join(out, 'assets', f), os.path.join(out, f))
+os.rmdir(os.path.join(out, 'assets'))
 for f in glob.glob(f'{out}/**/*.md', recursive=True):
     os.remove(f)
 for f in glob.glob(f'{out}/**/*.glb', recursive=True) + glob.glob(f'{out}/**/*.ktx2', recursive=True):
