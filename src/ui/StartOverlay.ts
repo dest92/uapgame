@@ -3,7 +3,7 @@ import { el } from './dom';
 const CONTROLS_DESKTOP: readonly [string, string][] = [
   ['WASD', 'caminar'], ['Shift', 'correr'], ['Espacio', 'saltar'], ['Mouse', 'mirar (click)'],
   ['E', 'entrar a un edificio'], ['F', 'subir/bajar de la bici'], ['B', 'aparecer una bici'],
-  ['N', 'mapa'], ['M', 'ajustes / hora'], ['K', 'sonido'],
+  ['N', 'mapa'], ['M', 'ajustes / hora'], ['T', 'el tiempo corre'], ['P', 'modo foto'], ['K', 'sonido'],
 ];
 const CONTROLS_TOUCH: readonly [string, string][] = [
   ['Joystick', 'caminar'], ['Arrastrar', 'mirar'], ['Saltar / Correr', 'botones'], ['E', 'entrar'], ['Bici', 'subir/bajar'],

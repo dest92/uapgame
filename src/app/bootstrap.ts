@@ -27,6 +27,8 @@ import { TextureLibrary } from '../render/textures/TextureLibrary';
 import { LoadingScreen } from '../ui/LoadingScreen';
 import { SettingsMenu } from '../ui/SettingsMenu';
 import { showStartOverlay } from '../ui/StartOverlay';
+import { mountPhotoMode } from '../ui/PhotoMode';
+import { TimeFlow } from '../domain/sky/TimeFlow';
 import { TouchControls } from '../ui/TouchControls';
 import { buildVegetation } from '../world/vegetation/VegetationBuilder';
 import { FallbackTreeProvider, ProceduralTreeProvider } from '../world/vegetation/TreeVariant';
@@ -129,6 +131,13 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     new SettingsMenu(ui.hud, bus, { quality: quality.profile.level, hour: initialHour(), backend: backendName });
     bus.on('settings:quality', (q) => quality.apply(q, true));
     bus.on('settings:timeOfDay', (h) => sky.setTimeOfDay(h));
+    mountPhotoMode(ui.hud);
+    const timeFlow = new TimeFlow();
+    window.addEventListener('keydown', (e) => {
+      if (e.code !== 'KeyT' || e.target instanceof HTMLInputElement) return;
+      timeFlow.running = !timeFlow.running;
+      bus.emit('hud:toast', timeFlow.running ? 'El tiempo corre (1 h cada 20 s)' : 'Tiempo pausado');
+    });
 
     const lampLights = new LampLightPool(ctx.scene, vegetation.lamps, built.terrain, ctx.camera, () => sceneUniforms.night.value);
     sky.setTimeOfDay(initialHour());
@@ -137,6 +146,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
       update: (dt) => {
         const p = state.get(APP_CONFIG.playerEntityId)?.position;
         if (p) sky.setFollowTarget(p.x, p.y, p.z);
+        if (timeFlow.running) sky.setTimeOfDay(timeFlow.advance(sky.timeOfDay, dt));
         sky.update();
         vegetation.trees.update(dt);
         lampLights.update(dt);

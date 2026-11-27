@@ -124,3 +124,4 @@ a.panel__src { color: var(--ui-accent); }
 .start__controls { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13px; align-items: center; }
 .start__controls kbd { justify-self: start; padding: 2px 8px; border-radius: 6px; background: rgba(255,255,255,.1); font: 600 12px var(--ui-font); }
 .start__go { margin-top: 6px; padding: 12px; border: 0; border-radius: 10px; background: var(--ui-accent); color: #111; font: 800 15px var(--ui-font); cursor: pointer; }
+.hud--hidden { opacity: 0; pointer-events: none !important; } .hud--hidden * { pointer-events: none !important; }
