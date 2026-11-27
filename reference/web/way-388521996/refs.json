@@ -67,8 +67,8 @@
     "wallMaterial": "brick",
     "wallColor": "#8c4c38",
     "trimColor": "#e9e6df",
-    "windowStyle": "ventanas rectangulares con celosías/persianas horizontales de aluminio claro",
+    "windowStyle": "estado 2026: ventanas con celosías horizontales de aluminio claro; letras \"Universidad Adventista del Plata\" sobre la fachada",
     "confidence": "medium",
-    "notes": "El polígono OSM se llama 'Pórtico (Ex CAP)' y está tagueado building=yes: se asume que corresponde al edificio de ladrillo de 2 pisos junto al arco escultórico (no verificado). El arco: pilares de piedra laja arena + cinta de hormigón blanco."
+    "notes": "El polígono OSM se llama 'Pórtico (Ex CAP)' y está tagueado building=yes: se asume que corresponde al edificio de ladrillo de 2 pisos junto al arco escultórico (no verificado). El arco: pilares de piedra laja arena + cinta de hormigón blanco. Actualizado con la foto 03.jpg (2026, post remodelación): la foto 01 (2014) y 04 (2018) muestran el estado anterior."
   }
 }
