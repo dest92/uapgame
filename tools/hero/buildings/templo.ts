@@ -19,7 +19,7 @@ import type { HeroModel } from './types';
 
 export const TEMPLO_MATERIALS = {
   ...BASE_MATERIALS,
-  stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 2.2 },
+  stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   copper: { color: '#a8775a', roughness: 0.45, metalness: 0.6 },
   plaza: { color: '#c9c8c3', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },
   plazaDark: { color: '#8f908e', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },

@@ -27,7 +27,7 @@ export const BIBLIOTECA_MATERIALS = {
   jointBeige: { color: '#a9a69d', roughness: 0.8 },
   pinkPlaster: { color: '#b48e8a', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   creamPlaster: { color: '#e6dac0', roughness: 0.9, texture: 'plaster', uvScale: 3 },
-  brick: { color: '#8e4a36', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
+  brick: { color: '#8e4a36', roughness: 0.9, texture: 'brick', uvScale: 1.0 },
   mullionBlack: { color: '#1f2123', roughness: 0.4, metalness: 0.6 },
   letters: { color: '#2b2b2b', roughness: 0.35, metalness: 0.7 },
 } as const satisfies Record<string, MaterialSpec>;

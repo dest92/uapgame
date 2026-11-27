@@ -18,7 +18,7 @@ import type { HeroModel } from './types';
 export const AUDITORIO_MATERIALS = {
   ...BASE_MATERIALS,
   wall: { color: '#e7e1d3', roughness: 0.9, texture: 'plaster', uvScale: 3 },
-  brick: { color: '#8a4d38', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
+  brick: { color: '#8a4d38', roughness: 0.9, texture: 'brick', uvScale: 1.0 },
   sheet: { color: '#c9cdcf', roughness: 0.42, metalness: 0.65 },
   skylight: { color: '#dfe6ea', roughness: 0.2, metalness: 0.1 },
 } as const satisfies Record<string, MaterialSpec>;

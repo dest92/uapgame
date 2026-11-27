@@ -19,9 +19,9 @@ import type { HeroModel } from './types';
 
 export const PORTICO_MATERIALS = {
   ...BASE_MATERIALS,
-  stoneSand: { color: '#b89c74', roughness: 0.9, texture: 'stone', uvScale: 1.8 },
+  stoneSand: { color: '#b89c74', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   ribbonWhite: { color: '#ece8dc', roughness: 0.75, texture: 'concrete', uvScale: 2 },
-  brick: { color: '#84462f', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
+  brick: { color: '#84462f', roughness: 0.9, texture: 'brick', uvScale: 1.0 },
   roofGreen: { color: '#6d7768', roughness: 0.7, metalness: 0.2 },
   cobbles: { color: '#a3a39f', roughness: 0.9, texture: 'paving', uvScale: 2.5 },
   benchBrown: { color: '#7a5e4c', roughness: 0.6 },

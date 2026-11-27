@@ -22,7 +22,7 @@ export const PIONEROS_MATERIALS = {
   wood: { color: '#7a3a22', roughness: 0.6 },
   frameCopper: { color: '#a8664a', roughness: 0.5, metalness: 0.4 },
   sheetRoof: { color: '#6f7273', roughness: 0.55, metalness: 0.5 },
-  flagstone: { color: '#c7beb3', roughness: 0.9, texture: 'stone', uvScale: 2.2 },
+  flagstone: { color: '#c7beb3', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
 } as const satisfies Record<string, MaterialSpec>;
 type M = keyof typeof PIONEROS_MATERIALS;
 

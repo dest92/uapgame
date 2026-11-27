@@ -12,24 +12,37 @@ import sharp from 'sharp';
 import type { BufferGeometry } from 'three';
 import { downloadAmbientCg } from '../../lib/assets/ambientcg';
 import { encodeKtx2 } from '../../lib/assets/ktx2';
-import { DETAIL_MEAN, HERO_TEXTURES, type HeroTexture, type MaterialSpec, baseFactorFor, hexToLinear } from './materials';
+import { PROC_TEXTURES, normalFromHeight } from './proctex';
+import { DETAIL_MEAN, HERO_TEXTURES, type HeroTexture, type HeroTextureSpec, type MaterialSpec, baseFactorFor, hexToLinear } from './materials';
 
 /** Textura de color normalizada: media por canal = DETAIL_MEAN y contraste ajustado. */
 async function detailTexture(name: HeroTexture): Promise<{ color: Uint8Array; normal?: Uint8Array }> {
-  const spec = HERO_TEXTURES[name];
-  const dir = await downloadAmbientCg(spec.asset);
-  const files = readdirSync(dir);
-  const colorFile = files.find((f) => /_Color\.jpg$/.test(f));
-  if (!colorFile) throw new Error(`${spec.asset}: sin mapa de color`);
-  let img = sharp(readFileSync(join(dir, colorFile))).resize(spec.size, spec.size).removeAlpha();
+  const spec: HeroTextureSpec = HERO_TEXTURES[name];
+  let source: Buffer;
+  let normalPng: Buffer | undefined;
+  if (spec.proc) {
+    // Textura procedural por texel (albedo + normal desde la altura).
+    const t = PROC_TEXTURES[spec.proc](spec.size);
+    const raw = { raw: { width: t.size, height: t.size, channels: 3 as const } };
+    source = await sharp(Buffer.from(t.albedo), raw).png().toBuffer();
+    normalPng = spec.normal ? await sharp(Buffer.from(normalFromHeight(t, spec.proc === 'plaster' ? 1.5 : 5)), raw).png().toBuffer() : undefined;
+  } else {
+    const dir = await downloadAmbientCg(spec.asset);
+    const files = readdirSync(dir);
+    const colorFile = files.find((f) => /_Color\.jpg$/.test(f));
+    if (!colorFile) throw new Error(`${spec.asset}: sin mapa de color`);
+    source = readFileSync(join(dir, colorFile));
+    const normalFile = files.find((f) => /_NormalGL\.jpg$/.test(f));
+    normalPng = spec.normal && normalFile ? readFileSync(join(dir, normalFile)) : undefined;
+  }
+  let img = sharp(source).resize(spec.size, spec.size).removeAlpha();
   if (spec.grey) img = img.greyscale();
   const stats = await img.clone().stats();
   const a = stats.channels.slice(0, 3).map(() => spec.contrast);
   const b = stats.channels.slice(0, 3).map((c) => DETAIL_MEAN - spec.contrast * c.mean);
   const png = await img.toColourspace('srgb').linear(spec.grey ? a[0]! : a, spec.grey ? b[0]! : b).png().toBuffer();
   const color = await encodeKtx2(new Uint8Array(png), 'color', spec.size);
-  const normalFile = files.find((f) => /_NormalGL\.jpg$/.test(f));
-  const normal = spec.normal && normalFile ? await encodeKtx2(new Uint8Array(readFileSync(join(dir, normalFile))), 'normal', spec.size / 2) : undefined;
+  const normal = normalPng ? await encodeKtx2(new Uint8Array(normalPng), 'normal', spec.size / 2) : undefined;
   return { color, normal };
 }
 

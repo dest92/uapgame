@@ -20,7 +20,7 @@ import type { HeroModel } from './types';
 
 export const FCS_MATERIALS = {
   ...BASE_MATERIALS,
-  brick: { color: '#87503c', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
+  brick: { color: '#87503c', roughness: 0.9, texture: 'brick', uvScale: 1.0 },
   creamBand: { color: '#ece4cc', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   whiteBlock: { color: '#f1efe8', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   slabGreen: { color: '#7d8677', roughness: 0.7 },
