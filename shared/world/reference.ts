@@ -11,6 +11,11 @@ export interface ReferenceSummary {
   readonly windowStyle?: string | null;
   readonly confidence?: 'high' | 'medium' | 'low' | null;
   readonly notes?: string | null;
+  /**
+   * Acceso principal observado en las fotos (coordenadas del mundo, metros). Reemplaza la entrada
+   * estimada desde los caminos de OSM cuando esta cae en una fachada secundaria.
+   */
+  readonly entrance?: { readonly position: { x: number; z: number }; readonly normal: { x: number; z: number } } | null;
 }
 
 export type Tags = Readonly<Record<string, string | undefined>>;

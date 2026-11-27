@@ -41,6 +41,17 @@
     "trimColor": "#e8b9a0",
     "windowStyle": "ventanas lanceoladas (arco apuntado), óculo central, ventanas rectangulares bajas",
     "confidence": "medium",
-    "notes": "Identificado como 'Iglesia de los Pioneros' (Commons) = 'Salón de los Pioneros' (OSM, building=church). Nave de un nivel alto con dos filas de ventanas; techo no visible desde el frente. Paleta cambió entre 2014 y 2018."
+    "notes": "Identificado como 'Iglesia de los Pioneros' (Commons) = 'Salón de los Pioneros' (OSM, building=church). Nave de un nivel alto con dos filas de ventanas; techo no visible desde el frente. Paleta cambió entre 2014 y 2018.",
+    "entrance": {
+      "position": {
+        "x": 132.8,
+        "z": 198.64
+      },
+      "normal": {
+        "x": 0.572,
+        "z": -0.82
+      }
+    },
+    "entranceRationale": "Fachada neogótica con el acceso en el extremo NE del footprint (arista 4→0): a ese extremo llegan los senderos way/389691736 y way/1230711276. Estimado (no verificado en foto)."
   }
 }

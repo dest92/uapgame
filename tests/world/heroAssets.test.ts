@@ -11,8 +11,9 @@ describe('hero assets (spec 011)', () => {
     const b = makeWorld().buildings[0]!;
     expect(heroPlacement(b, { heightAt: () => 3 })).toEqual({ x: 10, y: 3, z: 5 });
   });
-  it('HERO-2: en pendiente usa la altura mínima del footprint (no flota)', () => {
+  it('HERO-2: en pendiente se apoya a la cota del acceso principal (la puerta no queda enterrada)', () => {
     const b = makeWorld().buildings[0]!;
-    expect(heroPlacement(b, { heightAt: (x) => x * 0.1 }).y).toBe(0);
+    const e = b.entrance.position;
+    expect(heroPlacement(b, { heightAt: (x) => x * 0.1 }).y).toBeCloseTo(e.x * 0.1);
   });
 });

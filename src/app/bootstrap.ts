@@ -1,7 +1,7 @@
 import worldUrl from '../../data/world.json?url';
 import infoUrl from '../../data/buildings-info.json?url';
 import heroAssets from 'virtual:hero-assets';
-import facadePhotos from '../../data/facade-photos.json';
+import facadePhotosJson from '../../data/facade-photos.json';
 import type { BuildingInfoFile } from '@shared/info/types';
 import { EventBus } from '../core/events/EventBus';
 import type { GameEvents } from '../core/events/GameEvents';
@@ -37,6 +37,9 @@ import { createPhysics } from './createPhysics';
 import { createPlayer } from './createPlayer';
 import { createUi } from './createUi';
 import { QualityManager } from './QualityManager';
+
+/** Fotos reales de fachada (REF-6); vacía mientras todos esos edificios tengan hero asset. */
+const facadePhotos = facadePhotosJson as readonly { readonly building: string }[];
 
 const isTouch = (): boolean => matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
 const initialHour = (): number => Number(new URLSearchParams(location.search).get('hour') ?? 10.5);

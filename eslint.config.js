@@ -21,7 +21,7 @@ export default tseslint.config(
   { files: ['tools/**/*.{ts,mjs}', '*.{js,ts}', 'vite-plugins/**/*.ts'], languageOptions: { globals: globals.node } },
   { files: ['src/**/*.ts'], languageOptions: { globals: globals.browser } },
   // Los callbacks de page.evaluate() corren en el navegador.
-  { files: ['tools/e2e/**/*.mjs'], languageOptions: { globals: { ...globals.node, ...globals.browser } } },
+  { files: ['tools/e2e/**/*.mjs', 'tools/hero/preview/*.mjs'], languageOptions: { globals: { ...globals.node, ...globals.browser } } },
   {
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
