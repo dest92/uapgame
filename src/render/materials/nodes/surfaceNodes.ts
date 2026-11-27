@@ -31,7 +31,8 @@ export function groundNodes(sets: { grass: PbrSet; dirt: PbrSet; paving: PbrSet 
   const lawn = grass.color.mul(mix(float(0.75), float(0.95), macro)).mul(color('#9fb586'));
   let c = mix(wild, lawn, s.r);
   c = mix(c, dirt.color, s.g.mul(float(1).sub(s.b)));
-  c = mix(c, paved.color, s.b);
+  // El adoquín CC0 es muy claro: bajo el sol directo saturaba a blanco.
+  c = mix(c, paved.color.mul(0.62), s.b);
   let r = mix(grass.rough, dirt.rough, s.g);
   r = mix(r, paved.rough, s.b);
   const n = normalMap(paved.normal).mul(s.b).add(normalMap(grass.normal).mul(float(1).sub(s.b)));
@@ -47,7 +48,7 @@ export function roadNodes(asphalt: PbrSet, paving: PbrSet) {
   const tuvA = vec2(uv().x, uv().y).div(5);
   const tuvP = vec2(uv().x, uv().y).div(2.2);
   const a = texture(asphalt.color, tuvA).rgb.mul(0.85);
-  const p = texture(paving.color, tuvP).rgb.mul(vertexColor().rgb.div(0.36));
+  const p = texture(paving.color, tuvP).rgb.mul(vertexColor().rgb.div(0.36)).mul(0.7);
   const line = step(abs(uv().x), 0.07).mul(step(fract(uv().y.div(7)), 0.5)).mul(float(1).sub(isPaved));
   const wear = mx_noise_float(positionWorld.xz.mul(0.08)).mul(0.12).add(0.94);
   const c = mix(a.mul(wear), p, isPaved);
