@@ -1,0 +1,24 @@
+{
+  "file": "ign-rio-parana-2013-campus-0.25m.jpg",
+  "overview": "ign-rio-parana-2013-campus-overview.jpg (1200 px, misma extensión)",
+  "source": "Instituto Geográfico Nacional (IGN Argentina) — GeoServer WMS",
+  "service": "https://imagenes.ign.gob.ar/geoserver/ows",
+  "layer": "ortomosaicos_fotogrametria:rio_parana_3.5",
+  "layerTitle": "Río Parana_2013_3.5",
+  "date": "2013 (vuelo fotogramétrico IGN; fecha exacta no publicada en GetCapabilities)",
+  "request": "WMS 1.1.1 GetMap, SRS EPSG:4326, format image/png, 4 tiles (2000 px máx.) unidos",
+  "crs": "EPSG:4326 (lon/lat, imagen reproyectada por GeoServer; norte arriba)",
+  "bbox": {"west": -60.47185292279106, "south": -32.07710271022552, "east": -60.46224327720895, "north": -32.069689689774485},
+  "bboxNote": "igual al bbox de data/osm/meta.json (campus way/388521975 + 100 m de margen)",
+  "sizePx": [3626, 3288],
+  "resolutionMPerPx": 0.25,
+  "nativeResolutionNote": "Resolución de muestreo 0.25 m/px; la nitidez observada sugiere un GSD nativo de ~0.4-0.5 m (sobremuestreado). Una petición a 0.125 m/px no aporta detalle adicional.",
+  "pixelToGeo": "lon = west + (east-west)*x/3626 ; lat = north - (north-south)*y/3288",
+  "license": "IGN Argentina — datos abiertos; uso libre citando la fuente ('Instituto Geográfico Nacional de la República Argentina'). Ver https://www.ign.gob.ar/ (Ley 22.963 / política de datos abiertos IGN).",
+  "accessedAt": "2026-11-27",
+  "notes": [
+    "Ortofoto de 2013: no muestra edificios construidos después (p. ej. Hogar de Varones NUEVO, ampliaciones FCS/Odontología, obras 2023-2026).",
+    "Sombras hacia el SE/S: útiles para estimar alturas relativas (sol de mediodía, latitud -32°).",
+    "La capa 'mosaicos_vuelos' (grupo) devuelve el mismo mosaico en esta zona; 'mosaicos_vuelos_vant' está vacía aquí."
+  ]
+}
