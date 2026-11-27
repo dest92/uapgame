@@ -112,3 +112,5 @@ a.panel__src { color: var(--ui-accent); }
 .campusmap { position: absolute; inset: 5vh 5vw; padding: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 20; }
 .campusmap__title { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ui-accent); font-weight: 700; }
 .campusmap__canvas { flex: 1; min-height: 0; width: 100%; object-fit: contain; border-radius: 10px; }
+
+.campusmap[hidden], .ctxhint[hidden] { display: none; }
