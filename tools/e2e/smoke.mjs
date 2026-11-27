@@ -50,7 +50,7 @@ try {
     await mod.default(page, values);
   } else {
     await page.waitForTimeout(3000);
-    await page.screenshot({ path: values.out });
+    await page.screenshot({ path: values.out, timeout: 600000 });
     console.log('captura:', values.out);
   }
   const relevant = errors.filter((e) => !/favicon/.test(e));

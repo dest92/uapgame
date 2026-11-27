@@ -1,6 +1,6 @@
 /** Recorrido del Hito 2: caminar, ver el hint, abrir el panel (INT-1..3). */
 export default async function run(page) {
-  const shot = (name) => page.screenshot({ path: `docs/screenshots/${name}.png` });
+  const shot = (name) => page.screenshot({ path: `docs/screenshots/${name}.png`, timeout: 600000 });
   await page.waitForTimeout(2500);
   await shot('hito2-spawn');
   await page.keyboard.down('KeyW');

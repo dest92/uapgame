@@ -8,6 +8,7 @@ import type { QualityProfile } from '../../domain/quality/QualityProfiles';
 import { buildStreetLamps } from '../props/StreetLamps';
 import { createGrassField, heightTexture } from './GrassField';
 import { TreeSystem } from './TreeSystem';
+import type { TreeVariantProvider } from './TreeVariant';
 import type { VegetationMaterials } from './VegetationMaterials';
 
 export interface Vegetation {
@@ -25,6 +26,7 @@ const BLOCKING = new Set(['pitch', 'parking', 'water', 'track', 'plaza', 'sports
 /** Árboles (OSM + vereda + relleno), pasto y faroles (spec 009). */
 export function buildVegetation(
   world: WorldData, terrain: HeightSampler, grid: HeightGrid, splat: Texture, mats: VegetationMaterials, camera: Camera, q: QualityProfile,
+  treeProvider: TreeVariantProvider,
 ): Vegetation {
   const root = new Group();
   root.name = 'vegetation';
@@ -43,7 +45,7 @@ export function buildVegetation(
     spacing: q.treeFillSpacing,
     seed: 2026,
   });
-  const trees = new TreeSystem(root, placed, terrain, mats, camera);
+  const trees = new TreeSystem(root, placed, terrain, treeProvider, camera);
   const lamps = buildStreetLamps(root, world.roads, terrain, mats);
 
   const heights = heightTexture(grid);

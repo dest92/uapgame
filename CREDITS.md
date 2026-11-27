@@ -13,6 +13,15 @@
 | Universal Base Characters (Superhero_Male_FullBody) | Quaternius — https://quaternius.com | CC0 1.0 | `public/models/character/student.glb` (ropa pintada por shader) |
 | Universal Animation Library (8 clips) | Quaternius — https://quaternius.com | CC0 1.0 | `public/models/character/animations.glb` |
 
+## Vegetación y mobiliario escaneados (Poly Haven, CC0 1.0 — https://polyhaven.com)
+Optimizados por `tools/build-vegetation-models.ts` (follaje raleado por islas, ramas/tronco simplificados, KTX2 + meshopt).
+
+| Modelo | Uso | Archivo |
+|---|---|---|
+| [Jacaranda Tree](https://polyhaven.com/a/jacaranda_tree) | Latifoliada principal (2 LODs) | `public/models/vegetation/jacaranda_tree_lod{0,1}.glb` |
+| [Shrub 03](https://polyhaven.com/a/shrub_03), [Shrub 04](https://polyhaven.com/a/shrub_04) | Arbustos al pie de las fachadas | `public/models/vegetation/shrub_0{3,4}_lod0.glb` |
+| [Painted Wooden Bench](https://polyhaven.com/a/painted_wooden_bench) | Bancos en senderos | `public/models/vegetation/painted_wooden_bench_lod0.glb` |
+
 ## Texturas (ambientCG, CC0 1.0 — https://ambientcg.com)
 Generadas por `tools/fetch-textures.ts` (KTX2/Basis ETC1S en `public/textures/`).
 

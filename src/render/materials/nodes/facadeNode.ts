@@ -1,4 +1,4 @@
-import { attribute, float, floor, fract, hash, luminance, mix, normalMap, smoothstep, step, texture, uv, vec2, vec3, vertexColor, color, max, min } from 'three/tsl';
+import { attribute, float, floor, fract, hash, luminance, mix, normalMap, smoothstep, step, texture, uv, vec2, vec3, vertexColor, color, max, min, mx_noise_float, positionWorld } from 'three/tsl';
 import type { Node } from 'three/webgpu';
 import type { PbrSet } from '../../textures/TextureLibrary';
 import { sceneUniforms } from './sharedUniforms';
@@ -52,6 +52,9 @@ export function facadeNodes(set: PbrSet, p: FacadeParams): FacadeNodes {
   let wall = mix(tint, tex.mul(vertexColor().rgb.div(max(luminance(vertexColor().rgb), 0.05)).mul(0.5)), p.keepTexture);
   // Suciedad en la base y leve degradé de altura (lectura de escala, "grime").
   wall = wall.mul(mix(float(0.72), float(1), smoothstep(0.0, 0.9, v)));
+  // Manchas de humedad/polución a gran escala (rompen la uniformidad del muro).
+  const stain = mx_noise_float(positionWorld.mul(vec3(0.35, 0.9, 0.35))).mul(0.5).add(0.5);
+  wall = wall.mul(mix(float(0.86), float(1.04), stain));
   // Losas entre pisos: banda levemente más oscura.
   const lv = fract(v.div(LEVEL)).mul(LEVEL);
   wall = wall.mul(mix(float(0.88), float(1), step(0.16, lv)));
@@ -79,7 +82,13 @@ export function facadeNodes(set: PbrSet, p: FacadeParams): FacadeNodes {
   const frameColor = color('#d9d6cf');
   const glassOnly = glass.sub(mullion).clamp(0, 1);
 
-  let c = mix(wall, glassColor, glassOnly);
+  // Retiro de la ventana: sombra interior junto al marco (lectura de profundidad).
+  const edge = min(min(bu.sub(x0), float(x1).sub(bu)), min(lv.sub(SILL), float(HEAD).sub(lv)));
+  const reveal = mix(float(0.35), float(1), smoothstep(0.0, 0.16, edge));
+  // Interiores: algunas ventanas con cortina/persiana (tono tela, a media altura).
+  const curtain = step(0.62, hash(seed.mul(57.3))).mul(step(lv, mix(float(HEAD), float(SILL + 0.6), hash(seed.mul(13.1)))));
+  const pane = mix(glassColor, color('#8a7f6e').mul(0.55), curtain.mul(0.8)).mul(reveal);
+  let c = mix(wall, pane, glassOnly);
   c = mix(c, frameColor.mul(0.85), max(frame, mullion));
   c = mix(c, color('#bfbab0'), sill);
 

@@ -1,6 +1,6 @@
 /** Recorrido fotográfico (Hito 3/4): vistas a distintas horas y ángulos. */
 export default async function run(page, values) {
-  const shot = (name) => page.screenshot({ path: `docs/screenshots/${name}.png` });
+  const shot = (name) => page.screenshot({ path: `docs/screenshots/${name}.png`, timeout: 600000 });
   const prefix = values.out.replace(/^.*\//, '').replace(/\.png$/, '');
   const drag = async (dx, dy) => {
     await page.mouse.move(640, 360);

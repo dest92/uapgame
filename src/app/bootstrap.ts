@@ -22,6 +22,9 @@ import { LoadingScreen } from '../ui/LoadingScreen';
 import { SettingsMenu } from '../ui/SettingsMenu';
 import { TouchControls } from '../ui/TouchControls';
 import { buildVegetation } from '../world/vegetation/VegetationBuilder';
+import { FallbackTreeProvider, ProceduralTreeProvider } from '../world/vegetation/TreeVariant';
+import { ModelTreeProvider } from '../world/vegetation/ModelTreeProvider';
+import { buildProps } from '../world/props/PropsBuilder';
 import { loadWorld } from '../world/WorldLoader';
 import { buildWorldScene } from '../world/WorldBuilder';
 import { HeroAssetSystem } from '../world/buildings/HeroAssetSystem';
@@ -69,8 +72,12 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     const quality = new QualityManager({ renderer, scene: ctx.scene, camera: ctx.camera, render: renderSystem, sky });
 
     stage('Plantando árboles y pasto…', 0.5);
-    const vegetation = buildVegetation(world, built.terrain, built.grid, built.splat, new VegetationMaterialLibrary(textures), ctx.camera, quality.profile);
+    const vegMats = new VegetationMaterialLibrary(textures);
+    const scanned = await ModelTreeProvider.load((url) => assets.loadGltf(import.meta.env.BASE_URL + url), vegMats);
+    const treeProvider = new FallbackTreeProvider([scanned, new ProceduralTreeProvider(vegMats)]);
+    const vegetation = buildVegetation(world, built.terrain, built.grid, built.splat, vegMats, ctx.camera, quality.profile, treeProvider);
     ctx.scene.add(vegetation.root);
+    await buildProps(vegetation.root, world, built.terrain, vegMats, (url) => assets.loadGltf(import.meta.env.BASE_URL + url));
     quality.subscribe({ applyQuality: (q) => vegetation.setGrassDensity(q) });
 
     stage('Preparando física…', 0.56);

@@ -23,7 +23,9 @@
     "data:build-info": "tsx tools/build-buildings-info.ts",
     "data:character": "tsx tools/build-character.ts",
     "assets:fetch": "node tools/fetch-quaternius.mjs",
-    "check:size": "tsx tools/check-bundle-size.ts"
+    "check:size": "tsx tools/check-bundle-size.ts",
+    "assets:polyhaven": "tsx tools/fetch-polyhaven.ts",
+    "data:vegetation": "tsx tools/build-vegetation-models.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.21.0",

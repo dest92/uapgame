@@ -1,4 +1,4 @@
-import { DoubleSide, MeshStandardNodeMaterial, type Material } from 'three/webgpu';
+import { DoubleSide, MeshStandardNodeMaterial, type Material, type MeshStandardMaterial } from 'three/webgpu';
 import {
   attribute, cameraPosition, clamp, color, distance, float, hash, instanceIndex, mix, mod, normalMap, positionLocal,
   sin, smoothstep, step, texture, time, uv, vec2, vec3, vertexColor, cos,
@@ -48,6 +48,29 @@ export class VegetationMaterialLibrary implements VegetationMaterials {
       m.colorNode = leaf.rgb.mul(vertexColor().rgb).mul(shade).mul(mix(float(0.9), float(1.1), hash(instanceIndex.add(7))));
       m.opacityNode = leaf.a;
       m.roughnessNode = float(0.75);
+      return m;
+    });
+  }
+
+  fromModel(src: MeshStandardMaterial, treeHeight: number): Material {
+    const key = `model:${src.uuid}`;
+    return this.cached(key, () => {
+      const leaves = src.alphaTest > 0 || src.transparent || /leaf|leaves/i.test(src.name);
+      const m = new MeshStandardNodeMaterial({ side: leaves ? DoubleSide : src.side, alphaTest: leaves ? 0.5 : 0 });
+      m.map = src.map;
+      m.normalMap = src.normalMap;
+      m.roughnessMap = src.roughnessMap;
+      m.metalnessMap = src.metalnessMap;
+      m.aoMap = src.aoMap;
+      m.roughness = src.roughness;
+      m.metalness = src.metalness;
+      if (leaves) {
+        const phase = hash(instanceIndex).mul(6.283);
+        const h = positionLocal.y.div(treeHeight).clamp(0, 1);
+        const amp = h.mul(h).mul(0.35).mul(sceneUniforms.wind);
+        m.positionNode = positionLocal.add(vec3(sin(time.mul(0.9).add(phase)), 0, cos(time.mul(0.7).add(phase))).mul(amp)
+          .add(vec3(sin(time.mul(5.1).add(positionLocal.x.mul(4))).mul(0.04).mul(h), 0, 0)));
+      }
       return m;
     });
   }
