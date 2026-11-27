@@ -25,6 +25,8 @@ export interface MaterialSpec {
   readonly uvScale?: number;
   readonly emissive?: string;
   readonly doubleSided?: boolean;
+  /** Variación de tono por pieza (0 = ninguna); por defecto 0.05 en materiales con textura. */
+  readonly variation?: number;
 }
 
 /** Materiales comunes; cada edificio puede sumar los suyos. */

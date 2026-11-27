@@ -37,7 +37,10 @@ async function main(): Promise<void> {
     const b = world.buildings.find((x) => x.id === id);
     if (!b) throw new Error(`${id} no está en world.json`);
     const model = await gen(b, world);
-    const merged = model.builder.merged((m) => model.materials[m]?.uvScale ?? 1);
+    const merged = model.builder.merged(
+      (m) => model.materials[m]?.uvScale ?? 1,
+      (m) => model.materials[m]?.variation ?? (model.materials[m]?.texture ? 0.05 : 0),
+    );
     const out = `public/models/hero/${id.replace('/', '-')}.glb`;
     const r = await writeHeroGlb(out, b.name, merged, model.materials);
     console.log(`✓ ${out} — ${b.name}: ${r.triangles.toLocaleString()} tris, ${(r.bytes / 1024).toFixed(0)} KB, ${merged.size} materiales`);

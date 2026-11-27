@@ -1,7 +1,7 @@
 /**
  * Biblioteca E. I. Mohr — Edificio Fernando Chaij (way/388495172).
- * Referencias: reference/web/way-388495172/05.jpg (frontal, 2025) y 06.jpg (acceso, 2026); 01/03 para
- * silueta y laterales. Fachada principal = cara SE (arista 2→3), frente a la Fuente UAP.
+ * Referencias: reference/web/way-388495172/05.jpg (frontal, 2025), 06.jpg (acceso, 2026) y el dron
+ * del usuario (reference/photos/usuario-2026-11-27, colores actuales y techo); 01/03 para silueta y laterales. Fachada principal = cara SE (arista 2→3), frente a la Fuente UAP.
  * 3 niveles: planta baja retirada en galería (columnas, muros de ladrillo y ventanas oscuras), dos pisos
  * de placas beige claro con juntas, cuerpo central con dos pilastras rosa viejo, muro cortina de 4×4 paños
  * con carpintería negra, dintel con letras "EDIFICIO FERNANDO CHAIJ", frontón a dos aguas y escalinata.
@@ -20,8 +20,8 @@ import type { HeroModel } from './types';
 
 export const BIBLIOTECA_MATERIALS = {
   ...BASE_MATERIALS,
-  panelBeige: { color: '#e4dbc6', roughness: 0.6, texture: 'concrete', uvScale: 3 },
-  jointBeige: { color: '#a59c88', roughness: 0.8 },
+  panelBeige: { color: '#ebe8df', roughness: 0.6, texture: 'concrete', uvScale: 3 },
+  jointBeige: { color: '#a9a69d', roughness: 0.8 },
   pinkPlaster: { color: '#b48e8a', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   creamPlaster: { color: '#e6dac0', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   brick: { color: '#8e4a36', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
@@ -63,8 +63,8 @@ function claddings(b: HeroBuilder<M>, fp: readonly Vec2[]): void {
       windows.push(mid - half - 0.5, mid + half + 0.5);
       ranges.push([0.05, mid - half - 0.95], [mid + half + 0.95, L - 0.05]);
     } else {
-      const n = Math.max(1, Math.floor((L - 4) / 6.3));
-      for (let k = 0; k < n; k++) windows.push(L / 2 + (k - (n - 1) / 2) * 6.3);
+      const n = Math.max(1, Math.floor((L - 4) / 4.5));
+      for (let k = 0; k < n; k++) windows.push(L / 2 + (k - (n - 1) / 2) * 4.5);
       for (const x of windows) skip.push({ x0: x - 0.5, x1: x + 0.5, y0: 0, y1: 99 });
       ranges.push([0.05, L - 0.05]);
     }
@@ -111,9 +111,14 @@ async function centralBody(b: HeroBuilder<M>): Promise<void> {
   // Friso beige sobre el vidrio, cornisa y frontón.
   b.add('creamPlaster', box(BAY, LEVELS.pilaster - 10.15, 4, 0, 10.15, -1.85));
   b.add('creamPlaster', box(BAY + 0.3, 0.18, 4.2, 0, LEVELS.pilaster - 0.18, -1.8));
-  const gable = profilePrism([new Vector2(-half, LEVELS.pilaster), new Vector2(half, LEVELS.pilaster), new Vector2(0, LEVELS.apex)], 4);
+  // Frontón y techo a dos aguas del cuerpo central, que sigue ~11 m hacia atrás (dron 2026).
+  const gable = profilePrism([new Vector2(-half, LEVELS.pilaster), new Vector2(half, LEVELS.pilaster), new Vector2(0, LEVELS.apex)], 0.6);
   gable.translate(0, 0, 0.2);
   b.add('creamPlaster', gable);
+  b.add('creamPlaster', box(BAY, LEVELS.pilaster - LEVELS.roof, 11, 0, LEVELS.roof, -5.9));
+  const roof = profilePrism([new Vector2(-half - 0.25, LEVELS.pilaster - 0.05), new Vector2(half + 0.25, LEVELS.pilaster - 0.05), new Vector2(0, LEVELS.apex + 0.1)], 10.6);
+  roof.translate(0, 0, -0.4);
+  b.add('roofMembrane', roof);
   // Dintel con letras y acceso vidriado hundido.
   b.add('creamPlaster', box(BAY + 0.4, 1.75, 2.4, 0, 2.8, -0.9));
   const edificio = await textGeometry('EDIFICIO', { height: 0.26, depth: 0.04, font: 'DejaVu Serif', weight: 'bold' });
