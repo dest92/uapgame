@@ -36,6 +36,25 @@ describe('geometría de fachada cercana (FAC-2..4)', () => {
     expect(g.walls.extra.filter((_, i) => i % 3 === 2).some((z) => z === 2)).toBe(true);
   });
 
+  it('FAC-3: área de muro cercano en el plomo = área de fachada − vanos', () => {
+    let area = 0;
+    for (let i = 0; i < g.walls.indices.length; i += 3) {
+      const k = [g.walls.indices[i]!, g.walls.indices[i + 1]!, g.walls.indices[i + 2]!];
+      if (!k.every((v) => g.walls.extra[v * 3 + 2] === 2)) continue;
+      const P = k.map((v) => [g.walls.positions[v * 3]!, g.walls.positions[v * 3 + 1]!, g.walls.positions[v * 3 + 2]!]);
+      const u = P[1]!.map((x, j) => x - P[0]![j]!);
+      const w = P[2]!.map((x, j) => x - P[0]![j]!);
+      area += Math.hypot(u[1]! * w[2]! - u[2]! * w[1]!, u[2]! * w[0]! - u[0]! * w[2]!, u[0]! * w[1]! - u[1]! * w[0]!) / 2;
+    }
+    const wallH = 6.4 + 0.6;
+    const height = wallH + 1.5; // desde la fundación
+    let holes = 0;
+    [20, 10, 20, 10].forEach((L, i) => {
+      for (const o of layoutWall({ length: L, height: wallH, ...(i === 1 ? { doorU: 5 } : {}) }).openings) holes += (o.u1 - o.u0) * (o.v1 - o.v0);
+    });
+    expect(area).toBeCloseTo(60 * height - holes, 3);
+  });
+
   it('FAC-3: ningún vértice del muro cercano sale del volumen del edificio (salvo molduras)', () => {
     for (const { p } of verts(g.walls)) {
       expect(p[0]).toBeGreaterThanOrEqual(-1e-6);
