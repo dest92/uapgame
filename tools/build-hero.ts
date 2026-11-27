@@ -9,6 +9,7 @@ import type { BuildingData, WorldData } from '@shared/world/types';
 import type { HeroModel } from './hero/buildings/types';
 import { buildBiblioteca } from './hero/buildings/biblioteca';
 import { buildEdificioCap } from './hero/buildings/edificio-cap';
+import { buildFcs } from './hero/buildings/fcs';
 import { buildOgden } from './hero/buildings/ogden';
 import { buildPioneros } from './hero/buildings/pioneros';
 import { buildPortico } from './hero/buildings/portico';
@@ -24,6 +25,7 @@ const GENERATORS: Readonly<Record<string, Generator>> = {
   'way/388495172': buildBiblioteca,
   'way/388510375': buildOgden,
   'way/388512621': buildPioneros,
+  'way/388495176': buildFcs,
 };
 
 async function main(): Promise<void> {

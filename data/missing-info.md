@@ -1,6 +1,6 @@
 # Información faltante
 
-Generado por `tools/build-world.ts` el 2026-11-27T03:40:58.988Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
+Generado por `tools/build-world.ts` el 2026-11-27T04:01:00.983Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
 
 ## Edificios sin nombre en OSM (6)
 
