@@ -1,16 +1,34 @@
 {
   "osmId": "way/388500978",
   "name": "Hogar de Señoritas Nuevo",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/KoMv0SEn21Y/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=KoMv0SEn21Y (TOUR HOGAR \"NUEVO\" FEMININO UAP (@MEDKEZZ), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2023,
+      "view": "3-4",
+      "extracted": [
+        "Hogar de Señoritas 'Nuevo' (según el título): bloque de ladrillo visto rojizo de 4 niveles (PB + 3)",
+        "estructura de hormigón gris visible: losas en bandas horizontales y columnas que modulan la fachada",
+        "ventanas rectangulares por módulo con persianas de enrollar blancas; PB con paños vidriados",
+        "techo plano; cuerpo vidriado en planta baja a la derecha; césped en pendiente suave",
+        "texto superpuesto tapa el centro de la imagen"
+      ]
+    }
+  ],
   "summary": {
-    "levels": null,
-    "roof": null,
+    "levels": 4,
+    "roof": "flat",
     "roofColor": null,
-    "wallMaterial": null,
-    "wallColor": null,
-    "trimColor": null,
-    "windowStyle": null,
-    "confidence": "low",
-    "notes": "sin referencias confiables"
+    "wallMaterial": "brick",
+    "wallColor": "#a0574a",
+    "trimColor": "#9a9a96",
+    "windowStyle": "ventana rectangular por módulo con persiana blanca; bandas de losa de hormigón gris",
+    "confidence": "medium",
+    "notes": "Una miniatura de YouTube (texto superpuesto)."
   }
 }

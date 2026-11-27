@@ -1,6 +1,6 @@
 # Información faltante
 
-Generado por `tools/build-world.ts` el 2026-11-27T12:04:14.815Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
+Generado por `tools/build-world.ts` el 2026-11-27T12:12:18.745Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
 
 ## Edificios sin nombre en OSM (6)
 
@@ -11,14 +11,10 @@ Generado por `tools/build-world.ts` el 2026-11-27T12:04:14.815Z. Completar en OS
 - `way/1123197238` — Edificio sin identificar (OSM way 1123197238): OSM no tiene `name`.
 - `way/1230711279` — Edificio sin identificar (OSM way 1230711279): OSM no tiene `name`.
 
-## Edificios sin referencias fotográficas (materiales genéricos) (37)
+## Edificios sin referencias fotográficas (materiales genéricos) (33)
 
-- `relation/16816367` — Edificio sin identificar (OSM relation 16816367): materiales genéricos por tipo.
 - `way/327779295` — Terminal de Ómnibus y Colectivos: materiales genéricos por tipo.
-- `way/388500962` — Profesorado de Educación Física (PEF): materiales genéricos por tipo.
-- `way/388500965` — Auditorio Mayor UAP: materiales genéricos por tipo.
 - `way/388500976` — Edificio sin identificar (OSM way 388500976): materiales genéricos por tipo.
-- `way/388500978` — Hogar de Señoritas Nuevo: materiales genéricos por tipo.
 - `way/388500980` — Tecnología y Operaciones (TyO): materiales genéricos por tipo.
 - `way/388500981` — Edificio sin identificar (OSM way 388500981): materiales genéricos por tipo.
 - `way/388504305` — Supermercado CEAPÉ: materiales genéricos por tipo.
@@ -51,14 +47,13 @@ Generado por `tools/build-world.ts` el 2026-11-27T12:04:14.815Z. Completar en OS
 - `way/1123197238` — Edificio sin identificar (OSM way 1123197238): materiales genéricos por tipo.
 - `way/1230711279` — Edificio sin identificar (OSM way 1230711279): materiales genéricos por tipo.
 
-## Alturas estimadas (sin `height`/`building:levels` ni referencia) (38)
+## Alturas estimadas (sin `height`/`building:levels` ni referencia) (37)
 
 - `relation/16816367` — Edificio sin identificar (OSM relation 16816367): 2 niveles por defecto (college).
 - `way/327779295` — Terminal de Ómnibus y Colectivos: 2 niveles por defecto (yes).
 - `way/388500962` — Profesorado de Educación Física (PEF): 2 niveles por defecto (yes).
 - `way/388500965` — Auditorio Mayor UAP: 2 niveles por defecto (yes).
 - `way/388500976` — Edificio sin identificar (OSM way 388500976): 2 niveles por defecto (yes).
-- `way/388500978` — Hogar de Señoritas Nuevo: 3 niveles por defecto (dormitory).
 - `way/388500980` — Tecnología y Operaciones (TyO): 2 niveles por defecto (yes).
 - `way/388500981` — Edificio sin identificar (OSM way 388500981): 2 niveles por defecto (yes).
 - `way/388504305` — Supermercado CEAPÉ: 2 niveles por defecto (yes).

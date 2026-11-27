@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T12:04:15.393Z",
+  "generatedAt": "2026-11-27T12:12:19.534Z",
   "note": "Archivo editable a mano. Para que el generador no pise una entrada, poné \"manual\": true; los campos con \"source\": \"manual\" y las descripciones manuales también se preservan. No inventar datos institucionales.",
   "buildings": {
     "relation/16816367": {
@@ -18,7 +18,9 @@
           "source": "OSM node/3917136224"
         }
       ],
-      "references": []
+      "references": [
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)"
+      ]
     },
     "way/327779295": {
       "name": {
@@ -65,7 +67,9 @@
         "https://uap.edu.ar/ (noticia 'La UAP celebra su Biblioteca abierta', 2025-10)",
         "https://uap.edu.ar/ (noticia concurso lema del centenario de la Biblioteca E. Irving Mohr, 2026-06)",
         "https://uap.edu.ar/ (slider de la página de inicio; adjunto https://uap.edu.ar/inicio/slide03/, 2025-07)",
-        "https://uap.edu.ar/se-llevo-a-cabo-el-retiro-espiritual-de-la-facultad-de-teologia/"
+        "https://uap.edu.ar/se-llevo-a-cabo-el-retiro-espiritual-de-la-facultad-de-teologia/",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://www.youtube.com/watch?v=3rBMMVXLmrc (Espejo de mi Tierra: Conocemos la UAP (Elonce), miniatura)"
       ]
     },
     "way/388495176": {
@@ -101,7 +105,9 @@
       ],
       "references": [
         "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)",
-        "https://uap.edu.ar/a-pocos-pasos-de-la-reacreditacion-de-la-especialidad-universitaria-en-cardiologia-uap/"
+        "https://uap.edu.ar/a-pocos-pasos-de-la-reacreditacion-de-la-especialidad-universitaria-en-cardiologia-uap/",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (obra del edificio de Odontología, 2018)",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)"
       ]
     },
     "way/388500961": {
@@ -128,7 +134,15 @@
       "references": [
         "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'templo_edit')",
         "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Grupo_SBTS2017_frenteTemplo')",
-        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PanoramicaTemplo')"
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PanoramicaTemplo')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) (Ted Wilson en el Templo, 2025)",
+        "https://uap.edu.ar/carreras/teologia/",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (foto de dron nocturna)",
+        "https://www.youtube.com/watch?v=4T6DpnI8U8k (Vídeo Institucional UAP (Priscilla Santana), miniatura)",
+        "https://www.youtube.com/watch?v=gQemudMHQ6E (Informe sobre Villa Libertador San Martín - La universidad (Canal Nueve Litoral), miniatura)",
+        "https://www.youtube.com/watch?v=iUWonJdCGms (Recorrido de la Facultad de Teología (proyecto.preparar), miniatura)",
+        "https://www.youtube.com/watch?v=OdDSF8aPi0s (Universidad Adventista del Plata - Campus 2015, fotograma automático ~1:15)"
       ]
     },
     "way/388500962": {
@@ -152,7 +166,9 @@
           "source": "OSM node/3917171176"
         }
       ],
-      "references": []
+      "references": [
+        "https://uap.edu.ar/carreras/humanidades/"
+      ]
     },
     "way/388500965": {
       "name": {
@@ -175,7 +191,12 @@
           "source": "OSM node/3917171178"
         }
       ],
-      "references": []
+      "references": [
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (rotulado 'Auditorio')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://www.youtube.com/watch?v=snpSdQs0IAY (LIGA APB UAP (LSM) vs Talleres - Canal 2 LSM, miniatura)",
+        "https://www.youtube.com/watch?v=9JPypo3uBP8 (VOLEY UAP vs ROWING - Canal 2 LSM (afiche: '21:30 Auditorio'), fotograma automático ~37:00)"
+      ]
     },
     "way/388500976": {
       "name": {
@@ -209,8 +230,16 @@
         "value": null,
         "source": null
       },
-      "fields": [],
-      "references": []
+      "fields": [
+        {
+          "label": "Pisos",
+          "value": "4",
+          "source": "https://www.youtube.com/watch?v=KoMv0SEn21Y (TOUR HOGAR \"NUEVO\" FEMININO UAP (@MEDKEZZ), miniatura)"
+        }
+      ],
+      "references": [
+        "https://www.youtube.com/watch?v=KoMv0SEn21Y (TOUR HOGAR \"NUEVO\" FEMININO UAP (@MEDKEZZ), miniatura)"
+      ]
     },
     "way/388500980": {
       "name": {
@@ -351,7 +380,10 @@
       "references": [
         "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la Escuela de Música UAP', 2025-02)",
         "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'PabellonMusica', 2018)",
-        "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/"
+        "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://www.elonce.com/uid-775845",
+        "https://www.youtube.com/watch?v=AvAv5aQgbhU (Espejo de mi Tierra: Historia edificio de la UAP (Elonce), miniatura)"
       ]
     },
     "way/388512618": {
@@ -422,7 +454,12 @@
       ],
       "references": [
         "https://commons.wikimedia.org/wiki/File:Iglesia_de_los_Pioneros.jpg",
-        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'CampamentoEstudiantil_pioneros', 2018)"
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'CampamentoEstudiantil_pioneros', 2018)",
+        "https://uap.edu.ar/la-uap-fue-sede-de-la-primera-jornada-de-la-semana-de-emprendimiento-e-innovacion-entre-rios-2026/",
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) — mismo ciclo de eventos 2026-09 en Salón de los Pioneros",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (slug 'jornadaviolenciainfantil-salonpioneros')",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://www.elonce.com/uid-775845 (Elonce, 'El motivo por el que la UAP es considerada la madre de Libertador San Martín')"
       ]
     },
     "way/388521981": {
@@ -517,7 +554,15 @@
         "https://commons.wikimedia.org/wiki/File:ENTRANCE_UAP.jpg",
         "https://uap.edu.ar/ (noticia 'La internacionalización como puente de universidades', 2025-10)",
         "https://uap.edu.ar/ (noticia sobre nota de Infobae, 2026-08)",
-        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, '1.-Portico')"
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, '1.-Portico')",
+        "https://uap.edu.ar/desarrollo-edilicio/",
+        "https://uap.edu.ar/ (noticia 'La UAP suma profesionales a su proyecto institucional', 2026-02)",
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media)",
+        "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) (foto histórica, años 90)",
+        "https://www.youtube.com/watch?v=Sf86l9wJC9c (UAP - Video promocional 2018, miniatura)",
+        "https://www.youtube.com/watch?v=clBeBRjb4bg (Experiencia en el campus - UAP, miniatura)",
+        "https://uap.edu.ar/ (widget Instagram feed, 2026-11)"
       ]
     },
     "way/388521999": {

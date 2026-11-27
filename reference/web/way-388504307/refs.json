@@ -20,14 +20,14 @@
     }
   ],
   "summary": {
-    "levels": null,
-    "roof": null,
-    "roofColor": null,
-    "wallMaterial": null,
-    "wallColor": null,
-    "trimColor": null,
-    "windowStyle": null,
-    "confidence": "low",
-    "notes": "sin referencias confiables"
+    "levels": 5,
+    "roof": "hip",
+    "roofColor": "#b5452f",
+    "wallMaterial": "plaster",
+    "wallColor": "#efe3c8",
+    "trimColor": "#9a6a6a",
+    "windowStyle": "ventanas pequeñas apiladas",
+    "confidence": "medium",
+    "notes": "Torre de 1924, 15 m, 4 pisos + tanque (cronología UAP); mirador con techo de tejas."
   }
 }
