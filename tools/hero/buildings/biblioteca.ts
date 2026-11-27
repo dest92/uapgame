@@ -7,7 +7,7 @@
  * con carpintería negra, dintel con letras "EDIFICIO FERNANDO CHAIJ", frontón a dos aguas y escalinata.
  */
 import { Vector2 } from 'three';
-import type { BuildingData } from '@shared/world/types';
+import type { BuildingData, WorldData } from '@shared/world/types';
 import type { Vec2 } from '@shared/geo/types';
 import { HeroBuilder } from '../lib/builder';
 import { edgeFrame, insetPolygon, len, relativeTo, sub } from '../lib/frame';
@@ -16,10 +16,13 @@ import { glazing } from '../lib/openings';
 import { box, cylinder, footprintPrism, profilePrism, ringPrism } from '../lib/parts';
 import { textGeometry } from '../lib/text';
 import { type Rect2, panelGrid, windowRows } from '../lib/walls';
+import { PLAZA_MATERIALS, basketballCourt, fountain } from '../props/plaza-central';
+import { siteFor } from '../lib/site';
 import type { HeroModel } from './types';
 
 export const BIBLIOTECA_MATERIALS = {
   ...BASE_MATERIALS,
+  ...PLAZA_MATERIALS,
   panelBeige: { color: '#ebe8df', roughness: 0.6, texture: 'concrete', uvScale: 3 },
   jointBeige: { color: '#a9a69d', roughness: 0.8 },
   pinkPlaster: { color: '#b48e8a', roughness: 0.9, texture: 'plaster', uvScale: 3 },
@@ -137,7 +140,13 @@ async function centralBody(b: HeroBuilder<M>): Promise<void> {
   }
 }
 
-export async function buildBiblioteca(bd: BuildingData): Promise<HeroModel<M>> {
+/**
+ * Cancha de básquet de la foto de dron 2026: entre el Hogar de Señoritas Nuevo y el sendero del N,
+ * con la fuente y la Biblioteca detrás en la toma. Ubicación y rumbo ESTIMADOS (no está en OSM ni en la ortofoto 2013).
+ */
+const COURT = { center: { x: 172, z: -21 }, axis: { x: 0, z: -1 } } as const;
+
+export async function buildBiblioteca(bd: BuildingData, world: WorldData): Promise<HeroModel<M>> {
   const b = new HeroBuilder<M>();
   const fp = relativeTo(bd.footprint, bd.centroid);
   const front = edgeFrame(fp[FRONT_EDGE]!, fp[FRONT_EDGE + 1]!);
@@ -148,5 +157,9 @@ export async function buildBiblioteca(bd: BuildingData): Promise<HeroModel<M>> {
   claddings(b, fp);
   gallery(b, fp, L / 2);
   await centralBody(b.at(front, 0, L / 2, 0));
+  // Plaza central: Fuente UAP y cancha (en este GLB para no depender de un sistema de props aparte).
+  const site = siteFor(bd, world);
+  fountain(b, site, world);
+  basketballCourt(b, site, COURT.center, COURT.axis);
   return { builder: b, materials: BIBLIOTECA_MATERIALS };
 }

@@ -4,13 +4,13 @@
   "refs": [],
   "summary": {
     "levels": null,
-    "roof": null,
-    "roofColor": null,
+    "roof": "gabled",
+    "roofColor": "#a7aeb2",
     "wallMaterial": null,
     "wallColor": null,
     "trimColor": null,
     "windowStyle": null,
     "confidence": "low",
-    "notes": "sin referencias confiables. En la foto del pórtico (Commons ENTRANCE_UAP) aparece a la derecha un edificio salmón con tejas que podría ser Administración, sin confirmar."
+    "notes": "Sin fotos de fachada. Ortofoto IGN 2013: bloque alargado (~40 × 11 m) de 2 niveles estimados, cubierta clara de chapa gris en la mitad SE y sector NO con techo más oscuro y equipos (tanques/condensadoras) sobre la cubierta. Fachadas desconocidas."
   }
 }
