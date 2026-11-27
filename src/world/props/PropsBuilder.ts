@@ -7,7 +7,8 @@ import { partsOf } from '../vegetation/modelParts';
 import { distanceToPolyline, pointInPolygon } from '@shared/geo/polygon';
 import type { VegetationMaterials } from '../vegetation/VegetationMaterials';
 
-const ENABLE_SCANNED_SHRUBS = new URLSearchParams(location.search).has('shrubs');
+/** Arbustos y bancos escaneados: se ven como bloques en algunas GPUs; desactivados hasta validarlos. */
+const ENABLE_SCANNED_PROPS = new URLSearchParams(location.search).has('props');
 
 interface PropSpec {
   readonly url: string;
@@ -53,11 +54,11 @@ export async function buildProps(
   const specs: PropSpec[] = [
     // Arbustos escaneados desactivados hasta validarlos en GPU real: en el render por software
     // (sin MSAA) se leen como bloques. Para reactivar: ENABLE_SCANNED_SHRUBS = true.
-    ...(ENABLE_SCANNED_SHRUBS ? [
+    ...(ENABLE_SCANNED_PROPS ? [
       { url: 'models/vegetation/shrub_03_lod0.glb', height: 0.9, placements: shrubs.slice(0, half), castShadow: true },
       { url: 'models/vegetation/shrub_04_lod0.glb', height: 1.1, placements: shrubs.slice(half), castShadow: true },
     ] : []),
-    { url: 'models/vegetation/painted_wooden_bench_lod0.glb', height: 0.89, placements: benches, castShadow: true },
+    ...(ENABLE_SCANNED_PROPS ? [{ url: 'models/vegetation/painted_wooden_bench_lod0.glb', height: 0.89, placements: benches, castShadow: true }] : []),
   ];
   await Promise.all(specs.map(async (spec) => {
     try {
