@@ -3,7 +3,7 @@ import type { ReferenceSummary, Tags } from './reference';
 export const LEVEL_HEIGHT = 3.2;
 
 export type HeightSource = 'tag' | 'levels' | 'reference' | 'default';
-export type RoofShape = 'flat' | 'gabled' | 'hipped' | 'pyramidal' | 'dome';
+export type RoofShape = 'flat' | 'gabled' | 'hipped' | 'pyramidal' | 'dome' | 'round';
 
 export interface HeightInfo {
   readonly height: number;
@@ -73,6 +73,8 @@ const ROOF_ALIASES: Readonly<Record<string, RoofShape>> = {
   onion: 'dome',
   'half-hipped': 'hipped',
   skillion: 'gabled',
+  round: 'round',
+  gambrel: 'gabled',
 };
 const PITCHED_BY_DEFAULT = new Set(['house', 'church', 'chapel', 'residential', 'shed', 'garage']);
 
