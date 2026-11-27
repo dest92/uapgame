@@ -4,13 +4,13 @@
   "refs": [],
   "summary": {
     "levels": null,
-    "roof": null,
-    "roofColor": null,
-    "wallMaterial": null,
+    "roof": "barrel",
+    "roofColor": "#c9cdcf",
+    "wallMaterial": "plaster",
     "wallColor": null,
     "trimColor": null,
     "windowStyle": null,
     "confidence": "low",
-    "notes": "sin referencias confiables"
+    "notes": "Sin fotos de fachada. Ortofoto IGN 2013 (reference/aerial/ign-rio-parana-2013-campus-0.25m.jpg, rama claude/happy-edison-rnmwmz): cubierta en bóveda de cañón de chapa clara sobre el eje largo con dos hileras de lucernarios. Historia institucional ('Itinerario de una idea', uap.edu.ar): auditorio multiuso de 82 × 35 m inaugurado en 1974 (coincide con el footprint). Muros, aberturas y acceso del hero asset son estimados."
   }
 }

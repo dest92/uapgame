@@ -7,6 +7,7 @@
 import { mkdirSync, readFileSync } from 'node:fs';
 import type { BuildingData, WorldData } from '@shared/world/types';
 import type { HeroModel } from './hero/buildings/types';
+import { buildAuditorio } from './hero/buildings/auditorio';
 import { buildBiblioteca } from './hero/buildings/biblioteca';
 import { buildEdificioCap } from './hero/buildings/edificio-cap';
 import { buildFcs } from './hero/buildings/fcs';
@@ -26,6 +27,7 @@ const GENERATORS: Readonly<Record<string, Generator>> = {
   'way/388510375': buildOgden,
   'way/388512621': buildPioneros,
   'way/388495176': buildFcs,
+  'way/388500965': buildAuditorio,
 };
 
 async function main(): Promise<void> {
