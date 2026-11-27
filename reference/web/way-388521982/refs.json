@@ -4,13 +4,13 @@
   "refs": [],
   "summary": {
     "levels": null,
-    "roof": null,
-    "roofColor": null,
+    "roof": "hipped",
+    "roofColor": "#9c5a43",
     "wallMaterial": null,
     "wallColor": null,
     "trimColor": null,
     "windowStyle": null,
     "confidence": "low",
-    "notes": "sin referencias confiables"
+    "notes": "Sin fotos de fachada. Ortofoto IGN 2013 (0.25 m/px, rama claude/happy-edison-rnmwmz): cubierta de tejas rojizas (bordes visibles), casi totalmente tapada por la copa de los árboles; volumen bajo en L junto a la calle. Fachadas desconocidas."
   }
 }

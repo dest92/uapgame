@@ -36,6 +36,63 @@
         "patio de hormigón lavado rojizo con bancos de hormigón ondulados"
       ],
       "year": 2026
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/04/Fachada_edificioOdonto_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (obra del edificio de Odontología, 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "3-4",
+      "extracted": [
+        "edificio de Odontología en obra: 3 niveles, hormigón/revoque gris",
+        "fila continua de ventanas rectangulares por piso",
+        "gran vano de doble altura en esquina con estructura metálica de cubierta",
+        "losa en voladizo (balcón) en el vano"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/04/Bordet_SalaSimulacion_OdontologiaUAP.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "interior",
+      "extracted": [
+        "sala de simulación odontológica: pared acento celeste, mesadas blancas con simuladores",
+        "ventanas corredizas blancas, cielorraso de placas"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/03/I_JornadaSimulación_Enfermería_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2016,
+      "view": "interior",
+      "extracted": [
+        "centro de simulación: ventanas con cortinas de enrollar blancas, paredes claras",
+        "cielorraso modular con luminarias"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/11/SimulacionEnfer_Teologia.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2016,
+      "view": "interior",
+      "extracted": [
+        "sala de debriefing: mesa larga verde, persianas verticales blancas, TV al fondo"
+      ]
     }
   ],
   "summary": {
@@ -47,6 +104,17 @@
     "trimColor": "#ece5cf",
     "windowStyle": "hall de acceso con muro cortina en retícula; puertas-ventana blancas en planta baja",
     "confidence": "medium",
-    "notes": "Una sola foto del acceso; combina ladrillo visto rojo y revoque crema. No se verificó la extensión completa del polígono OSM. Foto 02.jpg (2026) confirma el estado actual del acceso; usada para la textura del bloque de acceso."
+    "notes": "Una sola foto del acceso; combina ladrillo visto rojo y revoque crema. No se verificó la extensión completa del polígono OSM. Foto 02.jpg (2026) confirma el estado actual del acceso; usada para la textura del bloque de acceso.",
+    "entrance": {
+      "position": {
+        "x": 164.67,
+        "z": -56.31
+      },
+      "normal": {
+        "x": 0.164,
+        "z": 0.987
+      }
+    },
+    "entranceRationale": "Acceso (bloque blanco + hall vidriado, 01/02.jpg) en el vértice entrante sur del footprint (vértices 10-11-12), donde OSM ubica el POI de la Facultad; orientación = bisectriz de las dos aristas. Estimado."
   }
 }

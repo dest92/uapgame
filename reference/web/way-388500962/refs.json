@@ -1,7 +1,22 @@
 {
   "osmId": "way/388500962",
   "name": "Profesorado de Educación Física (PEF) / Gimnasio",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/edfisica01.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/carreras/humanidades/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "interior",
+      "extracted": [
+        "gimnasio con cancha de básquet: paredes azul/gris, tablero de básquet",
+        "piso deportivo con líneas, probable gimnasio PEF (identificación media)"
+      ]
+    }
+  ],
   "summary": {
     "levels": null,
     "roof": null,

@@ -30,6 +30,89 @@
         "misma composición: óculo, ventanas apuntadas, pilastras con pináculos",
         "piso de piedra laja"
       ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/09/Mag.-Horacio-Rizzo-rector-de-la-UAP.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/la-uap-fue-sede-de-la-primera-jornada-de-la-semana-de-emprendimiento-e-innovacion-entre-rios-2026/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "interior del Salón de los Pioneros (post confirma sede del acto)",
+        "escenario elevado bajo gran arco de medio punto (arco de proscenio) revocado blanco",
+        "fondo del escenario negro con pantalla LED 4x3",
+        "paredes blancas lisas, rejillas de ventilación altas",
+        "piano de cola y órgano/armonio de madera sobre el escenario",
+        "escalones de acceso al escenario a ambos lados"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/09/EDIT_cuerpo_Pr.-Antonio-Marcos-da-Silva-Alves-director-del-Departamento-de-Educacion-de-la-Division-Sudamericana_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) — mismo ciclo de eventos 2026-09 en Salón de los Pioneros",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "mismo salón: arco de proscenio blanco y ventanales altos a la derecha",
+        "ventanas muy altas y estrechas con muchos paños (cuadrícula de 2 columnas x ~6 filas), marco blanco",
+        "muros de gran altura (~6-7 m) revocados en blanco"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/05/JornadaViolenciaInfantil_SalonPioneros.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (slug 'jornadaviolenciainfantil-salonpioneros')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2016,
+      "view": "interior",
+      "extracted": [
+        "vista desde el balcón/coro hacia el escenario: nave única rectangular",
+        "escenario bajo arco de medio punto con fondo de madera y tubos de órgano",
+        "4-5 ventanas altas por lado con paneles blancos (cortinas/estores)",
+        "techo plano blanco con luminarias colgantes",
+        "piso de baldosa clara; ~40 filas de sillas"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/03/Starting2015_RectorBienvenida.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "probablemente Salón de los Pioneros visto hacia el fondo (identificación media)",
+        "balcón corrido al fondo con baranda maciza blanca",
+        "ventanas altas de guillotina con cuadrícula blanca, alféizar alto",
+        "zócalo gris claro, paredes beige claro"
+      ]
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://elonce-media.elonce.com/fotos-nuevo/2023/10/26/o_1698327150_1.jpg",
+      "sourcePageUrl": "https://www.elonce.com/uid-775845 (Elonce, 'El motivo por el que la UAP es considerada la madre de Libertador San Martín')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2023,
+      "view": "3-4",
+      "extracted": [
+        "fachada principal neogótica: hastial escalonado con 5 pináculos/pilastras redondeadas color crema",
+        "paños de muro color marrón-malva (#8a5a55 aprox.) y pilastras/molduras crema (#efdcc0 aprox.)",
+        "puerta con arco ojival, 2 ventanas ojivales y óculo circular central con tracería",
+        "fachada lateral larga con contrafuertes y ventanas ojivales",
+        "cipreses altos junto a la fachada; marca de agua Elonce"
+      ]
     }
   ],
   "summary": {
@@ -41,6 +124,17 @@
     "trimColor": "#e8b9a0",
     "windowStyle": "ventanas lanceoladas (arco apuntado), óculo central, ventanas rectangulares bajas",
     "confidence": "medium",
-    "notes": "Identificado como 'Iglesia de los Pioneros' (Commons) = 'Salón de los Pioneros' (OSM, building=church). Nave de un nivel alto con dos filas de ventanas; techo no visible desde el frente. Paleta cambió entre 2014 y 2018."
+    "notes": "Identificado como 'Iglesia de los Pioneros' (Commons) = 'Salón de los Pioneros' (OSM, building=church). Nave de un nivel alto con dos filas de ventanas; techo no visible desde el frente. Paleta cambió entre 2014 y 2018.",
+    "entrance": {
+      "position": {
+        "x": 132.8,
+        "z": 198.64
+      },
+      "normal": {
+        "x": 0.572,
+        "z": -0.82
+      }
+    },
+    "entranceRationale": "Fachada neogótica con el acceso en el extremo NE del footprint (arista 4→0): a ese extremo llegan los senderos way/389691736 y way/1230711276. Estimado (no verificado en foto)."
   }
 }

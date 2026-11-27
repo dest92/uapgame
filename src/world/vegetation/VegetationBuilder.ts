@@ -35,8 +35,11 @@ export function buildVegetation(
     ...world.areas.filter((a) => BLOCKING.has(a.kind)).map((a) => a.polygon),
   ];
   const corridors = world.roads.map((r) => ({ points: r.points, width: r.width }));
-  const streetSide = streetTreePoints(corridors.filter((_, i) => world.roads[i]!.class === 'road'), 13, 2.2)
-    .filter((p) => !blockers.some((b) => pointInPolygon(p, b)));
+  // Las entradas de edificios con nombre quedan despejadas (fachadas y plazas visibles).
+  const entrances = world.buildings.filter((b) => b.identified).map((b) => b.entrance.position);
+  const clearOfEntrances = (p: { x: number; z: number }): boolean => entrances.every((e) => Math.hypot(e.x - p.x, e.z - p.z) > 14);
+  const streetSide = streetTreePoints(corridors.filter((_, i) => world.roads[i]!.class === 'road'), 18, 3)
+    .filter((p) => !blockers.some((b) => pointInPolygon(p, b)) && clearOfEntrances(p));
   const placed = scatterTrees({
     fillAreas: [...world.areas.filter((a) => GREEN.has(a.kind)).map((a) => a.polygon), world.campus.outline],
     blockers,

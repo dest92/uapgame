@@ -112,3 +112,16 @@ a.panel__src { color: var(--ui-accent); }
 .campusmap { position: absolute; inset: 5vh 5vw; padding: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 20; }
 .campusmap__title { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ui-accent); font-weight: 700; }
 .campusmap__canvas { flex: 1; min-height: 0; width: 100%; object-fit: contain; border-radius: 10px; }
+
+.campusmap[hidden], .ctxhint[hidden] { display: none; }
+
+/* Pantalla de inicio */
+.start { position: absolute; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(8,11,16,.45); transition: opacity .45s; padding: 16px; }
+.start--out { opacity: 0; pointer-events: none; }
+.start__card { max-width: 520px; width: 100%; padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 12px; }
+.start__title { margin: 0; font-size: clamp(36px, 7vw, 56px); font-weight: 800; letter-spacing: -.03em; }
+.start__lead { margin: 0; color: var(--ui-muted); line-height: 1.5; }
+.start__controls { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13px; align-items: center; }
+.start__controls kbd { justify-self: start; padding: 2px 8px; border-radius: 6px; background: rgba(255,255,255,.1); font: 600 12px var(--ui-font); }
+.start__go { margin-top: 6px; padding: 12px; border: 0; border-radius: 10px; background: var(--ui-accent); color: #111; font: 800 15px var(--ui-font); cursor: pointer; }
+.hud--hidden { opacity: 0; pointer-events: none !important; } .hud--hidden * { pointer-events: none !important; }

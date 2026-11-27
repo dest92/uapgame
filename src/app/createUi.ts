@@ -45,7 +45,7 @@ export function createUi(d: UiDeps): { hud: HTMLElement; system: GameSystem } {
   mountAttribution(hud, `Elevación: IGN Argentina · ${d.backendLabel}`);
   hud.appendChild(el('div', { className: 'brand', text: 'ACHE SYSTEMS' }));
   if (!d.touch) {
-    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E entrar · F bici · B aparecer bici · N mapa · M ajustes' }));
+    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E entrar · F bici · B aparecer bici · N mapa · M ajustes · K sonido · T tiempo · P foto' }));
   }
   return {
     hud,

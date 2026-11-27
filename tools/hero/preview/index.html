@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0;background:#9cc3e6}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+// Visor de desarrollo de hero assets (no entra al build): ?glb=<url>&az=<deg>&el=<deg>&dist=<m>&ty=<m>
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const q = new URLSearchParams(location.search);
+const W = +(q.get('w') ?? 1280), H = +(q.get('h') ?? 720);
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.AgXToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#a9c9e8');
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.6;
+scene.add(new THREE.HemisphereLight('#cfe3ff', '#8a8070', 0.8));
+const sun = new THREE.DirectionalLight('#fff3e0', 3.2);
+const sunAz = THREE.MathUtils.degToRad(+(q.get('sun') ?? 120));
+sun.position.set(Math.sin(sunAz) * 80, 70, -Math.cos(sunAz) * 80);
+sun.castShadow = true;
+Object.assign(sun.shadow.camera, { left: -90, right: 90, top: 90, bottom: -90, far: 300 });
+sun.shadow.mapSize.set(4096, 4096);
+sun.shadow.bias = -0.0005;
+scene.add(sun);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: '#7f9a5c', roughness: 1 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+const ktx2 = new KTX2Loader().setTranscoderPath('/public/libs/basis/').detectSupport(renderer);
+const loader = new GLTFLoader().setKTX2Loader(ktx2).setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync(q.get('glb'));
+gltf.scene.traverse((o) => { o.castShadow = true; o.receiveShadow = true; });
+scene.add(gltf.scene);
+const az = THREE.MathUtils.degToRad(+(q.get('az') ?? 0)), el = THREE.MathUtils.degToRad(+(q.get('el') ?? 10));
+const dist = +(q.get('dist') ?? 60), ty = +(q.get('ty') ?? 6);
+const tx = +(q.get('tx') ?? 0), tz = +(q.get('tz') ?? 0);
+const cam = new THREE.PerspectiveCamera(+(q.get('fov') ?? 50), W / H, 0.5, 1000);
+// az: rumbo desde el que se mira (0 = desde el Norte, 90 = desde el Este).
+cam.position.set(tx + Math.sin(az) * Math.cos(el) * dist, ty + Math.sin(el) * dist, tz - Math.cos(az) * Math.cos(el) * dist);
+cam.lookAt(tx, ty, tz);
+renderer.render(scene, cam);
+window.__done = true;
+</script></body></html>

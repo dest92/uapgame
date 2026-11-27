@@ -1,7 +1,24 @@
 {
   "osmId": "way/388504307",
   "name": "Torre UAP (water tower)",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://elonce-media.elonce.com/fotos-nuevo/2023/10/26/o_1698327152.jpg",
+      "sourcePageUrl": "https://www.elonce.com/uid-775845",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2023,
+      "view": "3-4",
+      "extracted": [
+        "torre de planta cuadrada de ~5 pisos, revoque crema con franjas/marcos malva",
+        "remate tipo mirador con techo de tejas rojo a cuatro aguas y mástil/antena",
+        "ventanas pequeñas apiladas por nivel",
+        "edificios bajos de 1-2 pisos con techos de chapa roja alrededor (identificación con Torre UAP: media)"
+      ]
+    }
+  ],
   "summary": {
     "levels": null,
     "roof": null,

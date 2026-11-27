@@ -7,8 +7,8 @@ import { partsOf } from '../vegetation/modelParts';
 import { distanceToPolyline, pointInPolygon } from '@shared/geo/polygon';
 import type { VegetationMaterials } from '../vegetation/VegetationMaterials';
 
-/** Arbustos y bancos escaneados: se ven como bloques en algunas GPUs; desactivados hasta validarlos. */
-const ENABLE_SCANNED_PROPS = new URLSearchParams(location.search).has('props');
+/** Arbustos y bancos escaneados (se veían como bloques por un bug de cuantización ya corregido en modelParts). */
+const ENABLE_SCANNED_PROPS = !new URLSearchParams(location.search).has('noprops');
 
 interface PropSpec {
   readonly url: string;

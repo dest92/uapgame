@@ -1,16 +1,48 @@
 {
   "osmId": "way/388500965",
   "name": "Auditorio Mayor UAP",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/03/ActoInicioLectivo2015_Auditorio_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (rotulado 'Auditorio')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "nave de gran luz con cubierta abovedada (cañón corrido) sobre cerchas metálicas reticuladas",
+        "muros laterales de ladrillo visto con cortinas",
+        "piso deportivo verde con líneas (uso polideportivo)",
+        "escenario al fondo; CONEAU 2017 menciona 'gimnasio de 3.766 m2 para más de 2.500 personas sentadas'"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/03/Auditorio.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "interior",
+      "extracted": [
+        "vista hacia el extremo opuesto: tribuna de butacas rojas",
+        "cubierta metálica curva con luminarias, cerchas de alma calada",
+        "paredes con cortinas grises bajo ventanas altas"
+      ]
+    }
+  ],
   "summary": {
     "levels": null,
-    "roof": null,
-    "roofColor": null,
-    "wallMaterial": null,
+    "roof": "barrel",
+    "roofColor": "#c9cdcf",
+    "wallMaterial": "plaster",
     "wallColor": null,
     "trimColor": null,
     "windowStyle": null,
     "confidence": "low",
-    "notes": "sin referencias confiables"
+    "notes": "Sin fotos de fachada. Ortofoto IGN 2013 (reference/aerial/ign-rio-parana-2013-campus-0.25m.jpg, rama claude/happy-edison-rnmwmz): cubierta en bóveda de cañón de chapa clara sobre el eje largo con dos hileras de lucernarios. Historia institucional ('Itinerario de una idea', uap.edu.ar): auditorio multiuso de 82 × 35 m inaugurado en 1974 (coincide con el footprint). Muros, aberturas y acceso del hero asset son estimados."
   }
 }

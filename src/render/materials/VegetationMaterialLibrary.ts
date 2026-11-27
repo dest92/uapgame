@@ -91,7 +91,7 @@ export class VegetationMaterialLibrary implements VegetationMaterials {
     const mask = clamp(s.r.mul(1.25).sub(s.b.mul(2.5)).sub(s.g.mul(0.9)), 0, 1);
     const fade = float(1).sub(smoothstep(R.mul(0.65), R, distance(wrapped, camXZ)));
     const visible = step(off.z, mask).mul(fade);
-    const tall = mix(float(0.42), float(0.2), s.r).mul(off.w.mul(0.6).add(0.7));
+    const tall = mix(float(0.34), float(0.13), s.r).mul(off.w.mul(0.6).add(0.7));
     const t = positionLocal.y;
     const ang = off.w.mul(6.283);
     const local = vec3(

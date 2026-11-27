@@ -46,11 +46,29 @@ Se trabaja con **spec driven + TDD**: cada funcionalidad tiene su spec en [`spec
 
 Nunca se usan datos de Google Maps/Earth/Street View ni sus fotos. Las fotos de `reference/web/` son **solo referencia visual** y no se versionan.
 
-## Agregar un hero asset (modelo detallado de un edificio)
+## Hero assets (modelos detallados de edificios)
+
+Siete edificios icónicos se reemplazan por modelos generados **por código** con geometría real (vanos hundidos con
+marcos y parteluces, cornisas, marquesinas, pilastras, letras extruidas, techos de tejas con alero):
+Templo, Pórtico (arco + garita + plaza 2026) y el edificio de ladrillo vecino, Biblioteca/Edificio Fernando Chaij,
+FCS, Pabellón OGDEN, Salón de los Pioneros y Auditorio Mayor (este último desde la ortofoto IGN, sin fotos de fachada).
+
+```bash
+npm run data:hero                    # regenera todos (public/models/hero/*.glb)
+npm run data:hero -- way/388500961   # solo uno
+node tools/hero/preview/shoot.mjs public/models/hero/way-388500961.glb out.png "az=125&el=6&dist=60"  # vista rápida (~5 s)
+```
+
+- `tools/hero/lib/`: piezas paramétricas (muros con vanos, arcos apuntados, carpinterías, placas, cintas, faldones),
+  marcos sobre el footprint, letras 3D (texto rasterizado → contornos → extrusión) y exportador GLB (KTX2 + meshopt).
+- `tools/hero/buildings/<edificio>.ts`: un generador por edificio, con las medidas tomadas de las fotos de `reference/web/`.
+- El GLB se apoya a la cota del **acceso principal** (spec 011, HERO-2); `refs.json` puede fijar la entrada con `summary.entrance`.
+
+### Agregar un hero asset hecho a mano
 
 1. Buscá el id OSM del edificio en `data/world.json` (p.ej. `way/388495172`, Biblioteca).
 2. Exportá el modelo en **glTF binario** con:
-   - origen local en el **centroide del footprint**, a nivel del suelo (Y = 0 en la base), +Y arriba, metros;
+   - origen local en el **centroide del footprint**, Y = 0 al nivel del acceso principal (con fundación debajo si hay pendiente), +Y arriba, metros;
    - frente orientado igual que en el mundo (X = Este, −Z = Norte);
    - compresión opcional: Draco o Meshopt para geometría y KTX2 para texturas (`gltf-transform optimize`).
 3. Guardalo como `public/models/hero/way-388495172.glb` (la `/` del id pasa a `-`).

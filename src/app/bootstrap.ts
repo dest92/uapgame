@@ -1,7 +1,7 @@
 import worldUrl from '../../data/world.json?url';
 import infoUrl from '../../data/buildings-info.json?url';
 import heroAssets from 'virtual:hero-assets';
-import facadePhotos from '../../data/facade-photos.json';
+import facadePhotosJson from '../../data/facade-photos.json';
 import type { BuildingInfoFile } from '@shared/info/types';
 import { EventBus } from '../core/events/EventBus';
 import type { GameEvents } from '../core/events/GameEvents';
@@ -13,6 +13,8 @@ import { GameState } from '../core/state/GameState';
 import { InteractionSystem } from '../gameplay/InteractionSystem';
 import { VehicleSystem } from '../gameplay/VehicleSystem';
 import { NpcSystem } from '../gameplay/NpcSystem';
+import { AudioSystem } from '../audio/AudioSystem';
+import { sceneUniforms } from '../render/materials/nodes/sharedUniforms';
 import { AssetLoader } from '../render/assets/AssetLoader';
 import { backendLabel } from '../render/backend';
 import { PbrMaterialLibrary } from '../render/materials/PbrMaterialLibrary';
@@ -24,11 +26,15 @@ import { SkySystem } from '../render/sky/SkySystem';
 import { TextureLibrary } from '../render/textures/TextureLibrary';
 import { LoadingScreen } from '../ui/LoadingScreen';
 import { SettingsMenu } from '../ui/SettingsMenu';
+import { showStartOverlay } from '../ui/StartOverlay';
+import { mountPhotoMode } from '../ui/PhotoMode';
+import { TimeFlow } from '../domain/sky/TimeFlow';
 import { TouchControls } from '../ui/TouchControls';
 import { buildVegetation } from '../world/vegetation/VegetationBuilder';
 import { FallbackTreeProvider, ProceduralTreeProvider } from '../world/vegetation/TreeVariant';
 import { ModelTreeProvider } from '../world/vegetation/ModelTreeProvider';
 import { buildProps } from '../world/props/PropsBuilder';
+import { LampLightPool } from '../world/props/LampLightPool';
 import { loadWorld } from '../world/WorldLoader';
 import { buildWorldScene } from '../world/WorldBuilder';
 import { HeroAssetSystem } from '../world/buildings/HeroAssetSystem';
@@ -37,6 +43,9 @@ import { createPhysics } from './createPhysics';
 import { createPlayer } from './createPlayer';
 import { createUi } from './createUi';
 import { QualityManager } from './QualityManager';
+
+/** Fotos reales de fachada (REF-6); vacía mientras todos esos edificios tengan hero asset. */
+const facadePhotos = facadePhotosJson as readonly { readonly building: string }[];
 
 const isTouch = (): boolean => matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
 const initialHour = (): number => Number(new URLSearchParams(location.search).get('hour') ?? 10.5);
@@ -106,6 +115,11 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     const f = player.controller.facing;
     vehicles.spawn(start.x + Math.cos(f) * 1.8, start.z - Math.sin(f) * 1.8, f);
     loop.add(vehicles);
+    loop.add(new AudioSystem({
+      speed: () => state.get(APP_CONFIG.playerEntityId)?.speed ?? 0,
+      riding: () => player.controller.riding !== null,
+      night: () => sceneUniforms.night.value,
+    }));
     loop.add(new NpcSystem(ctx.scene, player.model, player.clips, world.roads, built.terrain, quality.profile.level === 'low' ? 4 : 10));
 
     const ui = createUi({
@@ -117,15 +131,25 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     new SettingsMenu(ui.hud, bus, { quality: quality.profile.level, hour: initialHour(), backend: backendName });
     bus.on('settings:quality', (q) => quality.apply(q, true));
     bus.on('settings:timeOfDay', (h) => sky.setTimeOfDay(h));
+    mountPhotoMode(ui.hud);
+    const timeFlow = new TimeFlow();
+    window.addEventListener('keydown', (e) => {
+      if (e.code !== 'KeyT' || e.target instanceof HTMLInputElement) return;
+      timeFlow.running = !timeFlow.running;
+      bus.emit('hud:toast', timeFlow.running ? 'El tiempo corre (1 h cada 20 s)' : 'Tiempo pausado');
+    });
 
+    const lampLights = new LampLightPool(ctx.scene, vegetation.lamps, built.terrain, ctx.camera, () => sceneUniforms.night.value);
     sky.setTimeOfDay(initialHour());
     quality.apply();
     loop.add({
       update: (dt) => {
         const p = state.get(APP_CONFIG.playerEntityId)?.position;
         if (p) sky.setFollowTarget(p.x, p.y, p.z);
+        if (timeFlow.running) sky.setTimeOfDay(timeFlow.advance(sky.timeOfDay, dt));
         sky.update();
         vegetation.trees.update(dt);
+        lampLights.update(dt);
       },
     }).add(ui.system).add(renderSystem);
 
@@ -134,6 +158,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     loop.start();
     stage('Listo', 1);
     loading.hide();
+    if (!new URLSearchParams(location.search).has('autostart')) showStartOverlay(container, touch);
   } catch (err) {
     console.error(err);
     loading.error(`No se pudo iniciar: ${err instanceof Error ? err.message : String(err)}`);

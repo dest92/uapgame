@@ -42,7 +42,7 @@ export function buildBuilding(f: OsmFeature, ctx: BuildingContext, missing: Miss
   const roofMesh = shape === 'flat' ? null : roofMeshData(footprint, shape, material);
   const nameInfo = resolveName(f.tags, f.id);
   const kind = f.tags['building'] ?? 'yes';
-  const entrance = computeEntrance(footprint, ctx.paths);
+  const entrance = ref?.entrance ?? computeEntrance(footprint, ctx.paths);
   const appearance = resolveAppearance(kind, ref);
 
   if (!nameInfo.identified) {

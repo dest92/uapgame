@@ -14,7 +14,7 @@ export interface ModelTreeSpec {
 
 /** Jacarandá escaneado (Poly Haven, CC0) como latifoliada principal del campus. */
 export const SCANNED_TREES: readonly ModelTreeSpec[] = [
-  { species: 'broadleaf', lod0: 'models/vegetation/jacaranda_tree_lod0.glb', lod1: 'models/vegetation/jacaranda_tree_lod1.glb', baseScale: 0.62, lodDistance: 45 },
+  { species: 'broadleaf', lod0: 'models/vegetation/jacaranda_tree_lod0.glb', lod1: 'models/vegetation/jacaranda_tree_lod1.glb', baseScale: 0.45, lodDistance: 45 },
 ];
 
 /** Árboles a partir de modelos glTF optimizados por tools/build-vegetation-models.ts. */

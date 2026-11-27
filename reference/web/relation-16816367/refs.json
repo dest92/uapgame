@@ -1,7 +1,37 @@
 {
   "osmId": "relation/16816367",
   "name": "IAP (Instituto Adventista del Plata)",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/03/IAP_AulaDigital_AXO_equipamiento.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "interior",
+      "extracted": [
+        "aula del IAP: zócalo amarillo/ocre, ventanas con rejas, pizarrón blanco",
+        "bancos y sillas de madera clara"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/03/IAP_AulaDigital_AXO.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "interior",
+      "extracted": [
+        "aula grande: piso de baldosa roja, paredes amarillo claro",
+        "ventanas en banda con celosías/parasoles",
+        "ventiladores de techo y aire acondicionado split"
+      ]
+    }
+  ],
   "summary": {
     "levels": null,
     "roof": null,

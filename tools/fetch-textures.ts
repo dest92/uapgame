@@ -4,10 +4,9 @@
  * Escribe public/textures/manifest.json y la tabla de créditos (CREDITS.md).
  *   npm run data:textures
  */
-import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { fetchWithTimeout } from './lib/http';
+import { AMBIENTCG_CACHE as CACHE, downloadAmbientCg } from './lib/assets/ambientcg';
 import { encodeKtx2, type TextureRole } from './lib/assets/ktx2';
 
 interface TextureSet {
@@ -31,7 +30,6 @@ export const TEXTURE_SETS: readonly TextureSet[] = [
   { name: 'metal', asset: 'Metal032', use: 'faroles, techos metálicos', size: 256 },
 ];
 
-const CACHE = '.cache/ambientcg';
 const OUT = 'public/textures';
 const MAPS: readonly [TextureRole, RegExp, string, number][] = [
   ['color', /_Color\.jpg$/, 'color.ktx2', 1],
@@ -39,23 +37,12 @@ const MAPS: readonly [TextureRole, RegExp, string, number][] = [
   ['data', /_Roughness\.jpg$/, 'rough.ktx2', 4],
 ];
 
-async function download(asset: string): Promise<string> {
-  const dir = join(CACHE, asset);
-  if (existsSync(dir)) return dir;
-  mkdirSync(dir, { recursive: true });
-  const zip = join(CACHE, `${asset}.zip`);
-  const res = await fetchWithTimeout(`https://ambientcg.com/get?file=${asset}_1K-JPG.zip`, {}, 120_000);
-  writeFileSync(zip, Buffer.from(await res.arrayBuffer()));
-  execFileSync('unzip', ['-q', '-o', zip, '-d', dir]);
-  return dir;
-}
-
 async function main(): Promise<void> {
   mkdirSync(OUT, { recursive: true });
   const manifest: Record<string, { asset: string; maps: string[] }> = {};
   let total = 0;
   for (const set of TEXTURE_SETS) {
-    const dir = await download(set.asset);
+    const dir = await downloadAmbientCg(set.asset);
     const files = readdirSync(dir);
     mkdirSync(join(OUT, set.name), { recursive: true });
     const maps: string[] = [];

@@ -103,6 +103,270 @@
       "extracted": [
         "fotografía aérea histórica del campus y el pueblo; contexto de trama y arbolado"
       ]
+    },
+    {
+      "file": "09.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/DJI_20260401153020_0010_D-scaled.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/direccion-proyectos-edilicios/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "aérea",
+      "extracted": [
+        "foto de dron 2026: conjunto industrial con naves de techo curvo de chapa y nave de ladrillo con torre/silo",
+        "posiblemente Ex Fábrica Alimentos CEAPÉ / talleres (sin confirmar)",
+        "calles arboladas y tendido eléctrico"
+      ]
+    },
+    {
+      "file": "10.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/CeremoniaInauguracion_EDIT_PORTADA.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ceremonia-de-inicio-de-obras-del-centro-de-formacion-en-salud-emocional-y-fe-esther-i-de-fayard/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "3-4",
+      "extracted": [
+        "terreno del futuro Centro 'Esther I. de Fayard' detrás del CUAI (calle Marshall 55)",
+        "cartel de obra; árboles grandes; terreno plano con césped"
+      ]
+    },
+    {
+      "file": "11.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/0W9A6005-scaled.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/direccion-proyectos-edilicios/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "detalle",
+      "extracted": [
+        "replanteo con tablas del edificio Fayard (290 m2): huella en L",
+        "contexto: calle y viviendas bajas"
+      ]
+    },
+    {
+      "file": "12.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/0W9A6026-scaled.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/direccion-proyectos-edilicios/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "3-4",
+      "extracted": [
+        "replanteo y excavación del edificio Fayard junto a edificio existente gris de 2 pisos (probable CUAI)",
+        "edificio existente: revoque gris claro, ventanas rectangulares, techo plano"
+      ]
+    },
+    {
+      "file": "13.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/02/EDIT_portada_Museo-del-Conquistador_correcta.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/inauguraron-el-museo-del-conquistador-en-el-campus-de-la-uap/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "frontal",
+      "extracted": [
+        "Museo del Conquistador (edificio no identificado en OSM): 1 piso, revoque crema",
+        "pórtico de acceso con columnas cuadradas y dintel moldurado",
+        "ventanas de guillotina con cuadrícula blanca, alféizar"
+      ]
+    },
+    {
+      "file": "14.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/11/EDIT_portada_Jornadas-de-Libertad-Religiosa.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "frontal",
+      "extracted": [
+        "edificio de ladrillo visto de 3 pisos con ventanas en banda y antepechos de ladrillo (no identificado: ¿Humanidades/Administración?)",
+        "acceso vidriado a la derecha; árboles grandes delante"
+      ]
+    },
+    {
+      "file": "15.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/10/EgresadosCAP1967_rectorRamos_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "3-4",
+      "extracted": [
+        "dos edificios de ladrillo visto de 2-3 pisos en L, ventanas rectangulares con aire acondicionado",
+        "techo de chapa a dos aguas de baja pendiente (no identificado)"
+      ]
+    },
+    {
+      "file": "16.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/08/REUP_frenteLibreria2_editado.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "frontal",
+      "extracted": [
+        "frente de la Librería Universitaria: revoque crema con pilastras malva",
+        "cartel violeta/azul, aberturas de aluminio blanco (edificio no identificado)"
+      ]
+    },
+    {
+      "file": "17.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/06/Comedor2018_foto2.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "interior",
+      "extracted": [
+        "comedor universitario: gran salón de techo inclinado machimbrado blanco",
+        "ventanas altas tipo banderola, piso granítico",
+        "línea de autoservicio de acero inoxidable"
+      ]
+    },
+    {
+      "file": "18.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/11/Cruz_editado.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (DJI_0563)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "aérea",
+      "extracted": [
+        "vista cenital de dron sobre césped del campus junto a estacionamiento (figura humana de cruz)",
+        "edificio de ladrillo de techo plano a la izquierda; palmeras"
+      ]
+    },
+    {
+      "file": "19.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/univ01.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/carreras/humanidades/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "detalle",
+      "extracted": [
+        "fachada de ladrillo visto con ventanas rectangulares repetidas con marco blanco, vereda de adoquín/césped (edificio no identificado)"
+      ]
+    },
+    {
+      "file": "20.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/10/admin01.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/posgrado/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "detalle",
+      "extracted": [
+        "edificio de ladrillo con ventanas de marco blanco y acceso vidriado (no identificado)"
+      ]
+    },
+    {
+      "file": "21.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/09/educacion03.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/posgrado/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "hall de doble altura con muro cortina vidriado y escalera metálica (edificio no identificado, moderno)"
+      ]
+    },
+    {
+      "file": "22.jpg",
+      "imageUrl": "https://elonce-media.elonce.com/fotos-nuevo/2023/10/26/o_1698327151.jpg",
+      "sourcePageUrl": "https://www.elonce.com/uid-775845",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2023,
+      "view": "detalle",
+      "extracted": [
+        "monumento/memorial bajo en U con placas de bronce, revoque rosa-malva y blanco"
+      ]
+    },
+    {
+      "file": "23.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/CENTRO_-_panoramio_%281%29.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:CENTRO_-_panoramio_(1).jpg",
+      "author": "(Panoramio, ver Commons)",
+      "license": "CC BY-SA 3.0",
+      "accessedAt": "2026-11-27",
+      "year": 2007,
+      "view": "frontal",
+      "extracted": [
+        "calle 25 de Mayo (centro, a ~200 m del campus): faroles rojos de doble brazo",
+        "edificios comerciales de 2-3 pisos"
+      ]
+    },
+    {
+      "file": "24.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/OdDSF8aPi0s/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=OdDSF8aPi0s (Universidad Adventista del Plata - Campus 2015, miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "aérea",
+      "extracted": [
+        "vista aérea del campus desde dron: arboleda densa, edificios de techo rojo y ladrillo",
+        "pasto y senderos"
+      ]
+    },
+    {
+      "file": "25.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/kzffvxhyO-Q/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=kzffvxhyO-Q (Un poco de Libertador San Martin - Drone Dji Mavic (LSM DRONE), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2021,
+      "view": "aérea",
+      "extracted": [
+        "cenital de la trama urbana de LSM: manzanas, techos rojos y chapa",
+        "útil para escala de viviendas vecinas"
+      ]
+    },
+    {
+      "file": "26.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/Uqvs9vF2TtM/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=Uqvs9vF2TtM (NUEVAS RESIDENCIAS UNIVERSITARIAS, miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2024,
+      "view": "3-4",
+      "extracted": [
+        "RENDER del proyecto de nuevas residencias: volumen de ladrillo de 3 pisos con hall vidriado cúbico",
+        "no es foto real: usar solo como referencia de intención"
+      ]
+    },
+    {
+      "file": "27.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/Uqvs9vF2TtM/hq2.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=Uqvs9vF2TtM (NUEVAS RESIDENCIAS UNIVERSITARIAS, fotograma automático ~0:53)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2024,
+      "view": "3-4",
+      "extracted": [
+        "obra de las nuevas residencias: estructura de hormigón de 3-4 niveles con andamios (fotograma ~50 %)"
+      ]
     }
   ],
   "summary": {

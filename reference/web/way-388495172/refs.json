@@ -94,6 +94,137 @@
         "alas: revestimiento claro en paneles y planta baja con columnas de revoque y ladrillo"
       ],
       "year": 2026
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/10/biblioteca_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "3-4",
+      "extracted": [
+        "edificio Fernando Chaij: cuerpo central con frontón triangular sobre volumen saliente",
+        "alas de 3 pisos, revestimiento gris-beige con bandas de ventanas en esquina",
+        "palmeras pindó delante, césped amplio"
+      ]
+    },
+    {
+      "file": "08.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/04/Biblioteca_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "3-4",
+      "extracted": [
+        "fuente circular celeste delante del acceso",
+        "acceso vidriado de doble altura, letras 'Edificio Fernando Chaij'",
+        "palmeras alrededor"
+      ]
+    },
+    {
+      "file": "09.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/02/biblioteca-II.png",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "3-4",
+      "extracted": [
+        "vista lejana lateral: ala de 2-3 pisos con ventanas pequeñas repetidas en banda",
+        "cuerpo central más alto con frontón",
+        "césped en primer plano"
+      ]
+    },
+    {
+      "file": "10.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/10/biblioteca2_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "interior",
+      "extracted": [
+        "sala de lectura: estanterías metálicas, mesas largas claras",
+        "cielorraso de placas con luminarias, columnas cilíndricas blancas",
+        "mezzanine/doble altura al fondo"
+      ]
+    },
+    {
+      "file": "11.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/06/Exposicion-Vista-Panoramica_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "hall con entrepiso: baranda de vidrio y pasamanos de madera",
+        "escalera a la izquierda, alfombra gris",
+        "letrero 'SILENCIO' (biblioteca)"
+      ]
+    },
+    {
+      "file": "12.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/04/BibliotecaMohr_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "planta con columnas, ventanal al fondo, sillas de madera tapizadas",
+        "estantes de madera y metal"
+      ]
+    },
+    {
+      "file": "13.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/02/web-home-biblioteca-estudiando.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "área bajo entrepiso con escalera de madera y vidrio",
+        "columnas cilíndricas, baranda de madera"
+      ]
+    },
+    {
+      "file": "14.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2013/12/EquiposThinClientsBiblioteca.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2013,
+      "view": "interior",
+      "extracted": [
+        "vista desde el entrepiso: baranda de madera con puestos de computadora",
+        "cartel 'Centro de Tecnología Educativa para el Autoaprendizaje'"
+      ]
+    },
+    {
+      "file": "15.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/3rBMMVXLmrc/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=3rBMMVXLmrc (Espejo de mi Tierra: Conocemos la UAP (Elonce), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2022,
+      "view": "detalle",
+      "extracted": [
+        "detalle del acceso: letras metálicas 'Edificio Fernando Chaij' sobre marquesina",
+        "carpintería de aluminio oscuro y vidrio"
+      ]
     }
   ],
   "summary": {
@@ -105,6 +236,17 @@
     "trimColor": "#2e3236",
     "windowStyle": "muro cortina vidriado oscuro en el cuerpo central; bandas horizontales de ventanas en las alas",
     "confidence": "medium",
-    "notes": "Edificio Fernando Chaij (inaugurado 2001 según búsqueda web). Alas con techo plano; el cuerpo central del acceso remata en frontón triangular (tipo gable frontal). Color de muro varía entre fotos (beige en 2015, más claro en 2025). Niveles estimados visualmente. Fotos 05 (2025) y 06 (2026) confirman colores actuales: paneles beige claro en alas, pilastras centrales rosa viejo (#b58f8c aprox.), planta baja de ladrillo rojo; 05.jpg es la vista frontal usada para textura."
+    "notes": "Edificio Fernando Chaij (inaugurado 2001 según búsqueda web). Alas con techo plano; el cuerpo central del acceso remata en frontón triangular (tipo gable frontal). Color de muro varía entre fotos (beige en 2015, más claro en 2025). Niveles estimados visualmente. Fotos 05 (2025) y 06 (2026) confirman colores actuales: paneles beige claro en alas, pilastras centrales rosa viejo (#b58f8c aprox.), planta baja de ladrillo rojo; 05.jpg es la vista frontal usada para textura.",
+    "entrance": {
+      "position": {
+        "x": 56.55,
+        "z": -30.58
+      },
+      "normal": {
+        "x": 0.812,
+        "z": 0.584
+      }
+    },
+    "entranceRationale": "05.jpg (vista frontal desde la fuente): acceso con escalinata en la cara SE del footprint (arista 2→3), frente a la Fuente UAP (way/388495174) y al sendero way/388495173."
   }
 }
