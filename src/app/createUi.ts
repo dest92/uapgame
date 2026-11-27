@@ -12,6 +12,7 @@ import { InteractionHint } from '../ui/InteractionHint';
 import { Minimap } from '../ui/Minimap';
 import { mountHudMessages } from '../ui/HudMessages';
 import { mountQuestPanel } from '../ui/QuestPanel';
+import { CampusMap } from '../ui/CampusMap';
 import { VisitQuest } from '../domain/quests/VisitQuest';
 import { APP_CONFIG } from './config';
 
@@ -37,12 +38,14 @@ export function createUi(d: UiDeps): { hud: HTMLElement; system: GameSystem } {
   mountHudMessages(hud, d.bus);
   // Edificios con referencias fotográficas = los más representativos del campus.
   const KEY = ['way/388521996', 'way/388500961', 'way/388495172', 'way/388495176', 'way/388510375', 'way/388512621', 'way/388500965', 'way/388521982'];
-  mountQuestPanel(hud, d.bus, new VisitQuest(KEY.map((id) => d.world.buildings.find((b) => b.id === id)).filter((b) => b !== undefined).map((b) => ({ id: b.id, name: b.name }))));
+  const quest = new VisitQuest(KEY.map((id) => d.world.buildings.find((b) => b.id === id)).filter((b) => b !== undefined).map((b) => ({ id: b.id, name: b.name })));
+  mountQuestPanel(hud, d.bus, quest);
+  const bigMap = new CampusMap(hud, d.world, () => quest.remaining().map((t) => t.id));
   const debug = new DebugOverlay(hud, d.bus, d.stats);
   mountAttribution(hud, `Elevación: IGN Argentina · ${d.backendLabel}`);
   hud.appendChild(el('div', { className: 'brand', text: 'ACHE SYSTEMS' }));
   if (!d.touch) {
-    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E entrar · F bici · B aparecer bici · M ajustes' }));
+    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E entrar · F bici · B aparecer bici · N mapa · M ajustes' }));
   }
   return {
     hud,
@@ -50,6 +53,8 @@ export function createUi(d: UiDeps): { hud: HTMLElement; system: GameSystem } {
       update: (dt) => {
         const p = d.state.get(APP_CONFIG.playerEntityId)?.position;
         if (p) minimap.update({ x: p.x, z: p.z }, d.cameraYaw());
+        const e = d.state.get(APP_CONFIG.playerEntityId);
+        if (p && e) bigMap.update({ x: p.x, z: p.z }, e.yaw);
         debug.update(dt);
       },
     },

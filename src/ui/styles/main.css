@@ -109,3 +109,6 @@ a.panel__src { color: var(--ui-accent); }
 .quest__count { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .quest__next { font-size: 12px; color: var(--ui-muted); max-width: 240px; }
 @media (pointer: coarse) { .quest { top: 36px; min-width: 0; } }
+.campusmap { position: absolute; inset: 5vh 5vw; padding: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 20; }
+.campusmap__title { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ui-accent); font-weight: 700; }
+.campusmap__canvas { flex: 1; min-height: 0; width: 100%; object-fit: contain; border-radius: 10px; }
