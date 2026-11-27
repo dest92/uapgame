@@ -1,4 +1,4 @@
-import { float, luminance, mix, mx_noise_float, normalMap, normalWorld, positionWorld, smoothstep, step, texture, uv, vec2, vertexColor, color, abs, fract } from 'three/tsl';
+import { float, luminance, mix, mx_noise_float, normalMap, positionWorld, smoothstep, step, texture, uv, vec2, vertexColor, color, abs, fract } from 'three/tsl';
 import type { Node, Texture } from 'three/webgpu';
 import type { PbrSet } from '../../textures/TextureLibrary';
 
@@ -56,21 +56,5 @@ export function roadNodes(asphalt: PbrSet, paving: PbrSet) {
     color: mix(c, color('#e8e4da'), line.mul(0.85)),
     roughness: mix(texture(asphalt.rough, tuvA).g, texture(paving.rough, tuvP).g, isPaved),
     normal: normalMap(texture(asphalt.normal, tuvA)).mul(float(1).sub(isPaved)).add(normalMap(texture(paving.normal, tuvP)).mul(isPaved)).normalize(),
-  };
-}
-
-/** Techos: tejas en faldones inclinados, losa/membrana en techos planos. UV = mundo xz. */
-export function roofNodes(tiles: PbrSet, concrete: PbrSet) {
-  const pitched = step(normalWorld.y, 0.97);
-  const xz = positionWorld.xz;
-  const t = texture(tiles.color, xz.div(3)).rgb;
-  const cc = texture(concrete.color, xz.div(4)).rgb;
-  const tint = vertexColor().rgb;
-  const tileC = tint.mul(luminance(t).div(0.32)).mul(0.9);
-  const flatC = cc.mul(color('#9a9890')).mul(mix(float(0.8), float(1.1), mx_noise_float(xz.mul(0.2)).mul(0.5).add(0.5)));
-  return {
-    color: mix(flatC, tileC, pitched),
-    roughness: mix(texture(concrete.rough, xz.div(4)).g, texture(tiles.rough, xz.div(3)).g, pitched),
-    normal: normalMap(texture(tiles.normal, xz.div(3))).mul(pitched).add(normalMap(texture(concrete.normal, xz.div(4))).mul(float(1).sub(pitched))).normalize(),
   };
 }

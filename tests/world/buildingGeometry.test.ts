@@ -48,7 +48,7 @@ describe('buildBuildingGeometry', () => {
     const g = buildBuildingGeometry(gabled, 0);
     const ys = [];
     for (let i = 1; i < g.roof.positions.length; i += 3) ys.push(g.roof.positions[i]!);
-    expect(Math.max(...ys)).toBeCloseTo(6.4 + 3, 5);
+    expect(Math.max(...ys)).toBeCloseTo(6.4 + 3, 1); // cumbrera (+ cenefa de 2 cm)
     expect(triangleArea(g.roof)).toBeGreaterThan(200);
   });
   it('techo a cuatro aguas también se genera', () => {

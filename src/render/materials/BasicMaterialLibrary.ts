@@ -26,6 +26,14 @@ export class BasicMaterialLibrary implements MaterialProvider {
     return this.cached('roof', () => new MeshStandardNodeMaterial({ vertexColors: true, roughness: 0.75, side: DoubleSide }));
   }
 
+  trim(): Material {
+    return this.cached('trim', () => new MeshStandardNodeMaterial({ vertexColors: true, roughness: 0.75 }));
+  }
+
+  glass(): Material {
+    return this.cached('glass', () => new MeshStandardNodeMaterial({ color: '#1b242c', roughness: 0.08, metalness: 0.1 }));
+  }
+
   road(): Material {
     return this.cached('road', () => {
       const m = new MeshStandardNodeMaterial({ vertexColors: true, roughness: 0.92 });

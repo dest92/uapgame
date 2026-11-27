@@ -2,16 +2,21 @@ import { ShapeUtils, Vector2 } from 'three/webgpu';
 import type { Vec2 } from '@shared/geo/types';
 import type { BuildingData } from '@shared/world/types';
 import { emptyGeometry, pushVertex, type GeometryData } from '../geometry/GeometryData';
+import { appendGeometry } from '../geometry/GeometryData';
 import { hexToLinear } from './color';
-import { orientedBox, type OrientedBox } from './obb';
+import { buildFacadeDetail, type FacadeDetail } from './FacadeDetailBuilder';
+import { appendPitchedRoof, ROOF_MATERIAL_ID, ROOF_PLAIN, roofMeshOf } from './RoofBuilder';
 
-const FOUNDATION = 1.5;
+export const FOUNDATION = 1.5;
 const PARAPET = 0.6;
-const EAVE = 0.45;
-const MIN_RECTANGULARITY = 0.78;
 
-export interface BuildingGeometry {
-  /** Paredes. `extra` = (largo de pared, altura de pared, 1 si es cara interior/gablete). */
+export interface BuildingGeometry extends FacadeDetail {
+  /**
+   * Paredes del LOD lejano (ventanas pintadas por shader). `extra` = (largo de pared,
+   * altura de pared, flag: 0 ventanas pintadas, 1 liso, 2 cercano con chorreaduras).
+   */
+  readonly far: GeometryData;
+  /** Alias de `far` (compatibilidad). */
   readonly walls: GeometryData;
   readonly roof: GeometryData;
 }
@@ -69,102 +74,61 @@ function inset(poly: readonly Vec2[], d: number): Vec2[] {
   });
 }
 
-const at = (o: OrientedBox, su: number, sv: number, grow = 0): Vec2 => ({
-  x: o.center.x + o.u.x * su * (o.halfU + grow) + o.v.x * sv * (o.halfV + grow),
-  z: o.center.z + o.u.z * su * (o.halfU + grow) + o.v.z * sv * (o.halfV + grow),
-});
-
-function slopedQuad(g: GeometryData, pts: readonly [number, number, number][], color: RGB): void {
-  const [a, b, c] = pts as [[number, number, number], [number, number, number], [number, number, number]];
-  const u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
-  const v = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
-  let n: [number, number, number] = [u[1]! * v[2]! - u[2]! * v[1]!, u[2]! * v[0]! - u[0]! * v[2]!, u[0]! * v[1]! - u[1]! * v[0]!];
-  const len = Math.hypot(...n) || 1;
-  n = [n[0] / len, n[1] / len, n[2] / len];
-  if (n[1] < 0) n = [-n[0], -n[1], -n[2]];
-  const base = g.positions.length / 3;
-  for (const p of pts) pushVertex(g, { p, n, uv: [p[0], p[2]], color });
-  // Orientar triángulos para que la cara frontal mire hacia la normal (+Y).
-  const cross = u[2]! * v[0]! - u[0]! * v[2]!;
-  const flip = cross < 0;
-  for (let i = 1; i < pts.length - 1; i++) {
-    if (flip) g.indices.push(base, base + i + 1, base + i);
-    else g.indices.push(base, base + i, base + i + 1);
-  }
-}
-
-function pitchedRoof(walls: GeometryData, roof: GeometryData, o: OrientedBox, top: number, h: number, hipped: boolean, wallColor: RGB, roofColor: RGB): void {
-  const ridgeInset = hipped ? Math.min(o.halfV, o.halfU * 0.9) : -EAVE;
-  const r1: [number, number, number] = [
-    o.center.x - o.u.x * (o.halfU - ridgeInset), top + h, o.center.z - o.u.z * (o.halfU - ridgeInset),
-  ];
-  const r2: [number, number, number] = [
-    o.center.x + o.u.x * (o.halfU - ridgeInset), top + h, o.center.z + o.u.z * (o.halfU - ridgeInset),
-  ];
-  const eaveDrop = (EAVE / Math.max(o.halfV, 0.1)) * h;
-  const c = (su: number, sv: number): [number, number, number] => {
-    const p = at(o, su, sv, EAVE);
-    return [p.x, top - eaveDrop, p.z];
-  };
-  slopedQuad(roof, [c(-1, -1), c(1, -1), r2, r1], roofColor);
-  slopedQuad(roof, [c(1, 1), c(-1, 1), r1, r2], roofColor);
-  if (hipped) {
-    slopedQuad(roof, [c(-1, 1), c(-1, -1), r1], roofColor);
-    slopedQuad(roof, [c(1, -1), c(1, 1), r2], roofColor);
-    return;
-  }
-  // Gabletes (triángulos de pared en los extremos).
-  for (const su of [-1, 1] as const) {
-    const a = at(o, su, -1);
-    const b = at(o, su, 1);
-    const ridge = { x: o.center.x + o.u.x * su * o.halfU, z: o.center.z + o.u.z * su * o.halfU };
-    const n = { x: o.u.x * su, z: o.u.z * su };
-    const extra = [o.halfV * 2, h, 1] as const;
-    const nn = [n.x, 0, n.z] as const;
-    const [p, q] = su === 1 ? [a, b] : [b, a];
-    const i0 = pushVertex(walls, { p: [p.x, top, p.z], n: nn, uv: [0, 0], color: wallColor, extra });
-    const i1 = pushVertex(walls, { p: [q.x, top, q.z], n: nn, uv: [o.halfV * 2, 0], color: wallColor, extra });
-    const i2 = pushVertex(walls, { p: [ridge.x, top + h, ridge.z], n: nn, uv: [o.halfV, h], color: wallColor, extra });
-    walls.indices.push(i0, i1, i2);
-  }
-}
-
 /**
- * Genera paredes y techo de un edificio procedural (spec 003/009).
- * `groundY`: altura del terreno bajo el edificio (mínimo del footprint).
+ * Genera muros (LOD lejano y cercano), techo y molduras de un edificio procedural
+ * (spec 003/009, ROOF-*, FAC-*). `groundY`: terreno bajo el edificio (mínimo del
+ * footprint); `doorGround`: terreno en la entrada.
  */
-export function buildBuildingGeometry(b: BuildingData, groundY: number): BuildingGeometry {
-  const walls = emptyGeometry();
+export function buildBuildingGeometry(b: BuildingData, groundY: number, doorGround = groundY): BuildingGeometry {
+  const far = emptyGeometry();
   const roof = emptyGeometry();
   const wallColor = hexToLinear(b.appearance.wallColor);
   const roofColor = hexToLinear(b.appearance.roofColor);
+  const trimColor = hexToLinear(b.appearance.trimColor);
   const top = groundY + b.height;
   const fp = b.footprint;
-  const obb = orientedBox(fp);
-  const pitched = b.roof.shape !== 'flat' && b.roof.height > 0 && obb.rectangularity >= MIN_RECTANGULARITY;
-  const wallTop = pitched ? top : top + PARAPET;
+  const mesh = roofMeshOf(b);
+  const wallTop = mesh ? top : top + PARAPET;
+  const wallBottom = groundY - FOUNDATION + b.minHeight;
 
   for (let i = 0; i < fp.length; i++) {
     const a = fp[i]!;
     const c = fp[(i + 1) % fp.length]!;
-    wallQuad(walls, a, c, groundY - FOUNDATION + b.minHeight, wallTop, outward(a, c), wallColor, 0, groundY);
+    wallQuad(far, a, c, wallBottom, wallTop, outward(a, c), wallColor, 0, groundY);
   }
+  const plinth: RGB = b.appearance.wallMaterial === 'brick' ? [0.12, 0.115, 0.11] : [wallColor[0] * 0.45, wallColor[1] * 0.45, wallColor[2] * 0.45];
+  const detail = buildFacadeDetail({
+    b, groundY, doorGround, wallBottom, wallTop, top, flat: !mesh,
+    colors: { wall: wallColor, trim: trimColor, plinth, frame: b.kind === 'industrial' ? [0.25, 0.27, 0.28] : [0.62, 0.64, 0.65] },
+  });
 
-  if (pitched) {
-    const hipped = b.roof.shape === 'hipped' || b.roof.shape === 'pyramidal' || b.roof.shape === 'dome';
-    pitchedRoof(walls, roof, obb, top, b.roof.height, hipped, wallColor, roofColor);
-    return { walls, roof };
+  if (mesh) {
+    const gables = emptyGeometry();
+    appendPitchedRoof({ roof, gables }, b, mesh, top, groundY, { roof: roofColor, wall: wallColor, trim: trimColor });
+    appendGeometry(far, gables);
+    appendGeometry(detail.walls, gables);
+    return { ...detail, far, walls: far, roof };
   }
 
   // Techo plano con parapeto: cara interior + borde superior + losa.
   const inner = inset(fp, 0.25);
+  const innerWalls = emptyGeometry();
   for (let i = 0; i < inner.length; i++) {
     const a = inner[i]!;
     const c = inner[(i + 1) % inner.length]!;
     const n = outward(a, c);
-    wallQuad(walls, c, a, top, wallTop, { x: -n.x, z: -n.z }, wallColor, 1, groundY);
+    wallQuad(innerWalls, c, a, top, wallTop, { x: -n.x, z: -n.z }, wallColor, 1, groundY);
   }
+  appendGeometry(far, innerWalls);
+  appendGeometry(detail.walls, innerWalls);
   ringCap(roof, fp, inner, wallTop, wallColor);
+  const ringVerts = roof.positions.length / 3;
   flatCap(roof, inner, top + 0.02, roofColor);
-  return { walls, roof };
+  const id = ROOF_MATERIAL_ID[b.roof.material ?? 'membrane'];
+  for (let v = 0; v < roof.extra.length / 3; v++) {
+    roof.extra[v * 3] = id;
+    // El borde del parapeto lleva color liso (lo tapa el coronamiento).
+    if (v < ringVerts) roof.extra[v * 3 + 1] = ROOF_PLAIN;
+  }
+  return { ...detail, far, walls: far, roof };
 }
