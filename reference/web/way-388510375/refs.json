@@ -42,6 +42,80 @@
       "extracted": [
         "nuevo hall de ingreso (2026): puertas dobles y paños fijos vidriados con aluminio claro, muro claro, piso de piedra laja"
       ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/06/LegisTF_vistaUAP_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "frontal",
+      "extracted": [
+        "fachada principal del Pabellón de Música Ogden: 2 pisos, revoque ocre/amarillo con molduras marrón",
+        "frontón escalonado superior con letras 'C.A.P.'",
+        "letrero 'Pabellón de Música Ogden' sobre el acceso, ventana-balcón vidriada en el 1er piso",
+        "techo de tejas; avenida de mástiles con banderas delante"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://elonce-media.elonce.com/fotos-nuevo/2023/10/26/o_1698327150.jpg",
+      "sourcePageUrl": "https://www.elonce.com/uid-775845",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2023,
+      "view": "detalle",
+      "extracted": [
+        "detalle de fachada (edificio de 1908 según la nota): revoque beige con pilastras y marcos marrón-malva",
+        "ventanas altas de guillotina con cuadrícula",
+        "placas y medallones conmemorativos en el zócalo"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/06/Ignauguracion_EDIT_Cuerpo_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "nuevo Hall de ingreso (2026): paredes beige, pared acento azul",
+        "puertas vidriadas de aluminio blanco, ventanal con estores",
+        "banco corrido tapizado amarillo; riel de spots"
+      ]
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/06/Ignauguracion_EDIT_Cuerpo2PESADA_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/la-uap-inauguro-el-hall-de-ingreso-para-su-escuela-de-musica-y-proyecta-nuevas-mejoras-edilicias/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "hall: muro azul con placa de mármol, carpinterías blancas con vidrio fijo alto",
+        "la nota indica obra 1906-1908 con 45 000 ladrillos; próxima etapa: reemplazo de puertas y ventanas"
+      ]
+    },
+    {
+      "file": "08.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/AvAv5aQgbhU/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=AvAv5aQgbhU (Espejo de mi Tierra: Historia edificio de la UAP (Elonce), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2022,
+      "view": "detalle",
+      "extracted": [
+        "detalle de fachada del edificio histórico: ventanas altas con marco malva",
+        "medallones redondos en el muro bajo las ventanas"
+      ]
     }
   ],
   "summary": {

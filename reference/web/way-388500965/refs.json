@@ -1,7 +1,39 @@
 {
   "osmId": "way/388500965",
   "name": "Auditorio Mayor UAP",
-  "refs": [],
+  "refs": [
+    {
+      "file": "01.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/03/ActoInicioLectivo2015_Auditorio_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (rotulado 'Auditorio')",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "interior",
+      "extracted": [
+        "nave de gran luz con cubierta abovedada (cañón corrido) sobre cerchas metálicas reticuladas",
+        "muros laterales de ladrillo visto con cortinas",
+        "piso deportivo verde con líneas (uso polideportivo)",
+        "escenario al fondo; CONEAU 2017 menciona 'gimnasio de 3.766 m2 para más de 2.500 personas sentadas'"
+      ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/03/Auditorio.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "interior",
+      "extracted": [
+        "vista hacia el extremo opuesto: tribuna de butacas rojas",
+        "cubierta metálica curva con luminarias, cerchas de alma calada",
+        "paredes con cortinas grises bajo ventanas altas"
+      ]
+    }
+  ],
   "summary": {
     "levels": null,
     "roof": "barrel",

@@ -47,6 +47,200 @@
         "balcón/galería superior perimetral",
         "muro de piedra detrás de la plataforma, paredes crema"
       ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/03/TemploUAP.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "3-4",
+      "extracted": [
+        "fachada principal blanca: dos torres prismáticas con esquinas redondeadas flanqueando cuerpo central",
+        "ventanas altas y estrechas en arco apuntado agrupadas de a 3 (vidrio azul oscuro)",
+        "4 paneles verticales de color terracota con relieves en el cuerpo central",
+        "accesos vidriados bajo marquesinas planas en planta baja",
+        "basamento lateral de piedra laja; plaza seca de hormigón con letras 'VEN SEÑOR JESÚS' en el piso"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/05/templo1.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "frontal",
+      "extracted": [
+        "fachada frontal casi ortogonal: simetría con 2 torres, 3+3 ventanas ojivales laterales y 3 centrales",
+        "logo 'Iglesia Adventista del Séptimo Día' en la torre izquierda",
+        "faroles negros de pie sobre la plaza",
+        "alturas: torres ~18 m, cuerpo lateral ~12 m (estimado)"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/02/PrWilson-panoramica-plataforma_Edit.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) (Ted Wilson en el Templo, 2025)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "interior",
+      "extracted": [
+        "nave en abanico con plataforma frontal escalonada",
+        "balcón perimetral continuo con antepecho blanco y ventanas ojivales altas",
+        "cielorraso en escalones con paneles de luz cuadrados y riel de iluminación negro",
+        "bancos de madera"
+      ]
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/06/Graduacion2018_Viernes_templo.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "interior",
+      "extracted": [
+        "vista desde la plataforma hacia el fondo: balcón curvo en todo el perímetro",
+        "ventanas ojivales de la fachada vistas desde dentro sobre el balcón",
+        "cielorraso con planos escalonados y lucernarios"
+      ]
+    },
+    {
+      "file": "08.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2017/09/IWG_Sabadoma_panoramicatemplo.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2017,
+      "view": "interior",
+      "extracted": [
+        "vista cenital desde el balcón: ~30 filas de bancos en abanico",
+        "plataforma con muro de piedra/ladrillo y pantallas",
+        "pasillos radiales alfombrados"
+      ]
+    },
+    {
+      "file": "09.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/10/PrArelíBarboza_templo_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "interior",
+      "extracted": [
+        "plataforma con escalones alfombrados y púlpito de acrílico",
+        "balcón en rampa ascendente siguiendo la curva de la sala",
+        "muro de piedra a la izquierda de la plataforma; cielorraso con dicroicas"
+      ]
+    },
+    {
+      "file": "10.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2014/05/SemanaOración_templo_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2014,
+      "view": "interior",
+      "extracted": [
+        "vista desde la cabina de sonido del balcón hacia la plataforma",
+        "muro de fondo de piedra con pantalla central",
+        "piano y orquesta sobre la plataforma"
+      ]
+    },
+    {
+      "file": "11.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/teologia01.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/carreras/teologia/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "interior",
+      "extracted": [
+        "interior del Templo: bancos de madera rojiza, balcón con antepecho blanco calado",
+        "púlpito de acrílico con flores"
+      ]
+    },
+    {
+      "file": "12.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/06/DJI00134.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (foto de dron nocturna)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "aérea",
+      "extracted": [
+        "vista aérea nocturna: plaza del Templo con letras 'VEN SEÑOR JESÚS' en el piso",
+        "calle frente al Templo y borde del edificio a la derecha"
+      ]
+    },
+    {
+      "file": "13.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/4T6DpnI8U8k/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=4T6DpnI8U8k (Vídeo Institucional UAP (Priscilla Santana), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2021,
+      "view": "frontal",
+      "extracted": [
+        "fachada frontal del Templo, torres blancas y ventanas ojivales",
+        "letras/relieves terracota en el cuerpo central"
+      ]
+    },
+    {
+      "file": "14.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/gQemudMHQ6E/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=gQemudMHQ6E (Informe sobre Villa Libertador San Martín - La universidad (Canal Nueve Litoral), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2022,
+      "view": "3-4",
+      "extracted": [
+        "templo en 3/4 con plaza seca y personas para escala",
+        "volumen lateral bajo con ventanas ojivales"
+      ]
+    },
+    {
+      "file": "15.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/iUWonJdCGms/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=iUWonJdCGms (Recorrido de la Facultad de Teología (proyecto.preparar), miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2021,
+      "view": "aérea",
+      "extracted": [
+        "vista aérea oblicua del Templo: planta poligonal/abanico con techo plano claro",
+        "plaza delantera con 'VEN SEÑOR JESÚS' y senderos radiales",
+        "césped alrededor"
+      ]
+    },
+    {
+      "file": "16.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/OdDSF8aPi0s/hq3.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=OdDSF8aPi0s (Universidad Adventista del Plata - Campus 2015, fotograma automático ~1:15)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "aérea",
+      "extracted": [
+        "aérea oblicua del Templo (fotograma ~75 %, 480 px)",
+        "techo plano blanco/gris con volumen de fachada más alto"
+      ]
     }
   ],
   "summary": {

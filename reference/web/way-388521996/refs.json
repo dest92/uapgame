@@ -58,6 +58,145 @@
       "extracted": [
         "vista en contrapicado de la escultura (2018); confirma piedra laja en pilares y cinta blanca"
       ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/01/0W9A0861.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/desarrollo-edilicio/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "3-4",
+      "extracted": [
+        "pórtico: dos pilares troncopiramidales de piedra laja irregular color ocre",
+        "cinta de hormigón blanca curva (forma de lazo) que forma arco de medio punto y dos rizos laterales",
+        "detrás edificio de ladrillo visto de 2 pisos con ventanas en banda",
+        "mástil con bandera a la derecha"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/02/EDIT_portada_foto-del-portico.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (noticia 'La UAP suma profesionales a su proyecto institucional', 2026-02)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "3-4",
+      "extracted": [
+        "pórtico visto desde la plaza exterior: bancos curvos de hormigón marrón",
+        "tótem rectangular gris con logo UAP",
+        "garita de vigilancia baja de ladrillo con techo plano volado blanco",
+        "edificio de ladrillo con letras 'Universidad Adventista del Plata' sobre la fachada; ventanas con parasoles de lamas grises"
+      ]
+    },
+    {
+      "file": "07.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/10/Portico_portada.EDIT_-1.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "3-4",
+      "extracted": [
+        "vista desde la calle: rizo izquierdo de la cinta apoya en muro bajo de ladrillo",
+        "cordón amarillo y vereda de ladrillo/baldosa roja",
+        "reja negra de cerramiento entre pilares",
+        "edificio de ladrillo de 2 pisos detrás, parasoles horizontales"
+      ]
+    },
+    {
+      "file": "08.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/08/1.-Portico.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "detalle",
+      "extracted": [
+        "vista contrapicada de un pilar: piedra laja aparejo irregular con juntas claras",
+        "cinta blanca de sección rectangular (~0.5 x 1 m) apoyada sobre los pilares",
+        "estructura de mástil/farolas metálicas junto a la garita",
+        "estacionamiento de bicicletas detrás"
+      ]
+    },
+    {
+      "file": "09.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/03/Portico_UAP.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "3-4",
+      "extracted": [
+        "conjunto pórtico + edificio de ladrillo con letrero de bronce 'Universidad Adventista del Plata' en la fachada",
+        "cartel monolito blanco con letras grises y franja violeta",
+        "cantero de flores rojas en primer plano, vereda de ladrillo"
+      ]
+    },
+    {
+      "file": "10.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2015/11/portico-2015.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2015,
+      "view": "frontal",
+      "extracted": [
+        "vista frontal panorámica: edificio de ladrillo de 2 pisos con logo circular y letras sobre el acceso",
+        "volumen de acceso vidriado bajo alero plano",
+        "pórtico centrado sobre la calle de acceso; cordones amarillos"
+      ]
+    },
+    {
+      "file": "11.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/10/Foto-historica-de-las-naciones-en-el-Portico_portada.EDIT_.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (biblioteca de medios WordPress, wp-json/wp/v2/media) (foto histórica, años 90)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": null,
+      "view": "frontal",
+      "extracted": [
+        "foto histórica: pórtico ya existente con letrero 'Bienvenidos al CAP'",
+        "cinta blanca y pilares de piedra iguales a los actuales: forma estable",
+        "útil para la escala: personas de ~1.7 m vs. arco (~7-8 m de alto)"
+      ]
+    },
+    {
+      "file": "12.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/Sf86l9wJC9c/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=Sf86l9wJC9c (UAP - Video promocional 2018, miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "3-4",
+      "extracted": [
+        "pórtico en vista 3/4 desde el interior del campus, cielo azul",
+        "cinta blanca con dos rizos y arco superior; pilares de piedra",
+        "senda peatonal y acceso vehicular con barrera"
+      ]
+    },
+    {
+      "file": "13.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/clBeBRjb4bg/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=clBeBRjb4bg (Experiencia en el campus - UAP, miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2020,
+      "view": "3-4",
+      "extracted": [
+        "vista contrapicada del pórtico, rizo izquierdo y arco",
+        "edificio de ladrillo con letras 'UNIVERSIDAD' detrás",
+        "conos y barrera en el acceso"
+      ]
     }
   ],
   "summary": {

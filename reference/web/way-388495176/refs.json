@@ -36,6 +36,63 @@
         "patio de hormigón lavado rojizo con bancos de hormigón ondulados"
       ],
       "year": 2026
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/04/Fachada_edificioOdonto_edit.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media) (obra del edificio de Odontología, 2018)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "3-4",
+      "extracted": [
+        "edificio de Odontología en obra: 3 niveles, hormigón/revoque gris",
+        "fila continua de ventanas rectangulares por piso",
+        "gran vano de doble altura en esquina con estructura metálica de cubierta",
+        "losa en voladizo (balcón) en el vano"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/04/Bordet_SalaSimulacion_OdontologiaUAP.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2018,
+      "view": "interior",
+      "extracted": [
+        "sala de simulación odontológica: pared acento celeste, mesadas blancas con simuladores",
+        "ventanas corredizas blancas, cielorraso de placas"
+      ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/03/I_JornadaSimulación_Enfermería_web.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2016,
+      "view": "interior",
+      "extracted": [
+        "centro de simulación: ventanas con cortinas de enrollar blancas, paredes claras",
+        "cielorraso modular con luminarias"
+      ]
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2016/11/SimulacionEnfer_Teologia.jpg",
+      "sourcePageUrl": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress antigua, wp-json/wp/v2/media)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2016,
+      "view": "interior",
+      "extracted": [
+        "sala de debriefing: mesa larga verde, persianas verticales blancas, TV al fondo"
+      ]
     }
   ],
   "summary": {
