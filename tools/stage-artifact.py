@@ -31,6 +31,8 @@ for f in glob.glob(f'{out}/**/*.glb', recursive=True) + glob.glob(f'{out}/**/*.k
     os.remove(f)
 
 shim = r"""
+// WebGL2 por defecto en el artifact (WebGPU en iOS dejaba la escena en blanco); #webgpu para probarlo.
+window.__UAP_DEFAULT_BACKEND__ = 'webgl2';
 (() => {
   // Errores visibles en pantalla (el visor no muestra la consola).
   const show = (msg) => {

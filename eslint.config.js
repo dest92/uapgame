@@ -15,7 +15,7 @@ const layer = (files, patterns) => ({
 });
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'public/**', 'coverage/**', 'reference/**'] },
+  { ignores: ['dist/**', 'dist-artifact/**', 'node_modules/**', 'public/**', 'coverage/**', 'reference/**'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   { files: ['tools/**/*.{ts,mjs}', '*.{js,ts}', 'vite-plugins/**/*.ts'], languageOptions: { globals: globals.node } },
