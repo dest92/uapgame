@@ -17,3 +17,4 @@ reference/web/**/*.avif
 .cache/
 public/libs/
 .cache/
+dist-artifact/

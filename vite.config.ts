@@ -4,6 +4,9 @@ import { heroAssetsPlugin } from './vite-plugins/heroAssets.ts';
 
 const publicDir = fileURLToPath(new URL('./public', import.meta.url));
 
+/** ARTIFACT=1: un solo bundle JS (sin chunks) para inlinearlo en un Artifact de claude.ai. */
+const artifact = process.env['ARTIFACT'] === '1';
+
 export default defineConfig({
   base: './',
   publicDir,
@@ -16,7 +19,8 @@ export default defineConfig({
     target: 'es2022',
     chunkSizeWarningLimit: 2500,
     assetsInlineLimit: 0,
-    rolldownOptions: {
+    outDir: artifact ? 'dist-artifact' : 'dist',
+    rolldownOptions: artifact ? { output: { inlineDynamicImports: true } } : {
       output: {
         advancedChunks: {
           groups: [
