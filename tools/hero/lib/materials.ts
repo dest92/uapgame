@@ -8,12 +8,13 @@ import type { ProcTextureName } from './proctex';
  * Texturas de detalle de los hero assets: sets CC0 de ambientCG o, con `proc`, generadas por texel en
  * tools/hero/lib/proctex.ts (ladrillo con juntas, laja irregular, revoque con manchas). Ver CREDITS.md.
  */
-export const HERO_TEXTURES: Readonly<Record<'plaster' | 'concrete' | 'stone' | 'brick' | 'paving' | 'tiles', HeroTextureSpec>> = {
+export const HERO_TEXTURES: Readonly<Record<'plaster' | 'concrete' | 'stone' | 'brick' | 'paving' | 'tiles' | 'plazaTiles', HeroTextureSpec>> = {
   plaster: { asset: 'PaintedPlaster017', proc: 'plaster', size: 512, normal: true, grey: true, contrast: 0.8 },
   concrete: { asset: 'Concrete034', size: 512, normal: false, grey: true, contrast: 0.8 },
   stone: { asset: 'Bricks099', proc: 'flagstone', size: 512, normal: true, grey: false, contrast: 1.1 },
   brick: { asset: 'Bricks097', proc: 'brick', size: 512, normal: true, grey: false, contrast: 1 },
   paving: { asset: 'PavingStones130', size: 512, normal: true, grey: true, contrast: 1 },
+  plazaTiles: { asset: '', proc: 'plazaTiles', size: 512, normal: true, grey: true, contrast: 1 },
   tiles: { asset: 'RoofingTiles006', size: 512, normal: true, grey: false, contrast: 1 },
 };
 

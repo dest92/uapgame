@@ -16,14 +16,16 @@ import { type Opening, box, footprintPrism, profilePrism, roundedTopProfile, wal
 import { svgGeometry, textGeometry } from '../lib/text';
 import { flatRoofMass, windowRows } from '../lib/walls';
 import { IASD_LOGO } from '../lib/logos';
+import type { BufferGeometry } from 'three';
 import type { HeroModel } from './types';
 
 export const TEMPLO_MATERIALS = {
   ...BASE_MATERIALS,
   stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   copper: { color: '#a8775a', roughness: 0.45, metalness: 0.6 },
-  plaza: { color: '#c9c8c3', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },
-  plazaDark: { color: '#8f908e', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },
+  engraving: { color: '#3a2a20', roughness: 0.6, metalness: 0.2 },
+  plaza: { color: '#c2c2bf', roughness: 0.85, texture: 'plazaTiles', uvScale: 6 },
+  stainedGlass: { color: '#163070', roughness: 0.1, metalness: 0.1, emissive: '#081636' },
 } as const satisfies Record<string, MaterialSpec>;
 type M = keyof typeof TEMPLO_MATERIALS;
 
@@ -60,8 +62,10 @@ function body(b: HeroBuilder<M>, e: Element): void {
   // Cupertina fina sobre el parapeto.
   b.add('concreteWhite', box(w + 0.12, 0.14, SLAB + 0.12, 0, e.h, -SLAB / 2 + 0.06));
   for (const t of tall) {
+    // Vitral: vidrio azul profundo con trama de plomo (parteluz + travesaños cada ~0.8 m) y marco bronce.
+    const lead = glazing(t, { z: -0.24, frame: 0.02, cols: 2, transoms: Array.from({ length: 6 }, (_, k) => t.y + 0.8 * (k + 1)), bar: 0.025 });
     const g = glazing(t, { z: -0.25, frame: 0.08, transoms: [t.y + 2.0, t.y + 3.9], bar: 0.07 });
-    b.add('glassBlue', ...g.glass).add('bronze', ...g.frame);
+    b.add('stainedGlass', ...g.glass).add('bronze', ...g.frame).add('aluminiumDark', ...lead.frame);
   }
   const gb = glazing(band, { z: -0.3, cols: 2, frame: 0.08 });
   b.add('glassDark', ...gb.glass).add('bronze', ...gb.frame);
@@ -88,11 +92,24 @@ async function pylonLeftDecor(b: HeroBuilder<M>): Promise<void> {
   b.add('bronze', logo, iasd, uap);
 }
 
-function pylonRightDecor(b: HeroBuilder<M>): void {
-  // "Mi casa será llamada casa de oración para todos los pueblos": dos placas chicas y dos altas.
+/** Placas ocre "Mi casa será llamada casa de oración para todos los pueblos" (Isaías 56:7, 02.jpg). */
+async function pylonRightDecor(b: HeroBuilder<M>): Promise<void> {
   b.add('copper',
     box(1.0, 1.2, 0.07, -0.75, 12.3, 0.035), box(1.0, 1.0, 0.07, 0.85, 12.0, 0.035),
     box(1.0, 4.4, 0.07, -0.75, 6.6, 0.035), box(1.0, 4.4, 0.07, 0.85, 6.4, 0.035));
+  const t = (s: string, h: number): Promise<BufferGeometry> => textGeometry(s, { height: h, depth: 0.02, font: 'DejaVu Serif', weight: 'normal', lineHeight: 1.0 });
+  const mi = await t('Mi\ncasa', 0.62);
+  mi.translate(-0.75, 12.6, 0.07);
+  const sera = await t('será\nllamada', 0.5);
+  sera.translate(0.85, 12.25, 0.07);
+  // Placas altas: texto vertical que se lee de abajo hacia arriba.
+  const v1 = await t('Casa de\noración', 0.66);
+  v1.rotateZ(Math.PI / 2);
+  v1.translate(-0.75 + 0.33, 8.8, 0.07);
+  const v2 = await t('para todos\nlos pueblos', 0.66);
+  v2.rotateZ(Math.PI / 2);
+  v2.translate(0.85 + 0.33, 8.6, 0.07);
+  b.add('engraving', mi, sera, v1, v2);
 }
 
 function wing(b: HeroBuilder<M>, e: Element): void {
@@ -110,17 +127,15 @@ function wing(b: HeroBuilder<M>, e: Element): void {
   b.add('concreteWhite', box(w + 0.16, 0.1, 0.22, 0, 3.3, 0.06));
 }
 
-/** Explanada de hormigón con bandas radiales más oscuras frente a la fachada. */
+/** Explanada frente a la fachada: baldosas gris medio con dibujo geométrico gris claro (textura procedural, 02.jpg). */
 function plaza(b: HeroBuilder<M>, c: Vec2, r: number, a0: number, a1: number): void {
   const steps = 28;
   for (let i = 0; i < steps; i++) {
     const t0 = a0 + ((a1 - a0) * i) / steps;
     const t1 = a0 + ((a1 - a0) * (i + 1)) / steps;
     const ring = (rad: number, t: number): Vec2 => ({ x: c.x + Math.cos(t) * rad, z: c.z + Math.sin(t) * rad });
-    for (const [rin, rout, dark] of [[r - 0.5, r + 6, false], [r + 6, r + 7.2, true], [r + 7.2, r + 15, false]] as const) {
-      const quad = ensureCCW([ring(rin, t0), ring(rout, t0), ring(rout, t1), ring(rin, t1)]);
-      b.add(dark || i % 4 === 0 ? 'plazaDark' : 'plaza', footprintPrism(quad, -1.2, 0.03));
-    }
+    const quad = ensureCCW([ring(r - 0.5, t0), ring(r + 15, t0), ring(r + 15, t1), ring(r - 0.5, t1)]);
+    b.add('plaza', footprintPrism(quad, -1.2, 0.03));
   }
 }
 
@@ -139,7 +154,7 @@ export async function buildTemplo(bd: BuildingData): Promise<HeroModel<M>> {
     if (e.kind === 'pylonL' || e.kind === 'pylonR') {
       pylon(local, e);
       if (e.kind === 'pylonL') decor.push(pylonLeftDecor(local));
-      else pylonRightDecor(local);
+      else decor.push(pylonRightDecor(local));
     } else if (e.kind === 'wing') wing(local, e);
     else body(local, e);
   });
