@@ -1,4 +1,5 @@
-import type { Scene } from 'three/webgpu';
+import type { AnimationClip, Scene } from 'three/webgpu';
+import type { GLTF } from 'three/addons/loaders/GLTFLoader.js';
 import type { WorldData } from '@shared/world/types';
 import type { InputHub } from '../core/input/InputHub';
 import type { GameLoop } from '../core/loop/GameLoop';
@@ -7,6 +8,7 @@ import type { PhysicsWorld } from '../physics/PhysicsWorld';
 import type { AssetLoader } from '../render/assets/AssetLoader';
 import type { SceneContext } from '../render/scene/SceneContext';
 import { CameraRig } from '../player/CameraRig';
+import { clone as cloneSkinned } from 'three/addons/utils/SkeletonUtils.js';
 import { CharacterView } from '../player/CharacterView';
 import { CAPSULE_HALF_HEIGHT, CAPSULE_RADIUS, PlayerController } from '../player/PlayerController';
 import type { TerrainSampler } from '../world/terrain/terrainSampler';
@@ -15,6 +17,9 @@ import { APP_CONFIG } from './config';
 export interface PlayerRig {
   readonly controller: PlayerController;
   readonly camera: CameraRig;
+  /** Modelo y clips del personaje (reutilizados por los NPCs). */
+  readonly model: GLTF;
+  readonly clips: readonly AnimationClip[];
 }
 
 function spawnPoint(world: WorldData): { x: number; z: number; yaw: number } {
@@ -41,6 +46,8 @@ export async function createPlayer(
 
   const base = import.meta.env.BASE_URL;
   const [model, anims] = await Promise.all([assets.loadGltf(base + APP_CONFIG.characterUrl), assets.loadGltf(base + APP_CONFIG.animationsUrl)]);
+  // Copia intacta para clonar NPCs (el jugador modifica materiales del original).
+  const npcModel = { ...model, scene: cloneSkinned(model.scene) as GLTF['scene'] } as GLTF;
   const view = new CharacterView(model, anims.animations);
   (ctx.scene as Scene).add(view.root);
 
@@ -61,5 +68,5 @@ export async function createPlayer(
       view.sync(controller.interpolated(alpha), e.yaw, dt, bike ? 0.42 : 0, bike ? bike.lean : 0);
     },
   });
-  return { controller, camera: rig };
+  return { controller, camera: rig, model: npcModel, clips: anims.animations };
 }

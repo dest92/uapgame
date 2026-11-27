@@ -1,7 +1,7 @@
 import { AnimationMixer, BufferAttribute, LoopOnce, Object3D, SkinnedMesh, type AnimationAction, type AnimationClip, type MeshStandardMaterial } from 'three/webgpu';
 import type { GLTF } from 'three/addons/loaders/GLTFLoader.js';
 import type { AnimState, Vec3 } from '../core/state/GameState';
-import { createClothingMaterial } from '../render/materials/clothingMaterial';
+import { createClothingMaterial, DEFAULT_OUTFIT, type Outfit } from '../render/materials/clothingMaterial';
 import { dominantBone, regionForBone } from './clothingRegions';
 
 /** Clip de UAL por estado de animación (MOV-5). */
@@ -16,7 +16,7 @@ export class CharacterView {
   private readonly actions = new Map<string, AnimationAction>();
   private current: AnimationAction | null = null;
 
-  constructor(model: GLTF, animations: readonly AnimationClip[]) {
+  constructor(model: Pick<GLTF, 'scene'>, animations: readonly AnimationClip[], outfit: Outfit = DEFAULT_OUTFIT) {
     const body = model.scene;
     body.traverse((o) => {
       if (!(o instanceof SkinnedMesh)) return;
@@ -28,7 +28,7 @@ export class CharacterView {
       if (/Hair/i.test(mat.name)) mat.color.set('#5a3d2b');
       if (/Superhero/i.test(mat.name)) {
         CharacterView.writeRegions(o);
-        o.material = createClothingMaterial(mat);
+        o.material = createClothingMaterial(mat, outfit);
       }
     });
     this.root.add(body);
