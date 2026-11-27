@@ -106,8 +106,8 @@ export class SkySystem implements GameSystem {
     this.hemi.groundColor.copy(lerpColor('#111418', '#5b5140', mix.sun));
     this.fog.color.copy(lerpColor('#0d1422', '#cbd9e3', mix.sun).lerp(new Color('#e3b48a'), mix.golden * 0.6));
     this.fog.density = 0.0007 + 0.0003 * mix.golden;
-    this.scene.environmentIntensity = 0.08 + 0.75 * mix.sun;
-    this.renderer.toneMappingExposure = 1 + 0.6 * mix.night;
+    this.scene.environmentIntensity = 0.06 + 0.5 * mix.sun;
+    this.renderer.toneMappingExposure = 0.9 + 0.6 * mix.night;
     sceneUniforms.night.value = mix.night;
 
     if (Math.abs(this.hour - this.envHour) > ENV_REFRESH_HOURS) this.refreshEnvironment();

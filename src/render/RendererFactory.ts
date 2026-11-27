@@ -30,8 +30,9 @@ export async function createRenderer(canvas: HTMLCanvasElement, antialias: boole
   const backendObj = renderer.backend as { isWebGPUBackend?: boolean };
   const backend: BackendKind = backendObj.isWebGPUBackend ? 'webgpu' : 'webgl2';
   renderer.outputColorSpace = SRGBColorSpace;
-  renderer.toneMapping = new URLSearchParams(location.search).get('tonemap') === 'aces' ? ACESFilmicToneMapping : AgXToneMapping;
-  renderer.toneMappingExposure = 1;
+  // ACES por defecto: más contraste y saturación (look cinematográfico); `?tonemap=agx` para comparar.
+  renderer.toneMapping = new URLSearchParams(location.search).get('tonemap') === 'agx' ? AgXToneMapping : ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.9;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = PCFShadowMap;
   return { renderer, backend };

@@ -58,7 +58,9 @@ export class VegetationMaterialLibrary implements VegetationMaterials {
       const leaves = src.alphaTest > 0 || src.transparent || /leaf|leaves/i.test(src.name);
       const m = new MeshStandardNodeMaterial({ side: leaves ? DoubleSide : src.side, alphaTest: leaves ? 0.5 : 0 });
       m.map = src.map;
-      m.normalMap = src.normalMap;
+      // En hojas recortadas y de doble cara el normal map produce reversos muy claros: se omite.
+      m.normalMap = leaves ? null : src.normalMap;
+      if (leaves) m.color.setScalar(0.78);
       m.roughnessMap = src.roughnessMap;
       m.metalnessMap = src.metalnessMap;
       m.aoMap = src.aoMap;

@@ -31,7 +31,7 @@ export function createPostPipeline(renderer: WebGPURenderer, scene: Scene, camer
 
   // Grading: leve contraste y saturación + viñeta.
   const lum = luminance(result);
-  result = mix(vec3(lum), result, float(1.08));
+  result = mix(vec3(lum), result, float(1.18));
   const vignette = smoothstep(0.95, 0.35, length(screenUV.sub(0.5)).mul(1.25));
   result = result.mul(mix(float(0.82), float(1), vignette));
   pipeline.outputNode = vec4(result, 1);
