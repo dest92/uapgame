@@ -42,6 +42,17 @@ describe('RoadGeometryBuilder (ROAD-1)', () => {
       if (Math.abs(Math.abs(z) - 3) < 1e-6 && Math.abs(nz) > 0.5) expect(Math.sign(nz)).toBe(-Math.sign(z));
     }
   });
+  it('ROAD-1: no se generan cordones dentro de otra calle (cruces)', () => {
+    const all = buildRoadGeometry(road, flat);
+    const covered = buildRoadGeometry(road, flat, (x) => x > 10 && x < 20);
+    expect(covered.curb.indices.length).toBeLessThan(all.curb.indices.length);
+    expect(covered.surface.indices.length).toBe(all.surface.indices.length);
+  });
+  it('ROAD-1: las calles quedan por encima de los senderos', () => {
+    const r = buildRoadGeometry(road, flat).surface.positions[1]!;
+    const p = buildRoadGeometry({ ...road, class: 'path', highway: 'footway', width: 2 }, flat).surface.positions[1]!;
+    expect(r).toBeGreaterThan(p);
+  });
   it('sigue el terreno', () => {
     const slope = { heightAt: (x: number) => x * 0.1 };
     const g = buildRoadGeometry(road, slope);

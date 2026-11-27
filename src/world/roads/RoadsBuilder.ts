@@ -3,7 +3,8 @@ import type { HeightSampler } from '@shared/terrain/heightField';
 import type { RoadData } from '@shared/world/types';
 import { appendGeometry, emptyGeometry, toBufferGeometry } from '../geometry/GeometryData';
 import type { MaterialProvider } from '../MaterialProvider';
-import { buildRoadGeometry } from './RoadGeometryBuilder';
+import { buildRoadGeometry, type CoveredTest } from './RoadGeometryBuilder';
+import { distanceToPolyline } from '@shared/geo/polygon';
 
 /** Calles y senderos fusionados en 2 mallas (calzada y cordones). */
 export function buildRoads(roads: readonly RoadData[], terrain: HeightSampler, materials: MaterialProvider): Group {
@@ -11,8 +12,12 @@ export function buildRoads(roads: readonly RoadData[], terrain: HeightSampler, m
   const curb = emptyGeometry();
   // Los caminos se dibujan antes que las calles para que estas queden encima en cruces.
   const ordered = [...roads].sort((a, b) => (a.class === b.class ? 0 : a.class === 'path' ? -1 : 1));
+  const carriageways = roads.filter((r) => r.class === 'road');
+  /** Un cordón no se dibuja si cae sobre la calzada de otra calle. */
+  const coveredBy = (self: RoadData): CoveredTest => (x, z) =>
+    carriageways.some((o) => o !== self && distanceToPolyline({ x, z }, o.points) < o.width / 2 + 0.2);
   for (const r of ordered) {
-    const g = buildRoadGeometry(r, terrain);
+    const g = buildRoadGeometry(r, terrain, coveredBy(r));
     appendGeometry(surface, g.surface);
     appendGeometry(curb, g.curb);
   }

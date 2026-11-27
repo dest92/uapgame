@@ -42,7 +42,8 @@ export async function compressTexturesKtx2(doc: Document, maxSize: Partial<Recor
   doc.createExtension(KHRTextureBasisu).setRequired(true);
   for (const tex of doc.getRoot().listTextures()) {
     const img = tex.getImage();
-    if (!img) continue;
+    // Las texturas con alfa ya convertidas a WebP se dejan: el encoder ETC1S descarta el alfa.
+    if (!img || tex.getMimeType() === 'image/webp') continue;
     const role = roleOf(doc, tex);
     tex.setImage(await encodeKtx2(img, role, maxSize[role] ?? 1024));
     tex.setMimeType('image/ktx2');

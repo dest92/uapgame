@@ -7,7 +7,8 @@ import { dirname, join } from 'node:path';
 import { fetchWithTimeout } from './lib/http';
 
 interface FileEntry { url: string; size: number }
-interface GltfFiles { gltf: Record<string, { gltf: FileEntry & { include: Record<string, FileEntry> } }> }
+interface GltfFiles { gltf: Record<string, { gltf: FileEntry & { include: Record<string, FileEntry> } }>; [map: string]: unknown }
+type MapFiles = Record<string, Record<string, FileEntry>>;
 
 export const DEFAULT_MODELS = ['jacaranda_tree', 'island_tree_02', 'shrub_03', 'shrub_04', 'painted_wooden_bench'];
 
@@ -27,6 +28,14 @@ async function main(): Promise<void> {
     const dir = join('.cache/polyhaven', id);
     await download(res.gltf.url, join(dir, `${id}.gltf`));
     for (const [rel, f] of Object.entries(res.gltf.include)) await download(f.url, join(dir, rel));
+    // El glTF trae el difuso en JPG (sin alfa): bajamos aparte los mapas *alpha para las hojas.
+    for (const [key, value] of Object.entries(files)) {
+      if (!/alpha$/i.test(key)) continue;
+      const res = value as MapFiles;
+      const best = res['1k'] ?? res['2k'] ?? Object.values(res)[0];
+      const jpg = best?.['jpg'];
+      if (jpg) await download(jpg.url, join(dir, 'textures', jpg.url.split('/').pop()!));
+    }
     const mb = (Object.values(res.gltf.include).reduce((a, f) => a + f.size, 0) / 1e6).toFixed(1);
     console.log(`✓ ${id} (${mb} MB) → ${dir}`);
   }

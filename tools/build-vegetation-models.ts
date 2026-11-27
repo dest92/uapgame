@@ -5,10 +5,11 @@
  *   npm run assets:polyhaven && npm run data:vegetation
  */
 import { NodeIO, type Document, type Primitive } from '@gltf-transform/core';
-import { ALL_EXTENSIONS, EXTMeshoptCompression } from '@gltf-transform/extensions';
+import { ALL_EXTENSIONS, EXTMeshoptCompression, EXTTextureWebP } from '@gltf-transform/extensions';
 import { dedup, prune, quantize, weld } from '@gltf-transform/functions';
 import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
-import { mkdirSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import sharp from 'sharp';
 import { compressTexturesKtx2 } from './lib/assets/ktx2';
 import { thinFoliage } from './lib/assets/foliageDecimation';
 
@@ -65,6 +66,31 @@ function reducePrimitive(doc: Document, p: Primitive, lod: Lod): void {
   p.setIndices(doc.createAccessor().setType('SCALAR').setArray(simplified).setBuffer(idx.getBuffer()));
 }
 
+/**
+ * Los materiales con recorte (hojas) necesitan alfa: se combina el difuso RGB con el
+ * mapa `<material>_alpha_*.jpg` en una imagen RGBA antes de codificar a KTX2.
+ */
+async function applyAlphaMaps(doc: Document, id: string, size: number): Promise<void> {
+  const dir = `.cache/polyhaven/${id}/textures`;
+  const files = existsSync(dir) ? readdirSync(dir).filter((f) => /_alpha_/.test(f)) : [];
+  for (const mat of doc.getRoot().listMaterials()) {
+    if (mat.getAlphaMode() === 'OPAQUE') continue;
+    const tex = mat.getBaseColorTexture();
+    const file = files.find((f) => f.startsWith(`${mat.getName()}_alpha`)) ?? (files.length === 1 ? files[0] : undefined);
+    if (!tex?.getImage() || !file) continue;
+    const base = sharp(tex.getImage()!);
+    const { width, height } = await base.metadata();
+    const alpha = await sharp(readFileSync(`${dir}/${file}`)).resize(width, height).greyscale().raw().toBuffer();
+    const rgba = await sharp(await base.removeAlpha().joinChannel(alpha, { raw: { width: width!, height: height!, channels: 1 } }).png().toBuffer())
+      .resize(size, size, { fit: 'fill' }).webp({ quality: 82, alphaQuality: 90 }).toBuffer();
+    // WebP conserva el alfa (el ETC1S de KTX2 lo descartaba); GLTFLoader lo soporta vía EXT_texture_webp.
+    doc.createExtension(EXTTextureWebP).setRequired(true);
+    tex.setImage(new Uint8Array(rgba)).setMimeType('image/webp').setURI(tex.getURI().replace(/\.[a-z]+$/i, '.webp'));
+    mat.setAlphaMode('MASK').setAlphaCutoff(0.5).setDoubleSided(true);
+    console.log(`    alfa: ${mat.getName()} ← ${file}`);
+  }
+}
+
 async function main(): Promise<void> {
   await Promise.all([MeshoptEncoder.ready, MeshoptDecoder.ready, MeshoptSimplifier.ready]);
   const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.encoder': MeshoptEncoder, 'meshopt.decoder': MeshoptDecoder });
@@ -74,6 +100,7 @@ async function main(): Promise<void> {
     for (const [i, lod] of spec.lods.entries()) {
       const doc = await io.read(`.cache/polyhaven/${spec.id}/${spec.id}.gltf`);
       for (const mesh of doc.getRoot().listMeshes()) for (const p of mesh.listPrimitives()) reducePrimitive(doc, p, lod);
+      await applyAlphaMaps(doc, spec.id, lod.texture);
       await doc.transform(prune(), weld(), dedup());
       await compressTexturesKtx2(doc, { color: lod.texture, normal: lod.texture / 2, data: lod.texture / 4 });
       await doc.transform(prune(), quantize());

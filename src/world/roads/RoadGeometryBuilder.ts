@@ -4,7 +4,8 @@ import type { RoadData } from '@shared/world/types';
 import { emptyGeometry, pushVertex, type GeometryData } from '../geometry/GeometryData';
 import { surfaceColor } from './surfaces';
 
-const LIFT = { road: 0.06, path: 0.1 } as const;
+/** Las calles van por encima de los senderos que las cruzan. */
+const LIFT = { road: 0.09, path: 0.05 } as const;
 const CURB = { road: { height: 0.15, width: 0.3 }, path: { height: 0.06, width: 0.15 } } as const;
 
 export interface RoadGeometry {
@@ -45,6 +46,9 @@ function norm(v: Vec2): Vec2 {
   return l < 1e-9 ? { x: 1, z: 0 } : { x: v.x / l, z: v.z / l };
 }
 
+/** ¿El punto (x, z) cae sobre la calzada de otra calle? (para cortar cordones en cruces). */
+export type CoveredTest = (x: number, z: number) => boolean;
+
 /** Hacia dónde mira una tira: arriba o lateral (múltiplo de la normal izquierda del eje). */
 type Facing = 'up' | 1 | -1;
 
@@ -52,6 +56,7 @@ type Facing = 'up' | 1 | -1;
 function strip(
   g: GeometryData, pts: readonly Vec2[], sides: ReturnType<typeof sideNormals>, h: HeightSampler,
   o0: number, o1: number, y0: number, y1: number, color: readonly [number, number, number], facing: Facing,
+  skip?: CoveredTest,
 ): void {
   let dist = 0;
   const base = g.positions.length / 3;
@@ -66,6 +71,12 @@ function strip(
     }
   });
   for (let i = 0; i < pts.length - 1; i++) {
+    if (skip) {
+      const k = (base + i * 2) * 3;
+      const mx = (g.positions[k]! + g.positions[k + 6]!) / 2;
+      const mz = (g.positions[k + 2]! + g.positions[k + 8]!) / 2;
+      if (skip(mx, mz)) continue;
+    }
     const a = base + i * 2;
     const tri: [number, number, number][] = [[a, a + 2, a + 1], [a + 1, a + 2, a + 3]];
     for (const t of tri) g.indices.push(...(facesNormal(g, t) ? t : ([t[0], t[2], t[1]] as const)));
@@ -82,7 +93,7 @@ function facesNormal(g: GeometryData, [a, b, c]: readonly [number, number, numbe
 }
 
 /** Calzada + cordones (ROAD-1). UV en metros: u lateral, v longitudinal. */
-export function buildRoadGeometry(road: RoadData, terrain: HeightSampler): RoadGeometry {
+export function buildRoadGeometry(road: RoadData, terrain: HeightSampler, covered?: CoveredTest): RoadGeometry {
   const surface = emptyGeometry();
   const curb = emptyGeometry();
   const pts = resamplePolyline(road.points, 3);
@@ -96,9 +107,9 @@ export function buildRoadGeometry(road: RoadData, terrain: HeightSampler): RoadG
   strip(surface, pts, sides, terrain, half, -half, lift, lift, color, 'up');
   for (const s of [1, -1] as const) {
     // Cara interior (mira a la calzada), tapa y cara exterior del cordón.
-    strip(curb, pts, sides, terrain, s * half, s * half, lift, lift + c.height, curbColor, -s as 1 | -1);
-    strip(curb, pts, sides, terrain, s * (half + c.width), s * half, lift + c.height, lift + c.height, curbColor, 'up');
-    strip(curb, pts, sides, terrain, s * (half + c.width), s * (half + c.width), lift + c.height, lift - 0.05, curbColor, s);
+    strip(curb, pts, sides, terrain, s * half, s * half, lift, lift + c.height, curbColor, -s as 1 | -1, covered);
+    strip(curb, pts, sides, terrain, s * (half + c.width), s * half, lift + c.height, lift + c.height, curbColor, 'up', covered);
+    strip(curb, pts, sides, terrain, s * (half + c.width), s * (half + c.width), lift + c.height, lift - 0.05, curbColor, s, covered);
   }
   return { surface, curb };
 }

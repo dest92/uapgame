@@ -4,6 +4,7 @@ import type { HeightSampler } from '@shared/terrain/heightField';
 import type { WorldData } from '@shared/world/types';
 import { benchPositions, shrubPositions, type Placement } from '../../domain/props/placement';
 import { partsOf } from '../vegetation/modelParts';
+import { distanceToPolyline } from '@shared/geo/polygon';
 import type { VegetationMaterials } from '../vegetation/VegetationMaterials';
 
 interface PropSpec {
@@ -42,10 +43,13 @@ export async function buildProps(
   const shrubs = shrubPositions(world.buildings.filter((b) => b.identified).map((b) => ({ footprint: b.footprint, entrance: b.entrance.position })), 3.2, 1.0);
   const half = Math.ceil(shrubs.length / 2);
   const paths = world.roads.filter((r) => r.class === 'path').map((r) => ({ points: r.points, width: r.width }));
+  const roads = world.roads.filter((r) => r.class === 'road');
+  const clearOfRoads = (p: Placement): boolean => roads.every((r) => distanceToPolyline(p, r.points) > r.width / 2 + 1.5);
+  const benches = benchPositions(paths, 45).filter(clearOfRoads);
   const specs: PropSpec[] = [
     { url: 'models/vegetation/shrub_03_lod0.glb', height: 0.9, placements: shrubs.slice(0, half), castShadow: true },
     { url: 'models/vegetation/shrub_04_lod0.glb', height: 1.1, placements: shrubs.slice(half), castShadow: true },
-    { url: 'models/vegetation/painted_wooden_bench_lod0.glb', height: 0.89, placements: benchPositions(paths, 45), castShadow: true },
+    { url: 'models/vegetation/painted_wooden_bench_lod0.glb', height: 0.89, placements: benches, castShadow: true },
   ];
   await Promise.all(specs.map(async (spec) => {
     try {
