@@ -21,6 +21,8 @@ export interface WorldBuildOptions {
   readonly ground: GroundOptions;
   /** Edificios reemplazados por hero assets. */
   readonly skipBuildings: ReadonlySet<string>;
+  /** id OSM → URL de la foto de fachada. */
+  readonly photoFacades?: ReadonlyMap<string, string>;
 }
 
 /** Ensambla la escena estática del campus desde world.json. */
@@ -31,7 +33,7 @@ export function buildWorldScene(world: WorldData, materials: MaterialProvider, o
   const ground = buildGround(world, terrain, materials, opts.ground);
   root.add(ground.mesh);
   root.add(buildRoads(world.roads, terrain, materials));
-  root.add(buildBuildings(world.buildings, terrain, materials, opts.skipBuildings));
+  root.add(buildBuildings(world.buildings, terrain, materials, opts.skipBuildings, opts.photoFacades));
   buildWater(root, world.areas, terrain, materials.water());
   return { root, terrain, grid: terrainGridOf(world, terrain), splat: ground.splat };
 }

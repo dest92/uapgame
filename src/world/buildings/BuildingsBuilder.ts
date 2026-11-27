@@ -4,6 +4,7 @@ import type { HeightSampler } from '@shared/terrain/heightField';
 import { appendGeometry, emptyGeometry, toBufferGeometry, type GeometryData } from '../geometry/GeometryData';
 import type { MaterialProvider } from '../MaterialProvider';
 import { buildBuildingGeometry } from './BuildingGeometryBuilder';
+import { photoFacadeGeometry } from './photoFacade';
 
 export const groundUnder = (b: BuildingData, terrain: HeightSampler): number =>
   Math.min(...b.footprint.map((p) => terrain.heightAt(p.x, p.z)));
@@ -15,6 +16,7 @@ export const groundUnder = (b: BuildingData, terrain: HeightSampler): number =>
  */
 export function buildBuildings(
   buildings: readonly BuildingData[], terrain: HeightSampler, materials: MaterialProvider, skip: ReadonlySet<string>,
+  photos: ReadonlyMap<string, string> = new Map(),
 ): Group {
   const walls = new Map<WallMaterial, GeometryData>();
   const roofs = emptyGeometry();
@@ -33,6 +35,14 @@ export function buildBuildings(
     mesh.name = `walls:${kind}`;
     mesh.castShadow = mesh.receiveShadow = true;
     group.add(mesh);
+  }
+  for (const b of buildings) {
+    const url = photos.get(b.id);
+    if (!url || skip.has(b.id)) continue;
+    const photo = new Mesh(toBufferGeometry(photoFacadeGeometry(b, groundUnder(b, terrain))), materials.photoFacade(url));
+    photo.name = `photo:${b.id}`;
+    photo.receiveShadow = true;
+    group.add(photo);
   }
   if (roofs.indices.length) {
     const roof = new Mesh(toBufferGeometry(roofs), materials.roof());

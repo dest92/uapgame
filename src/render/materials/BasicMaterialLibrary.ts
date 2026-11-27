@@ -1,4 +1,4 @@
-import { DoubleSide, MeshStandardNodeMaterial, type Material, type Texture } from 'three/webgpu';
+import { DoubleSide, MeshStandardNodeMaterial, TextureLoader, type Material, type Texture } from 'three/webgpu';
 import { color, mix, texture, uv } from 'three/tsl';
 import type { WallMaterial } from '@shared/world/types';
 import type { MaterialProvider } from '../../world/MaterialProvider';
@@ -52,6 +52,10 @@ export class BasicMaterialLibrary implements MaterialProvider {
     c = mix(c, paved, s.b);
     m.colorNode = c;
     return m;
+  }
+
+  photoFacade(url: string): Material {
+    return this.cached(`photo:${url}`, () => new MeshStandardNodeMaterial({ map: new TextureLoader().load(url), roughness: 0.85 }));
   }
 
   water(): Material {

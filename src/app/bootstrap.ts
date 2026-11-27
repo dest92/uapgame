@@ -1,6 +1,7 @@
 import worldUrl from '../../data/world.json?url';
 import infoUrl from '../../data/buildings-info.json?url';
 import heroAssets from 'virtual:hero-assets';
+import facadePhotos from '../../data/facade-photos.json';
 import type { BuildingInfoFile } from '@shared/info/types';
 import { EventBus } from '../core/events/EventBus';
 import type { GameEvents } from '../core/events/GameEvents';
@@ -64,6 +65,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     const built = buildWorldScene(world, new PbrMaterialLibrary(textures), {
       ground: { cellSize: 6, splatPxPerMeter: 2, splatMaxSize: 2048 },
       skipBuildings: heroKeys,
+      photoFacades: new Map(facadePhotos.map((f) => [f.building, `${import.meta.env.BASE_URL}textures/facades/${f.building.replace('/', '-')}.webp`])),
     });
     ctx.scene.add(built.root);
 

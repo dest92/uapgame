@@ -38,6 +38,15 @@ Generadas por `tools/fetch-textures.ts` (KTX2/Basis ETC1S en `public/textures/`)
 | bark | [Bark012](https://ambientcg.com/view?id=Bark012) | ambientCG | CC0 1.0 | troncos de árboles |
 | metal | [Metal032](https://ambientcg.com/view?id=Metal032) | ambientCG | CC0 1.0 | faroles, techos metálicos |
 
+## Fotos reales de fachada (decisión del cliente)
+Por decisión de Ache Systems (equipo vinculado a la UAP) se usan como textura fotos de los **sitios institucionales de la UAP**.
+Recomendado: confirmar por escrito el OK del área de comunicación de la UAP antes de publicar. Nunca se usan Google Maps/Street View/Earth.
+
+| Edificio | Imagen original | Titular | Textura |
+|---|---|---|---|
+| `way/388500961` | https://amy.uap.edu.ar/wp-content/uploads/2018/07/templo_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388500961.webp` |
+| `way/388510375` | https://uap.edu.ar/wp-content/uploads/2025/02/Escuela-de-Musica-UAP_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388510375.webp` |
+
 ## Referencias fotográficas
 Las fotos de `reference/web/` se usan **solo como referencia visual** (proporciones, pisos, techos, colores) y
 **no** se distribuyen (están en `.gitignore`). Ver `reference/web/README.md` y cada `refs.json` para autor, URL y licencia.

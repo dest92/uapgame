@@ -18,7 +18,8 @@ export interface PlayerRig {
 }
 
 function spawnPoint(world: WorldData): { x: number; z: number; yaw: number } {
-  const b = world.buildings.find((x) => x.id === APP_CONFIG.spawnBuildingId);
+  const requested = new URLSearchParams(location.search).get('spawn');
+  const b = world.buildings.find((x) => x.id === (requested ?? APP_CONFIG.spawnBuildingId));
   if (!b) return { x: 0, z: 0, yaw: 0 };
   const { position: p, normal: n } = b.entrance;
   // 16 m frente a la entrada, mirando hacia el edificio (encuadre amplio al iniciar).

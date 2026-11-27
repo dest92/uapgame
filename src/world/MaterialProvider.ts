@@ -12,4 +12,6 @@ export interface MaterialProvider {
   curb(): Material;
   ground(splat: Texture, worldSize: { width: number; depth: number }): Material;
   water(): Material;
+  /** Foto real de fachada (WebP en public/textures/facades). */
+  photoFacade(url: string): Material;
 }

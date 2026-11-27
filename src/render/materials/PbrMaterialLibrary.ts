@@ -1,4 +1,4 @@
-import { DoubleSide, MeshStandardNodeMaterial, type Material, type Texture } from 'three/webgpu';
+import { DoubleSide, MeshStandardNodeMaterial, SRGBColorSpace, TextureLoader, type Material, type Texture } from 'three/webgpu';
 import { color, float } from 'three/tsl';
 import type { WallMaterial } from '@shared/world/types';
 import type { MaterialProvider } from '../../world/MaterialProvider';
@@ -82,6 +82,15 @@ export class PbrMaterialLibrary implements MaterialProvider {
     m.roughnessNode = n.roughness;
     m.normalNode = n.normal;
     return m;
+  }
+
+  photoFacade(url: string): Material {
+    return this.cached(`photo:${url}`, () => {
+      const map = new TextureLoader().load(url);
+      map.colorSpace = SRGBColorSpace;
+      map.anisotropy = 8;
+      return new MeshStandardNodeMaterial({ map, roughness: 0.85 });
+    });
   }
 
   water(): Material {
