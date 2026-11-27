@@ -32,17 +32,46 @@
         "cubierta metálica curva con luminarias, cerchas de alma calada",
         "paredes con cortinas grises bajo ventanas altas"
       ]
+    },
+    {
+      "file": "03.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/snpSdQs0IAY/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=snpSdQs0IAY (LIGA APB UAP (LSM) vs Talleres - Canal 2 LSM, miniatura)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2026,
+      "view": "interior",
+      "extracted": [
+        "interior del Auditorio Mayor (los partidos de la liga se anuncian 'en el Auditorio'): cancha de piso verde con líneas",
+        "cubierta metálica curva, muros de ladrillo con grafismo amarillo/negro",
+        "1974: salón de usos múltiples de 82 x 35 m según cronología UAP"
+      ]
+    },
+    {
+      "file": "04.jpg",
+      "imageUrl": "https://i.ytimg.com/vi/9JPypo3uBP8/hq2.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=9JPypo3uBP8 (VOLEY UAP vs ROWING - Canal 2 LSM (afiche: '21:30 Auditorio'), fotograma automático ~37:00)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "year": 2025,
+      "view": "interior",
+      "extracted": [
+        "vista longitudinal de la nave: tribunas laterales, cubierta abovedada, luminarias",
+        "piso deportivo verde/rojo (fotograma ~50 %)"
+      ]
     }
   ],
   "summary": {
     "levels": null,
-    "roof": "barrel",
-    "roofColor": "#c9cdcf",
-    "wallMaterial": "plaster",
-    "wallColor": null,
+    "roof": "barrel (bóveda de cañón metálica)",
+    "roofColor": "#c9cccf",
+    "wallMaterial": "brick",
+    "wallColor": "#9a5a45",
     "trimColor": null,
-    "windowStyle": null,
-    "confidence": "low",
-    "notes": "Sin fotos de fachada. Ortofoto IGN 2013 (reference/aerial/ign-rio-parana-2013-campus-0.25m.jpg, rama claude/happy-edison-rnmwmz): cubierta en bóveda de cañón de chapa clara sobre el eje largo con dos hileras de lucernarios. Historia institucional ('Itinerario de una idea', uap.edu.ar): auditorio multiuso de 82 × 35 m inaugurado en 1974 (coincide con el footprint). Muros, aberturas y acceso del hero asset son estimados."
+    "windowStyle": "ventanas altas corridas bajo el alero",
+    "confidence": "medium",
+    "notes": "Nave 82x35 m (1974), 3.766 m2, >2.500 personas; cerchas reticuladas; uso polideportivo. Solo interiores; exterior visible en ortofoto IGN 2013."
   }
 }
