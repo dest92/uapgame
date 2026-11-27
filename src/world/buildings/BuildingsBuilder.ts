@@ -72,7 +72,7 @@ export function buildBuildings(
       const g = buildBuildingGeometry(b, ground, doorGround);
       const kind = b.appearance.wallMaterial;
       cell.far.add(kind, g.far);
-      cell.near.add(`wall-${kind}`, g.walls === g.far ? emptyGeometry() : g.walls);
+      cell.near.add(`wall-${kind}`, g.walls);
       cell.near.add('trim', g.trim);
       cell.near.add('glass', g.glass);
       always.add('roof', g.roof);

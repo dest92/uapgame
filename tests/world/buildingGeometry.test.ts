@@ -19,7 +19,7 @@ describe('buildBuildingGeometry', () => {
   it('paredes: 4 quads con altura = suelo + height y fundación bajo el suelo', () => {
     const g = buildBuildingGeometry(base, 2);
     const ys = [];
-    for (let i = 1; i < g.walls.positions.length; i += 3) ys.push(g.walls.positions[i]!);
+    for (let i = 1; i < g.far.positions.length; i += 3) ys.push(g.far.positions[i]!);
     expect(Math.max(...ys)).toBeCloseTo(2 + 6.4 + 0.6, 5); // parapeto de techo plano
     expect(Math.min(...ys)).toBeLessThan(2);
   });
@@ -32,13 +32,13 @@ describe('buildBuildingGeometry', () => {
   it('las normales de las paredes apuntan hacia afuera', () => {
     const g = buildBuildingGeometry(base, 0);
     const c = base.centroid;
-    for (let i = 0; i < g.walls.positions.length / 3; i += 4) {
-      const px = g.walls.positions[i * 3]!;
-      const pz = g.walls.positions[i * 3 + 2]!;
-      const nx = g.walls.normals[i * 3]!;
-      const nz = g.walls.normals[i * 3 + 2]!;
+    for (let i = 0; i < g.far.positions.length / 3; i += 4) {
+      const px = g.far.positions[i * 3]!;
+      const pz = g.far.positions[i * 3 + 2]!;
+      const nx = g.far.normals[i * 3]!;
+      const nz = g.far.normals[i * 3 + 2]!;
       // El vector (p - centroide) y la normal no deben oponerse en paredes exteriores.
-      if (Math.abs(nx) + Math.abs(nz) > 0.5 && g.walls.extra[i * 3 + 2]! === 0) {
+      if (Math.abs(nx) + Math.abs(nz) > 0.5 && g.far.extra[i * 3 + 2]! === 0) {
         expect((px - c.x) * nx + (pz - c.z) * nz).toBeGreaterThan(-1e-6);
       }
     }
@@ -57,7 +57,7 @@ describe('buildBuildingGeometry', () => {
   });
   it('colores de vértice salen de la apariencia (sRGB → lineal)', () => {
     const g = buildBuildingGeometry(base, 0);
-    expect(g.walls.colors.length).toBe(g.walls.positions.length);
-    expect(g.walls.colors[0]).toBeGreaterThan(0);
+    expect(g.far.colors.length).toBe(g.far.positions.length);
+    expect(g.far.colors[0]).toBeGreaterThan(0);
   });
 });

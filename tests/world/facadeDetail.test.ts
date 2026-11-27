@@ -30,6 +30,12 @@ describe('geometría de fachada cercana (FAC-2..4)', () => {
     }
   });
 
+  it('FAC-3: el muro cercano es distinto del lejano y tiene huecos (más vértices)', () => {
+    expect(g.walls).not.toBe(g.far);
+    expect(g.walls.positions.length).toBeGreaterThan(g.far.positions.length * 4);
+    expect(g.walls.extra.filter((_, i) => i % 3 === 2).some((z) => z === 2)).toBe(true);
+  });
+
   it('FAC-3: ningún vértice del muro cercano sale del volumen del edificio (salvo molduras)', () => {
     for (const { p } of verts(g.walls)) {
       expect(p[0]).toBeGreaterThanOrEqual(-1e-6);
@@ -40,14 +46,14 @@ describe('geometría de fachada cercana (FAC-2..4)', () => {
   });
 
   it('FAC-3: normales unitarias y, en el plomo del muro, hacia afuera', () => {
-    for (const { p, n } of verts(g.walls)) {
+    verts(g.walls).forEach(({ p, n }, i) => {
       expect(Math.hypot(n[0]!, n[1]!, n[2]!)).toBeCloseTo(1, 5);
-      const onFace = Math.min(p[0]!, 20 - p[0]!, p[2]!, 10 - p[2]!) < 1e-6 && Math.abs(n[1]!) < 0.5;
-      if (onFace && p[1]! < 6.4) {
+      // Muro en el plomo (flag 2); los retiros (flag 1) miran hacia el vano.
+      if (g.walls.extra[i * 3 + 2] === 2) {
         const out = (p[0]! - 10) * n[0]! + (p[2]! - 5) * n[2]!;
         expect(out).toBeGreaterThan(0);
       }
-    }
+    });
   });
 
   it('FAC-4: hay puerta en la pared de la entrada (vidrio marcado como puerta, a nivel del suelo)', () => {

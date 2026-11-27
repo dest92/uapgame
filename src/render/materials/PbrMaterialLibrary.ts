@@ -29,11 +29,13 @@ export class PbrMaterialLibrary implements MaterialProvider {
     return m;
   }
 
+  // Los materiales con TSL propio leen `vertexColor()` en sus nodos: sin `vertexColors`
+  // (si no, NodeMaterial vuelve a multiplicar el color por el atributo).
   wall(kind: WallMaterial): Material {
     return this.cached(`wall:${kind}`, () => {
       const { set, params } = WALLS[kind];
       const n = facadeNodes(this.tex.get(set), params);
-      const m = new MeshStandardNodeMaterial({ vertexColors: true });
+      const m = new MeshStandardNodeMaterial({});
       m.colorNode = n.color;
       m.roughnessNode = n.roughness;
       m.metalnessNode = n.metalness;
@@ -46,7 +48,7 @@ export class PbrMaterialLibrary implements MaterialProvider {
   roof(): Material {
     return this.cached('roof', () => {
       const n = roofNodes2(this.tex.get('rooftiles'), this.tex.get('concrete'));
-      const m = new MeshStandardNodeMaterial({ vertexColors: true, side: DoubleSide });
+      const m = new MeshStandardNodeMaterial({ side: DoubleSide });
       m.colorNode = n.color;
       m.roughnessNode = n.roughness;
       m.metalnessNode = n.metalness;
@@ -58,7 +60,7 @@ export class PbrMaterialLibrary implements MaterialProvider {
   trim(): Material {
     return this.cached('trim', () => {
       const n = trimNodes(this.tex.get('concrete'));
-      const m = new MeshStandardNodeMaterial({ vertexColors: true });
+      const m = new MeshStandardNodeMaterial({});
       m.colorNode = n.color;
       m.roughnessNode = n.roughness;
       m.normalNode = n.normal;
@@ -69,7 +71,7 @@ export class PbrMaterialLibrary implements MaterialProvider {
   glass(): Material {
     return this.cached('glass', () => {
       const n = glassNodes();
-      const m = new MeshStandardNodeMaterial({ vertexColors: true });
+      const m = new MeshStandardNodeMaterial({});
       m.colorNode = n.color;
       m.roughnessNode = n.roughness;
       m.metalnessNode = n.metalness;

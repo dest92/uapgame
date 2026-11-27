@@ -16,8 +16,6 @@ export interface BuildingGeometry extends FacadeDetail {
    * altura de pared, flag: 0 ventanas pintadas, 1 liso, 2 cercano con chorreaduras).
    */
   readonly far: GeometryData;
-  /** Alias de `far` (compatibilidad). */
-  readonly walls: GeometryData;
   readonly roof: GeometryData;
 }
 
@@ -107,7 +105,7 @@ export function buildBuildingGeometry(b: BuildingData, groundY: number, doorGrou
     appendPitchedRoof({ roof, gables }, b, mesh, top, groundY, { roof: roofColor, wall: wallColor, trim: trimColor });
     appendGeometry(far, gables);
     appendGeometry(detail.walls, gables);
-    return { ...detail, far, walls: far, roof };
+    return { ...detail, far, roof };
   }
 
   // Techo plano con parapeto: cara interior + borde superior + losa.
@@ -130,5 +128,5 @@ export function buildBuildingGeometry(b: BuildingData, groundY: number, doorGrou
     // El borde del parapeto lleva color liso (lo tapa el coronamiento).
     if (v < ringVerts) roof.extra[v * 3 + 1] = ROOF_PLAIN;
   }
-  return { ...detail, far, walls: far, roof };
+  return { ...detail, far, roof };
 }
