@@ -10,6 +10,7 @@ import { validateWorld } from '../shared/world/validate';
 import { buildWorld } from './lib/world/buildWorld';
 import { renderMissingInfo } from './lib/world/missingInfo';
 import { loadReferences } from './lib/refs/loadReferences';
+import { loadRoofOverrides } from './lib/world/roofs';
 import { loadGeoTiffSampler } from './lib/terrain/geotiffSampler';
 import { resampleTerrain } from './lib/terrain/resample';
 
@@ -41,8 +42,10 @@ async function main(): Promise<void> {
     console.warn('  ⚠ TODO: no hay GeoTIFF en reference/terrain/ → terreno plano con ondulación procedural');
   }
 
+  const roofs = loadRoofOverrides();
+  console.log(`  ✓ ${roofs.size} techos desde la ortofoto (reference/aerial/roofs.json)`);
   const { world, missing } = buildWorld({
-    geojson, campus, marginMeters: meta.marginMeters, references: refs.summaries, generatedAt,
+    geojson, campus, marginMeters: meta.marginMeters, references: refs.summaries, generatedAt, roofs,
     ...(terrain ? { terrain } : {}),
   });
   validateWorld(JSON.parse(JSON.stringify(world)));

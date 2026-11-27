@@ -5,6 +5,7 @@ import type { GeoPoint } from '../../../shared/geo/types';
 import type { ReferenceSummary } from '../../../shared/world/reference';
 import { WORLD_SCHEMA_VERSION, type TerrainData, type WorldData } from '../../../shared/world/types';
 import { buildBuilding } from './buildings';
+import type { RoofOverride } from './roofs';
 import { roundVec, toOsmFeature, type OsmFeature } from './features';
 import type { MissingInfo } from './missingInfo';
 import { buildArea, buildRoads } from './network';
@@ -17,6 +18,8 @@ export interface BuildWorldInput {
   readonly references: ReadonlyMap<string, ReferenceSummary>;
   readonly generatedAt: string;
   readonly terrain?: TerrainData;
+  /** Techos observados en la ortofoto (id OSM → forma/material/color). */
+  readonly roofs?: ReadonlyMap<string, RoofOverride>;
 }
 
 export interface BuildWorldOutput {
@@ -47,7 +50,7 @@ export function buildWorld(input: BuildWorldInput): BuildWorldOutput {
     .map((f) => buildPoi(f, proj, bounds))
     .filter((p) => p !== null);
 
-  const ctx = { proj, bounds, references: input.references, paths: roads.map((r) => r.points), pois };
+  const ctx = { proj, bounds, references: input.references, paths: roads.map((r) => r.points), pois, ...(input.roofs ? { roofs: input.roofs } : {}) };
   const buildings = features
     .filter((f) => f.tags['building'] && f.geometry.type !== 'Point' && f.tags['building'] !== 'roof')
     .map((f) => buildBuilding(f, ctx, missing))

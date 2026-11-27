@@ -4,6 +4,19 @@ import type { AreaKind, RoadClass, Surface } from './featureRules';
 
 export const WORLD_SCHEMA_VERSION = 1;
 
+export type RoofMaterial = 'tiles' | 'metal' | 'membrane';
+
+/**
+ * Techo precalculado offline (straight skeleton, ROOF-1..3). Coordenadas x/z del mundo,
+ * y relativa al tope de muros. Polígonos aplanados [x,y,z, x,y,z, …].
+ */
+export interface RoofMeshData {
+  readonly faces: readonly (readonly number[])[];
+  readonly gables: readonly (readonly number[])[];
+  /** Segmentos de cenefa [x1,y1,z1,x2,y2,z2] concatenados. */
+  readonly trim: readonly number[];
+}
+
 export type WallMaterial = 'brick' | 'plaster' | 'concrete' | 'glass' | 'stone' | 'metal';
 
 export interface BuildingAppearance {
@@ -27,7 +40,14 @@ export interface BuildingData {
   readonly minHeight: number;
   readonly levels: number;
   readonly heightSource: HeightSource;
-  readonly roof: { readonly shape: RoofShape; readonly height: number };
+  readonly roof: {
+    readonly shape: RoofShape;
+    readonly height: number;
+    readonly material?: RoofMaterial;
+    readonly mesh?: RoofMeshData;
+    /** De dónde salió la forma: tag OSM, ortofoto, referencia o default. */
+    readonly source?: string;
+  };
   readonly appearance: BuildingAppearance;
   readonly entrance: { readonly position: Vec2; readonly normal: Vec2 };
   /** Ids de POIs con nombre ubicados dentro del footprint. */

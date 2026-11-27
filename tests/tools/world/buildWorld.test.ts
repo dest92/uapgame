@@ -102,3 +102,23 @@ describe('buildWorld (spec 003)', () => {
     expect(world.pois.map((p) => p.name)).toContain('Rectoría');
   });
 });
+
+describe('techos desde la ortofoto (ROOF-4)', () => {
+  it('ROOF-4: el override aplica forma, material y color y guarda la malla del skeleton', () => {
+    const { world: w } = buildWorld({
+      geojson: fc, campus, marginMeters: 100, generatedAt: 'x', references: new Map(),
+      roofs: new Map([['way/1', { shape: 'gabled', material: 'metal', color: '#3e6a57' }]]),
+    });
+    const b = w.buildings.find((x) => x.id === 'way/1')!;
+    expect(b.roof).toMatchObject({ shape: 'gabled', material: 'metal', source: 'ortofoto' });
+    expect(b.roof.height).toBeGreaterThan(0);
+    expect(b.roof.mesh!.faces.length).toBeGreaterThan(0);
+    expect(b.appearance.roofColor).toBe('#3e6a57');
+  });
+  it('ROOF-4: sin override ni tag → plano con membrana y sin malla', () => {
+    const { world: w } = buildWorld({ geojson: fc, campus, marginMeters: 100, generatedAt: 'x', references: new Map() });
+    const b = w.buildings.find((x) => x.id === 'way/1')!;
+    expect(b.roof).toMatchObject({ shape: 'flat', material: 'membrane' });
+    expect(b.roof.mesh).toBeUndefined();
+  });
+});
