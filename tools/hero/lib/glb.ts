@@ -81,8 +81,9 @@ export async function writeHeroGlb<M extends string>(
       mat.setEmissiveFactor([r, g, b]);
     }
     const prim = doc.createPrimitive().setMaterial(mat);
-    for (const [attr, gl] of [['position', 'POSITION'], ['normal', 'NORMAL'], ['uv', 'TEXCOORD_0']] as const) {
+    for (const [attr, gl] of [['position', 'POSITION'], ['normal', 'NORMAL'], ['uv', 'TEXCOORD_0'], ['color', 'COLOR_0']] as const) {
       const a = geo.getAttribute(attr);
+      if (!a) continue;
       prim.setAttribute(gl, doc.createAccessor(`${key}_${gl}`).setType(a.itemSize === 3 ? 'VEC3' : 'VEC2').setArray(new Float32Array(a.array)).setBuffer(buffer));
     }
     triangles += geo.getAttribute('position').count / 3;

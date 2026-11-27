@@ -36,12 +36,19 @@ export class HeroBuilder<M extends string> {
     return this;
   }
 
-  /** Geometría fusionada por material, con UV planares en metros divididas por `uvScale(mat)`. */
-  merged(uvScale: (mat: M) => number): Map<M, BufferGeometry> {
+  /**
+   * Geometría fusionada por material, con UV planares en metros divididas por `uvScale(mat)` y, si
+   * `variation(mat)` > 0, color de vértice con AO horneado (sofitos y pie de muro más oscuros) y una
+   * leve variación de tono por pieza que rompe la uniformidad (técnica "Voidlight", R7).
+   */
+  merged(uvScale: (mat: M) => number, variation: (mat: M) => number = () => 0): Map<M, BufferGeometry> {
     const out = new Map<M, BufferGeometry>();
+    let piece = 0;
     for (const [mat, list] of this.parts) {
+      const v = variation(mat);
       const clean = list.map((g) => {
-        for (const name of Object.keys(g.attributes)) if (!['position', 'normal', 'uv'].includes(name)) g.deleteAttribute(name);
+        for (const name of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(name)) g.deleteAttribute(name);
+        if (v > 0) bakeVertexColor(g, 1 + (hash01(++piece) - 0.5) * 2 * v);
         return g;
       });
       const g = mergeGeometries(clean, false);
@@ -81,4 +88,28 @@ export function planarUv(g: BufferGeometry, scale: number): void {
     }
   }
   g.setAttribute('uv', new BufferAttribute(uv, 2));
+}
+
+/** Hash determinista en [0, 1). */
+export const hash01 = (n: number): number => {
+  const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
+
+/**
+ * AO de vértice: caras que miran hacia abajo (sofitos, aleros) ×0.7 y vértices a menos de 0.5 m del
+ * nivel de acceso ×0.82 (contacto con el suelo), multiplicado por el tinte de la pieza.
+ */
+export function bakeVertexColor(g: BufferGeometry, tint: number): void {
+  const pos = g.getAttribute('position');
+  const nrm = g.getAttribute('normal');
+  const col = new Float32Array(pos.count * 3);
+  for (let i = 0; i < pos.count; i++) {
+    let ao = tint;
+    if (nrm && nrm.getY(i) < -0.5) ao *= 0.7;
+    const y = pos.getY(i);
+    if (y < 0.5 && y > -1) ao *= 0.82 + 0.18 * Math.max(0, y / 0.5);
+    col[i * 3] = col[i * 3 + 1] = col[i * 3 + 2] = Math.min(1, ao);
+  }
+  g.setAttribute('color', new BufferAttribute(col, 3));
 }
