@@ -45,9 +45,9 @@ export class VegetationMaterialLibrary implements VegetationMaterials {
         .add(vec3(sin(time.mul(4.3).add(positionLocal.x.mul(3))).mul(0.03).mul(h), 0, 0));
       m.positionNode = positionLocal.add(sway);
       const shade = mix(float(0.62), float(1.12), h);
-      m.colorNode = leaf.rgb.mul(vertexColor().rgb).mul(shade).mul(mix(float(0.9), float(1.1), hash(instanceIndex.add(7))));
+      m.colorNode = leaf.rgb.mul(vertexColor().rgb).mul(shade).mul(mix(float(0.5), float(0.62), hash(instanceIndex.add(7))));
       m.opacityNode = leaf.a;
-      m.roughnessNode = float(0.75);
+      m.roughnessNode = float(0.95);
       return m;
     });
   }

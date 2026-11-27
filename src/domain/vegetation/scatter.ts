@@ -50,7 +50,7 @@ const hash2 = (p: Vec2): number => {
 /** VEG-3: mezcla típica de la zona (latifoliadas, coníferas, palmeras pindó). */
 export function speciesAt(p: Vec2): TreeSpecies {
   const h = hash2(p);
-  return h < 0.62 ? 'broadleaf' : h < 0.85 ? 'conifer' : 'palm';
+  return h < 0.72 ? 'broadleaf' : h < 0.86 ? 'conifer' : 'palm';
 }
 
 /** Grilla espacial para consultas de vecinos en O(1). */

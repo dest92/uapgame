@@ -21,8 +21,8 @@ function spawnPoint(world: WorldData): { x: number; z: number; yaw: number } {
   const b = world.buildings.find((x) => x.id === APP_CONFIG.spawnBuildingId);
   if (!b) return { x: 0, z: 0, yaw: 0 };
   const { position: p, normal: n } = b.entrance;
-  // 6 m frente a la entrada, mirando hacia el edificio.
-  return { x: p.x + n.x * 6, z: p.z + n.z * 6, yaw: Math.atan2(-n.x, -n.z) };
+  // 16 m frente a la entrada, mirando hacia el edificio (encuadre amplio al iniciar).
+  return { x: p.x + n.x * 16, z: p.z + n.z * 16, yaw: Math.atan2(-n.x, -n.z) };
 }
 
 /** Crea el jugador local: estado, física, vista animada y cámara. */
@@ -46,7 +46,9 @@ export async function createPlayer(
   let rig: CameraRig | null = null;
   const controller = new PlayerController(APP_CONFIG.playerEntityId, state, body, input, () => rig?.orbit.yaw ?? 0, (dt) => physics.step(dt));
   rig = new CameraRig(ctx.camera, controller, input, physics, terrain);
-  rig.orbit.yaw = spawn.yaw + Math.PI;
+  rig.orbit.yaw = spawn.yaw + Math.PI + 0.5;
+  rig.orbit.pitch = 0.22;
+  rig.orbit.zoom(2.5);
 
   loop.add(controller).add(rig).add({
     update: (dt, alpha) => {
