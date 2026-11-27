@@ -13,3 +13,7 @@
 - **WLD-9** Entrada de edificio: punto en el borde del footprint más cercano a un camino peatonal (o calle), desplazado 0.5 m hacia afuera; si no hay caminos, el punto medio de la arista más larga.
 - **WLD-10** Todo se recorta al bbox de trabajo (campus + 100 m); se descartan geometrías degeneradas (< 3 vértices, área < 4 m²).
 - **WLD-11** `validateWorld()` valida la forma de `world.json` en runtime y rechaza datos corruptos con un mensaje claro.
+- **ROOF-1** Straight skeleton propio (`shared/geo/straightSkeleton.ts`) para polígonos simples: las caras teselan el footprint y cada nodo está a distancia `t` de la línea de su arista (caras planas). Funciona en todos los footprints reales.
+- **ROOF-2** Techos inclinados offline (`shared/world/roofGeometry.ts`): 4 aguas = skeleton; 2 aguas = las caras triangulares de los extremos se vuelven hastiales (el vértice se desliza por la cumbrera, así los faldones siguen planos); pirámide al centroide; alero con inglete y cenefa. Pendiente por material (tejas 30°, chapa 12°) limitada por una altura máxima.
+- **ROOF-3** Bóveda de cañón (`round`) sobre el rectángulo orientado si la rectangularidad ≥ 0,85; si no, 2 aguas.
+- **ROOF-4** Forma/material/color del techo: tag OSM `roof:shape` > ortofoto IGN (`reference/aerial/roofs.json`, interpretación visual con confianza) > referencias > default. `world.json` guarda `roof.mesh` (faldones, hastiales, cenefa); el runtime solo triangula.
