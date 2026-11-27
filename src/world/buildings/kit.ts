@@ -32,6 +32,8 @@ const dirWorld = (f: WallFrame, du: number, dy: number, dw: number): V3 =>
 export interface QuadOpts {
   readonly color: RGB;
   readonly extra?: readonly [number, number, number];
+  /** AO horneado: multiplicador de color por esquina (1 = sin oclusión). */
+  readonly shade?: readonly number[];
 }
 
 /**
@@ -43,7 +45,9 @@ export function quad(g: GeometryData, f: WallFrame, c: readonly (readonly [numbe
   const base = g.positions.length / 3;
   c.forEach(([u, y, w], i) => {
     const uv: readonly [number, number] = uvs?.[i] ?? (Math.abs(normal[1]) > 0.5 ? [u, w] : Math.abs(normal[0]) > 0.5 ? [w, y] : [u, y]);
-    pushVertex(g, { p: toWorld(f, u, y, w), n, uv, color: o.color, ...(o.extra ? { extra: o.extra } : {}) });
+    const k = o.shade?.[i] ?? 1;
+    const color: readonly [number, number, number] = k === 1 ? o.color : [o.color[0] * k, o.color[1] * k, o.color[2] * k];
+    pushVertex(g, { p: toWorld(f, u, y, w), n, uv, color, ...(o.extra ? { extra: o.extra } : {}) });
   });
   g.indices.push(base, base + 1, base + 2, base, base + 2, base + 3);
 }

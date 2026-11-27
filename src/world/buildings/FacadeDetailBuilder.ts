@@ -64,10 +64,13 @@ function opening(g: FacadeDetail, f: WallFrame, o: Opening, inp: FacadeInput, wa
   const D = o.kind === 'door' ? DOOR_DEPTH : WIN_DEPTH;
   const plain = { color: inp.colors.wall, extra: [wallExtra[0], wallExtra[1], FLAG_PLAIN] as [number, number, number] };
   // Retiros (jambas, dintel interior, antepecho): muro liso mirando hacia el vano.
-  quad(g.walls, f, [[u0, y0, 0], [u0, y0, -D], [u0, y1, -D], [u0, y1, 0]], [1, 0, 0], plain, [[0, o.v0], [D, o.v0], [D, o.v1], [0, o.v1]]);
-  quad(g.walls, f, [[u1, y0, -D], [u1, y0, 0], [u1, y1, 0], [u1, y1, -D]], [-1, 0, 0], plain, [[D, o.v0], [0, o.v0], [0, o.v1], [D, o.v1]]);
-  quad(g.walls, f, [[u0, y1, 0], [u0, y1, -D], [u1, y1, -D], [u1, y1, 0]], [0, -1, 0], plain);
-  quad(g.walls, f, [[u0, y0, -D], [u0, y0, 0], [u1, y0, 0], [u1, y0, -D]], [0, 1, 0], plain);
+  // AO horneado: el fondo del retiro (w = −D) recibe menos cielo que el borde.
+  const IN = 0.5;
+  const OUT = 0.88;
+  quad(g.walls, f, [[u0, y0, 0], [u0, y0, -D], [u0, y1, -D], [u0, y1, 0]], [1, 0, 0], { ...plain, shade: [OUT, IN, IN, OUT] }, [[0, o.v0], [D, o.v0], [D, o.v1], [0, o.v1]]);
+  quad(g.walls, f, [[u1, y0, -D], [u1, y0, 0], [u1, y1, 0], [u1, y1, -D]], [-1, 0, 0], { ...plain, shade: [IN, OUT, OUT, IN] }, [[D, o.v0], [0, o.v0], [0, o.v1], [D, o.v1]]);
+  quad(g.walls, f, [[u0, y1, 0], [u0, y1, -D], [u1, y1, -D], [u1, y1, 0]], [0, -1, 0], { ...plain, shade: [OUT * 0.8, IN * 0.8, IN * 0.8, OUT * 0.8] });
+  quad(g.walls, f, [[u0, y0, -D], [u0, y0, 0], [u1, y0, 0], [u1, y0, -D]], [0, 1, 0], { ...plain, shade: [IN, 1, 1, IN] });
   const frame = { color: inp.colors.frame };
   const wg = -D + 0.05;
   const glass = { color: [seed, o.kind === 'door' ? 1 : 0, o.level] as [number, number, number] };
