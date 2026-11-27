@@ -150,10 +150,32 @@ export function normalFromHeight(t: ProcTexture, strength = 4): Uint8Array {
   return out;
 }
 
+/**
+ * Explanada del Templo (02.jpg): baldosas de 40 cm gris medio con un dibujo geométrico de bandas de
+ * baldosas gris claro (marco + greca en "L"). Una repetición = 15 × 15 baldosas (6 m).
+ */
+export function plazaTilesTexture(size = 512, seed = 11): ProcTexture {
+  const n = 15;
+  const light = (i: number, j: number): boolean =>
+    i <= 1 || j <= 1 || (i >= 5 && i <= 6 && j >= 4 && j <= 11) || (j >= 10 && j <= 11 && i >= 5 && i <= 12);
+  return make(size, (u, v) => {
+    const x = u * n, y = v * n;
+    const i = Math.floor(x), j = Math.floor(y);
+    const edge = Math.min(fract(x), 1 - fract(x), fract(y), 1 - fract(y));
+    const jointT = 1 - smooth(0.02, 0.05, edge);
+    const tone = 0.95 + hash2(i, j, seed) * 0.1;
+    const base = light(i, j) ? 214 : 158;
+    const g = base * tone * (0.97 + fbm(u, v, 32, 2, seed) * 0.06);
+    const c = g * (1 - jointT) + 120 * jointT;
+    return [c, c, c * 0.99, (1 - jointT) * 0.8];
+  });
+}
+
 /** Generadores disponibles por nombre (los usa materials.ts como `proc`). */
 export const PROC_TEXTURES = {
   brick: (size: number) => brickTexture(size),
   flagstone: (size: number) => flagstoneTexture(size),
   plaster: (size: number) => plasterTexture(size),
+  plazaTiles: (size: number) => plazaTilesTexture(size),
 } as const;
 export type ProcTextureName = keyof typeof PROC_TEXTURES;
