@@ -6,7 +6,7 @@
 import { BoxGeometry, BufferGeometry, CylinderGeometry, ExtrudeGeometry, Float32BufferAttribute, Path, Shape, ShapeGeometry, Vector2 } from 'three';
 import type { Vec2 } from '@shared/geo/types';
 
-export type OpeningKind = 'rect' | 'pointed' | 'round' | 'gable';
+export type OpeningKind = 'rect' | 'pointed' | 'round' | 'gable' | 'circle';
 
 /** Vano en una fachada: `x` = centro, `y` = antepecho (base), medidas en metros. */
 export interface Opening {
@@ -25,6 +25,14 @@ export function openingOutline(o: Opening, seg = 8): Vector2[] {
   const x1 = o.x + o.w / 2;
   const kind = o.kind ?? 'rect';
   if (kind === 'rect') return [new Vector2(x0, o.y), new Vector2(x1, o.y), new Vector2(x1, o.y + o.h), new Vector2(x0, o.y + o.h)];
+  if (kind === 'circle') {
+    // Óculo: círculo inscripto en el ancho, apoyado en y.
+    const r = o.w / 2;
+    return Array.from({ length: seg * 4 }, (_, i) => {
+      const a = -Math.PI / 2 + (i / (seg * 4)) * Math.PI * 2;
+      return new Vector2(o.x + Math.cos(a) * r, o.y + r + Math.sin(a) * r);
+    });
+  }
   const pts = [new Vector2(x0, o.y), new Vector2(x1, o.y)];
   if (kind === 'round') {
     const r = o.w / 2;
@@ -197,4 +205,31 @@ export function frustum(base: number, top: number, h: number, x = 0, y = 0, z = 
   const out = prep(g);
   out.computeVertexNormals(); // caras planas
   return out;
+}
+
+/**
+ * Faldón entre dos anillos de igual cantidad de vértices (alero exterior abajo, línea interior arriba):
+ * techos a cuatro aguas de poca pendiente sobre footprints irregulares. Cada triángulo mira hacia arriba.
+ */
+export function loft(outer: readonly Vec2[], inner: readonly Vec2[], y0: number, y1: number): BufferGeometry {
+  if (outer.length !== inner.length) throw new Error('loft: anillos de distinto tamaño');
+  const pos: number[] = [];
+  const tri = (a: number[], b: number[], c: number[]): void => {
+    const ux = b[0]! - a[0]!, uz = b[2]! - a[2]!;
+    const vx = c[0]! - a[0]!, vz = c[2]! - a[2]!;
+    const ny = uz * vx - ux * vz;
+    pos.push(...a, ...(ny >= 0 ? b : c), ...(ny >= 0 ? c : b));
+  };
+  for (let i = 0; i < outer.length; i++) {
+    const j = (i + 1) % outer.length;
+    const o0 = [outer[i]!.x, y0, outer[i]!.z], o1 = [outer[j]!.x, y0, outer[j]!.z];
+    const i0 = [inner[i]!.x, y1, inner[i]!.z], i1 = [inner[j]!.x, y1, inner[j]!.z];
+    tri(o0, o1, i1);
+    tri(o0, i1, i0);
+  }
+  const g = new BufferGeometry();
+  g.setAttribute('position', new Float32BufferAttribute(pos, 3));
+  g.computeVertexNormals();
+  g.setAttribute('uv', new Float32BufferAttribute(new Float32Array((pos.length / 3) * 2), 2));
+  return g;
 }

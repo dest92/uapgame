@@ -36,11 +36,21 @@ export function glazing(o: Opening, opt: GlazingOptions): Glazing {
   const frame: BufferGeometry[] = [ringGeo];
   const cols = opt.cols ?? 1;
   const kind = o.kind ?? 'rect';
-  const straightTop = kind === 'rect' ? o.y + o.h : o.y + o.h - o.w * (kind === 'pointed' ? Math.sin(Math.PI / 3) : 0.5);
+  const straightTop = kind === 'rect' ? o.y + o.h : kind === 'circle' ? o.y + o.h : o.y + o.h - o.w * (kind === 'pointed' ? Math.sin(Math.PI / 3) : 0.5);
   for (let i = 1; i < cols; i++) {
     const x = o.x - o.w / 2 + (o.w * i) / cols;
     frame.push(box(bar, straightTop - o.y, depth, x, o.y, opt.z));
   }
   for (const y of opt.transoms ?? []) frame.push(box(o.w, bar, depth, o.x, y - bar / 2, opt.z));
   return { glass: [flatShape(outline, opt.z - 0.01)], frame };
+}
+
+/** Moldura (archivolta/marco) alrededor de un vano: anillo de ancho `width` que sobresale `depth` de z. */
+export function moldingRing(o: Opening, width: number, depth: number, z = 0): BufferGeometry {
+  const outer = openingOutline(o.kind === 'circle' ? { ...o, y: o.y - width, w: o.w + 2 * width, h: o.h + 2 * width } : { ...o, w: o.w + 2 * width, h: o.h + width });
+  const ring = new Shape(outer);
+  ring.holes.push(new Path(openingOutline(o)));
+  const g = new ExtrudeGeometry(ring, { depth, bevelEnabled: false, curveSegments: 6 }).toNonIndexed();
+  g.translate(0, 0, z);
+  return g;
 }

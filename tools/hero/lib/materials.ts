@@ -10,6 +10,7 @@ export const HERO_TEXTURES = {
   stone: { asset: 'Bricks099', size: 512, normal: true, grey: false, contrast: 1.1 },
   brick: { asset: 'Bricks097', size: 512, normal: true, grey: false, contrast: 1 },
   paving: { asset: 'PavingStones130', size: 512, normal: true, grey: true, contrast: 1 },
+  tiles: { asset: 'RoofingTiles006', size: 512, normal: true, grey: false, contrast: 1 },
 } as const;
 
 export type HeroTexture = keyof typeof HERO_TEXTURES;
