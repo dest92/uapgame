@@ -4,11 +4,12 @@ import type { WallMaterial } from '@shared/world/types';
 import type { MaterialProvider } from '../../world/MaterialProvider';
 import type { TextureLibrary, TextureSetName } from '../textures/TextureLibrary';
 import { facadeNodes, type FacadeParams } from './nodes/facadeNode';
-import { groundNodes, roadNodes, roofNodes } from './nodes/surfaceNodes';
+import { groundNodes, roadNodes } from './nodes/surfaceNodes';
+import { glassNodes, roofNodes2, trimNodes } from './nodes/buildingNodes';
 
 /** Textura y parámetros de fachada por tipo de pared (derivado de las referencias, MAT-1). */
 const WALLS: Readonly<Record<WallMaterial, { set: TextureSetName; params: FacadeParams }>> = {
-  brick: { set: 'brick', params: { tile: 2.2, keepTexture: 0.55, textureLuma: 0.22 } },
+  brick: { set: 'concrete', params: { tile: 2.5, keepTexture: 0, textureLuma: 0.42, bricks: true } },
   plaster: { set: 'plaster', params: { tile: 3, keepTexture: 0, textureLuma: 0.62 } },
   concrete: { set: 'concrete', params: { tile: 3, keepTexture: 0.15, textureLuma: 0.42 } },
   stone: { set: 'concrete', params: { tile: 2, keepTexture: 0.3, textureLuma: 0.42 } },
@@ -44,11 +45,35 @@ export class PbrMaterialLibrary implements MaterialProvider {
 
   roof(): Material {
     return this.cached('roof', () => {
-      const n = roofNodes(this.tex.get('rooftiles'), this.tex.get('concrete'));
+      const n = roofNodes2(this.tex.get('rooftiles'), this.tex.get('concrete'));
       const m = new MeshStandardNodeMaterial({ vertexColors: true, side: DoubleSide });
       m.colorNode = n.color;
       m.roughnessNode = n.roughness;
+      m.metalnessNode = n.metalness;
       m.normalNode = n.normal;
+      return m;
+    });
+  }
+
+  trim(): Material {
+    return this.cached('trim', () => {
+      const n = trimNodes(this.tex.get('concrete'));
+      const m = new MeshStandardNodeMaterial({ vertexColors: true });
+      m.colorNode = n.color;
+      m.roughnessNode = n.roughness;
+      m.normalNode = n.normal;
+      return m;
+    });
+  }
+
+  glass(): Material {
+    return this.cached('glass', () => {
+      const n = glassNodes();
+      const m = new MeshStandardNodeMaterial({ vertexColors: true });
+      m.colorNode = n.color;
+      m.roughnessNode = n.roughness;
+      m.metalnessNode = n.metalness;
+      m.emissiveNode = n.emissive;
       return m;
     });
   }
