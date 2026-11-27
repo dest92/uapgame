@@ -39,7 +39,8 @@ try {
     if (process.env.E2E_VERBOSE) console.log(`[${m.type()}]`, m.text());
   });
   page.on('pageerror', (e) => errors.push(String(e)));
-  await page.goto(`http://localhost:${PORT}/${values.query}`);
+  const q = values.query ? values.query + '&autostart' : '?autostart';
+  await page.goto(`http://localhost:${PORT}/${q}`);
   await page.waitForFunction(() => document.documentElement.dataset.ready, null, { timeout: Number(values.timeout), polling: 1000 });
   if ((await page.evaluate(() => document.documentElement.dataset.ready)) === 'error') {
     throw new Error(`Error de carga: ${await page.locator('.loading__label').innerText()}`);

@@ -26,6 +26,7 @@ import { SkySystem } from '../render/sky/SkySystem';
 import { TextureLibrary } from '../render/textures/TextureLibrary';
 import { LoadingScreen } from '../ui/LoadingScreen';
 import { SettingsMenu } from '../ui/SettingsMenu';
+import { showStartOverlay } from '../ui/StartOverlay';
 import { TouchControls } from '../ui/TouchControls';
 import { buildVegetation } from '../world/vegetation/VegetationBuilder';
 import { FallbackTreeProvider, ProceduralTreeProvider } from '../world/vegetation/TreeVariant';
@@ -144,6 +145,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     loop.start();
     stage('Listo', 1);
     loading.hide();
+    if (!new URLSearchParams(location.search).has('autostart')) showStartOverlay(container, touch);
   } catch (err) {
     console.error(err);
     loading.error(`No se pudo iniciar: ${err instanceof Error ? err.message : String(err)}`);
