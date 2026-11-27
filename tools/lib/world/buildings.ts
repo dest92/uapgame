@@ -34,7 +34,7 @@ export function buildBuilding(f: OsmFeature, ctx: BuildingContext, missing: Miss
   const roof = resolveRoof(f.tags, heightInfo.height, ref);
   const nameInfo = resolveName(f.tags, f.id);
   const kind = f.tags['building'] ?? 'yes';
-  const entrance = computeEntrance(footprint, ctx.paths);
+  const entrance = ref?.entrance ?? computeEntrance(footprint, ctx.paths);
 
   if (!nameInfo.identified) {
     missing.push({ id: f.id, name: nameInfo.name, issue: 'sin-nombre', detail: 'OSM no tiene `name`.' });
