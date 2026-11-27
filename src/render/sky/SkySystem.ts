@@ -76,7 +76,9 @@ export class SkySystem implements GameSystem {
       this.sun.shadow.shadowNode = this.csm;
     } else {
       this.csm = null;
-      this.sun.shadow.shadowNode = null as never;
+      // Debe quedar `undefined` (no null): three usa la sombra estándar solo si el campo no está definido;
+      // con null arma un shader inválido (geometría "estirada" en pantalla).
+      delete (this.sun.shadow as { shadowNode?: unknown }).shadowNode;
       const cam = this.sun.shadow.camera;
       cam.left = cam.bottom = -q.shadowDistance / 2;
       cam.right = cam.top = q.shadowDistance / 2;
