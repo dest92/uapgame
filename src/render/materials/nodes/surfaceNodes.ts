@@ -27,8 +27,8 @@ export function groundNodes(sets: { grass: PbrSet; dirt: PbrSet; paving: PbrSet 
   const paved = detiled(sets.paving, xz, 3);
   const macro = mx_noise_float(xz.mul(0.012)).mul(0.5).add(0.5);
   // Pasto silvestre: el mismo césped, más seco y amarillento, con manchas.
-  const wild = grass.color.mul(color('#c8b27a')).mul(mix(float(0.85), float(1.15), macro));
-  const lawn = grass.color.mul(mix(float(0.85), float(1.1), macro)).mul(color('#e6f0d0'));
+  const wild = grass.color.mul(color('#a08f60')).mul(mix(float(0.85), float(1.15), macro));
+  const lawn = grass.color.mul(mix(float(0.75), float(0.95), macro)).mul(color('#9fb586'));
   let c = mix(wild, lawn, s.r);
   c = mix(c, dirt.color, s.g.mul(float(1).sub(s.b)));
   c = mix(c, paved.color, s.b);

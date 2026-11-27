@@ -89,7 +89,7 @@ export class PbrMaterialLibrary implements MaterialProvider {
       const map = new TextureLoader().load(url);
       map.colorSpace = SRGBColorSpace;
       map.anisotropy = 8;
-      return new MeshStandardNodeMaterial({ map, roughness: 0.85 });
+      return new MeshStandardNodeMaterial({ map, roughness: 0.85, alphaTest: 0.5 });
     });
   }
 
