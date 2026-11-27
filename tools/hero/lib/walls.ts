@@ -44,6 +44,8 @@ export interface WindowRowOptions<M extends string> {
   /** Celosía de lamas horizontales delante del vidrio (cantidad de lamas). */
   readonly louvers?: number;
   readonly louverMat?: M;
+  /** Omite ventanas puntuales (p.ej. detrás de un acceso): arista y posición sobre ella. */
+  readonly skipAt?: (edge: number, x: number) => boolean;
 }
 
 /** Ventanas regulares aplicadas sobre cada arista de `poly` (CCW en mapa) salvo las indicadas en `skip`. */
@@ -60,6 +62,7 @@ export function windowRows<M extends string>(b: HeroBuilder<M>, poly: readonly V
     const local = b.at(f);
     for (let k = 0; k < n; k++) {
       const x = L / 2 - span / 2 + k * o.spacing;
+      if (o.skipAt?.(i, x)) continue;
       for (const y of o.rows) {
         const outline = openingOutline({ x, y, w: o.width, h: o.height });
         local.add(o.glass, flatShape(outline, 0.03));
@@ -79,4 +82,44 @@ export function windowRows<M extends string>(b: HeroBuilder<M>, poly: readonly V
       }
     }
   });
+}
+
+/** Rectángulo en el plano de una fachada (x a lo largo, y altura) que interrumpe un revestimiento. */
+export interface Rect2 {
+  readonly x0: number;
+  readonly x1: number;
+  readonly y0: number;
+  readonly y1: number;
+}
+
+export interface PanelGridOptions<M extends string> {
+  readonly panel: M;
+  readonly x0: number;
+  readonly x1: number;
+  readonly y0: number;
+  readonly y1: number;
+  /** Tamaño nominal de placa (se ajusta para cubrir el paño exacto). */
+  readonly pw: number;
+  readonly ph: number;
+  readonly gap?: number;
+  readonly thickness?: number;
+  /** Zonas sin placas (ventanas, cuerpos salientes). */
+  readonly skip?: readonly Rect2[];
+}
+
+/** Revestimiento de placas con juntas reales (cada placa es una caja apenas saliente). */
+export function panelGrid<M extends string>(b: HeroBuilder<M>, o: PanelGridOptions<M>): void {
+  const gap = o.gap ?? 0.025;
+  const t = o.thickness ?? 0.04;
+  const nx = Math.max(1, Math.round((o.x1 - o.x0) / o.pw));
+  const ny = Math.max(1, Math.round((o.y1 - o.y0) / o.ph));
+  const pw = (o.x1 - o.x0) / nx;
+  const ph = (o.y1 - o.y0) / ny;
+  for (let i = 0; i < nx; i++) {
+    for (let j = 0; j < ny; j++) {
+      const x0 = o.x0 + i * pw, x1 = x0 + pw, y0 = o.y0 + j * ph, y1 = y0 + ph;
+      if (o.skip?.some((r) => x0 < r.x1 && x1 > r.x0 && y0 < r.y1 && y1 > r.y0)) continue;
+      b.add(o.panel, box(pw - gap, ph - gap, t, (x0 + x1) / 2, y0 + gap / 2, t / 2));
+    }
+  }
 }

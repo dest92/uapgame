@@ -13,20 +13,6 @@
     "owner": "Universidad Adventista del Plata (sitio institucional)"
   },
   {
-    "building": "way/388495172",
-    "image": "reference/web/way-388495172/05.jpg",
-    "crop": [
-      0.135,
-      0.225,
-      0.553,
-      0.66
-    ],
-    "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/slide03.jpg",
-    "sourcePage": "https://uap.edu.ar/ (slider de la página de inicio, 'slide03', 2025-07)",
-    "owner": "Universidad Adventista del Plata (sitio institucional)",
-    "note": "2025, fachada principal frontal (eje), recortada en la línea de techo de las alas (frontón excluido); palmeras delante ocluyen parcialmente."
-  },
-  {
     "building": "way/388495176",
     "image": "reference/web/way-388495176/02.jpg",
     "crop": [
