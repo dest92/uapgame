@@ -6,7 +6,7 @@
  * con columnas redondas bajo un faldón de tejas. Frente = cara SE (aristas 4→6, colineales).
  */
 import { Matrix4, Vector2 } from 'three';
-import type { BuildingData } from '@shared/world/types';
+import type { BuildingData, WorldData } from '@shared/world/types';
 import type { Vec2 } from '@shared/geo/types';
 import { HeroBuilder } from '../lib/builder';
 import { add, edgeFrame, insetPolygon, len, relativeTo, scale, sub } from '../lib/frame';
@@ -15,10 +15,13 @@ import { glazing } from '../lib/openings';
 import { type Opening, box, cylinder, footprintPrism, loft, profilePrism, ringPrism } from '../lib/parts';
 import { textGeometry } from '../lib/text';
 import { windowRows } from '../lib/walls';
+import { MASTIL_MATERIALS, flagpoles } from '../props/mastiles';
+import { siteFor } from '../lib/site';
 import type { HeroModel } from './types';
 
 export const OGDEN_MATERIALS = {
   ...BASE_MATERIALS,
+  ...MASTIL_MATERIALS,
   cream: { color: '#efe4cc', roughness: 0.9, texture: 'plaster', uvScale: 3 },
   trimPink: { color: '#b88f82', roughness: 0.85, texture: 'plaster', uvScale: 3 },
   tiles: { color: '#b85a32', roughness: 0.75, texture: 'tiles', uvScale: 2.5 },
@@ -108,7 +111,7 @@ function skirtRoof(b: HeroBuilder<M>, x0: number, x1: number): void {
   b.add('trimPink', box(w, 0.22, 0.08, (x0 + x1) / 2, FLOOR - 0.15, depth - 0.2));
 }
 
-export async function buildOgden(bd: BuildingData): Promise<HeroModel<M>> {
+export async function buildOgden(bd: BuildingData, world: WorldData): Promise<HeroModel<M>> {
   const b = new HeroBuilder<M>();
   const fp = relativeTo(bd.footprint, bd.centroid);
   const [p0, p1, p2, p3, p4, , p6, p7, p8] = fp as [Vec2, Vec2, Vec2, Vec2, Vec2, Vec2, Vec2, Vec2, Vec2];
@@ -154,5 +157,6 @@ export async function buildOgden(bd: BuildingData): Promise<HeroModel<M>> {
   windowRows(b, fp, {
     glass: 'glassDark', frame: 'frameWhite', sill: 'trimPink', rows: [0.95, FLOOR + 0.95], width: 1.15, height: 1.45, spacing: 3.2, margin: 1.4,
   }, new Set([4, 5]));
+  flagpoles(b, siteFor(bd, world), world);
   return { builder: b, materials: OGDEN_MATERIALS };
 }
