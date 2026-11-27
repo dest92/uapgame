@@ -14,7 +14,7 @@ export const HERO_TEXTURES: Readonly<Record<'plaster' | 'concrete' | 'stone' | '
   stone: { asset: 'Bricks099', proc: 'flagstone', size: 512, normal: true, grey: false, contrast: 1.1 },
   brick: { asset: 'Bricks097', proc: 'brick', size: 512, normal: true, grey: false, contrast: 1 },
   paving: { asset: 'PavingStones130', size: 512, normal: true, grey: true, contrast: 1 },
-  plazaTiles: { asset: '', proc: 'plazaTiles', size: 512, normal: true, grey: true, contrast: 1 },
+  plazaTiles: { asset: '', proc: 'plazaTiles', size: 512, normal: true, grey: true, contrast: 0.7 },
   tiles: { asset: 'RoofingTiles006', size: 512, normal: true, grey: false, contrast: 1 },
 };
 

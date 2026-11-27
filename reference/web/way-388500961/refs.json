@@ -63,12 +63,12 @@
     "heightRationale": "02.jpg: la fachada supera ~8 veces la altura de una persona (≈1.7 m) → ≈13.5 m. Decisión de modelado documentada (Hito 1).",
     "entrance": {
       "position": {
-        "x": -33.36,
-        "z": -40.57
+        "x": -36.24,
+        "z": -43.19
       },
       "normal": {
-        "x": 0.745,
-        "z": 0.667
+        "x": 0.746,
+        "z": 0.666
       }
     },
     "entranceRationale": "01.jpg/02.jpg: accesos vidriados bajo marquesinas en la fachada principal, sobre el arco SE del footprint (frente a calle Marshall). Punto = centro del cuerpo central del hero asset."
