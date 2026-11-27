@@ -13,6 +13,8 @@ import { GameState } from '../core/state/GameState';
 import { InteractionSystem } from '../gameplay/InteractionSystem';
 import { VehicleSystem } from '../gameplay/VehicleSystem';
 import { NpcSystem } from '../gameplay/NpcSystem';
+import { AudioSystem } from '../audio/AudioSystem';
+import { sceneUniforms } from '../render/materials/nodes/sharedUniforms';
 import { AssetLoader } from '../render/assets/AssetLoader';
 import { backendLabel } from '../render/backend';
 import { PbrMaterialLibrary } from '../render/materials/PbrMaterialLibrary';
@@ -109,6 +111,11 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     const f = player.controller.facing;
     vehicles.spawn(start.x + Math.cos(f) * 1.8, start.z - Math.sin(f) * 1.8, f);
     loop.add(vehicles);
+    loop.add(new AudioSystem({
+      speed: () => state.get(APP_CONFIG.playerEntityId)?.speed ?? 0,
+      riding: () => player.controller.riding !== null,
+      night: () => sceneUniforms.night.value,
+    }));
     loop.add(new NpcSystem(ctx.scene, player.model, player.clips, world.roads, built.terrain, quality.profile.level === 'low' ? 4 : 10));
 
     const ui = createUi({
