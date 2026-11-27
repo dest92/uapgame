@@ -64,11 +64,11 @@ function make(size: number, fn: (u: number, v: number) => [number, number, numbe
 }
 
 /**
- * Ladrillo visto: hiladas desfasadas (1 m de textura = 13 hiladas × 4 ladrillos de 25 cm), junta de mortero
+ * Ladrillo visto: hiladas desfasadas (1 m de textura = 14 hiladas de ~7 cm × 4 ladrillos de 25 cm), junta de mortero
  * hundida, tono por ladrillo (rojos, ocres y algunos quemados), desgaste en aristas y poros.
  */
 export function brickTexture(size = 512, seed = 1): ProcTexture {
-  const rows = 13, cols = 4;
+  const rows = 14, cols = 4; // hiladas pares: el trabado empalma al repetir
   const joint = 0.06; // fracción de celda
   return make(size, (u, v) => {
     const ry = v * rows;
