@@ -14,20 +14,22 @@ import { HeroBuilder } from '../lib/builder';
 import { type Frame2, add, lerp2, norm, relativeTo, scale, sub } from '../lib/frame';
 import { BASE_MATERIALS, type MaterialSpec } from '../lib/materials';
 import { arcPoints, box, cylinder, flatShape, frustum, ribbon } from '../lib/parts';
-import { textGeometry } from '../lib/text';
+import { IASD_LOGO } from '../lib/logos';
+import { svgGeometry, textGeometry } from '../lib/text';
 import type { HeroModel } from './types';
 
 export const PORTICO_MATERIALS = {
   ...BASE_MATERIALS,
-  stoneSand: { color: '#b89c74', roughness: 0.9, texture: 'stone', uvScale: 1.8 },
+  stoneSand: { color: '#b89c74', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   ribbonWhite: { color: '#ece8dc', roughness: 0.75, texture: 'concrete', uvScale: 2 },
-  brick: { color: '#84462f', roughness: 0.9, texture: 'brick', uvScale: 1.6 },
+  brick: { color: '#84462f', roughness: 0.9, texture: 'brick', uvScale: 1.0 },
   roofGreen: { color: '#6d7768', roughness: 0.7, metalness: 0.2 },
   cobbles: { color: '#a3a39f', roughness: 0.9, texture: 'paving', uvScale: 2.5 },
   benchBrown: { color: '#7a5e4c', roughness: 0.6 },
   totemGrey: { color: '#a9adb0', roughness: 0.5, metalness: 0.3 },
   signWhite: { color: '#f2f2f0', roughness: 0.4 },
   signNavy: { color: '#1d2b4a', roughness: 0.4 },
+  signPurple: { color: '#5b2a86', roughness: 0.45 },
   fenceGreen: { color: '#2f5a3c', roughness: 0.5, metalness: 0.5 },
   flagBlue: { color: '#74acdf', roughness: 0.8, doubleSided: true },
   flagWhite: { color: '#f4f4f4', roughness: 0.8, doubleSided: true },
@@ -110,6 +112,17 @@ async function totem(b: HeroBuilder<M>): Promise<void> {
   b.add('signWhite', uap);
 }
 
+/** Cartel violeta institucional con el isologo IASD junto a la garita (02.jpg, 2025). */
+async function purpleSign(b: HeroBuilder<M>): Promise<void> {
+  b.add('concreteGrey', box(1.6, 0.25, 0.5, 0, 0, 0));
+  b.add('signPurple', box(1.3, 1.7, 0.18, 0, 0.25, 0));
+  const logo = await svgGeometry(IASD_LOGO, 0.75, 0.03);
+  logo.translate(0, 1.15, 0.09);
+  const uap = await textGeometry('UNIVERSIDAD\nADVENTISTA\nDEL PLATA', { height: 0.42, depth: 0.03, font: 'DejaVu Serif', lineHeight: 1.0 });
+  uap.translate(0, 0.55, 0.09);
+  b.add('signWhite', logo, uap);
+}
+
 /** Banco de forma orgánica: losa de canto redondeado sobre dos patas. */
 function bench(b: HeroBuilder<M>, length: number): void {
   const r = 0.28;
@@ -136,6 +149,7 @@ export async function buildPortico(bd: BuildingData, world: { roads: readonly { 
   // Garita al NE del pilar derecho (POI "Prevención"), mástil detrás.
   gatehouse(a.at({ origin: { x: ARCH.pillarSpacing / 2 + 3.6, z: -0.6 }, tangent: { x: 1, z: 0 }, normal: { x: 0, z: 1 } }));
   flagpole(a.at({ origin: { x: ARCH.pillarSpacing / 2 + 3.0, z: -4.0 }, tangent: { x: 1, z: 0 }, normal: { x: 0, z: 1 } }));
+  await purpleSign(a.at({ origin: { x: ARCH.pillarSpacing / 2 + 5.6, z: 3.2 }, tangent: { x: 1, z: 0 }, normal: { x: 0, z: 1 } }));
   // Plaza 2026 entre la garita y el edificio de ladrillo (paralelo al eje del arco, ~7 m detrás).
   const plaza: Vec2[] = [{ x: 6.5, z: 2.5 }, { x: 24, z: 2.5 }, { x: 24, z: -6.2 }, { x: 6.5, z: -6.2 }];
   const plazaPrism = flatShape(plaza.map((p) => new Vector2(p.x, -p.z)), 0);

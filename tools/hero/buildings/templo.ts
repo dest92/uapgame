@@ -15,11 +15,12 @@ import { glazing } from '../lib/openings';
 import { type Opening, box, footprintPrism, profilePrism, roundedTopProfile, wallSlab } from '../lib/parts';
 import { svgGeometry, textGeometry } from '../lib/text';
 import { flatRoofMass, windowRows } from '../lib/walls';
+import { IASD_LOGO } from '../lib/logos';
 import type { HeroModel } from './types';
 
 export const TEMPLO_MATERIALS = {
   ...BASE_MATERIALS,
-  stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 2.2 },
+  stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   copper: { color: '#a8775a', roughness: 0.45, metalness: 0.6 },
   plaza: { color: '#c9c8c3', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },
   plazaDark: { color: '#8f908e', roughness: 0.85, texture: 'concrete', uvScale: 1.5 },
@@ -47,12 +48,6 @@ export const TEMPLO_FACADE: readonly Element[] = [
 const SLAB = 0.9;
 const FACADE_WIDTH = TEMPLO_FACADE.reduce((s, e) => s + e.w, 0);
 const MASS_DEPTH = 9;
-const IASD_LOGO = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="360">
-<path d="M30 300 L200 270 L370 300 L370 325 L200 300 L30 325 Z" fill="#fff"/>
-<path d="M200 262 C130 210 215 150 175 40 C250 120 175 190 230 250 Z" fill="#fff"/>
-<path d="M150 262 C105 225 150 185 132 130 C175 175 140 215 185 255 Z" fill="#fff"/>
-<path d="M248 262 C290 228 252 190 272 150 C230 185 262 220 218 258 Z" fill="#fff"/>
-</svg>`;
 
 /** Cuerpo con vanos: puertas vidriadas, marquesina, banda vidriada y 3 ventanas apuntadas. */
 function body(b: HeroBuilder<M>, e: Element): void {

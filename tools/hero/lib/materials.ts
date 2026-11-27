@@ -1,19 +1,31 @@
+import type { ProcTextureName } from './proctex';
 /**
  * Paleta PBR de los hero assets. Cada material puede llevar una textura CC0 de ambientCG
  * (normalizada a un "detalle" de brillo medio fijo) que se tiñe con `color`.
  */
 
-/** Sets de ambientCG (CC0) usados por los hero assets; ver CREDITS.md. */
-export const HERO_TEXTURES = {
-  plaster: { asset: 'PaintedPlaster017', size: 512, normal: false, grey: true, contrast: 0.6 },
+/**
+ * Texturas de detalle de los hero assets: sets CC0 de ambientCG o, con `proc`, generadas por texel en
+ * tools/hero/lib/proctex.ts (ladrillo con juntas, laja irregular, revoque con manchas). Ver CREDITS.md.
+ */
+export const HERO_TEXTURES: Readonly<Record<'plaster' | 'concrete' | 'stone' | 'brick' | 'paving' | 'tiles', HeroTextureSpec>> = {
+  plaster: { asset: 'PaintedPlaster017', proc: 'plaster', size: 512, normal: true, grey: true, contrast: 0.8 },
   concrete: { asset: 'Concrete034', size: 512, normal: false, grey: true, contrast: 0.8 },
-  stone: { asset: 'Bricks099', size: 512, normal: true, grey: false, contrast: 1.1 },
-  brick: { asset: 'Bricks097', size: 512, normal: true, grey: false, contrast: 1 },
+  stone: { asset: 'Bricks099', proc: 'flagstone', size: 512, normal: true, grey: false, contrast: 1.1 },
+  brick: { asset: 'Bricks097', proc: 'brick', size: 512, normal: true, grey: false, contrast: 1 },
   paving: { asset: 'PavingStones130', size: 512, normal: true, grey: true, contrast: 1 },
   tiles: { asset: 'RoofingTiles006', size: 512, normal: true, grey: false, contrast: 1 },
-} as const;
+};
 
 export type HeroTexture = keyof typeof HERO_TEXTURES;
+export interface HeroTextureSpec {
+  readonly asset: string;
+  readonly proc?: ProcTextureName;
+  readonly size: number;
+  readonly normal: boolean;
+  readonly grey: boolean;
+  readonly contrast: number;
+}
 
 export interface MaterialSpec {
   /** Color sRGB final (la textura se normaliza para que su media dé este color). */

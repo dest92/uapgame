@@ -28,7 +28,7 @@ export const OGDEN_MATERIALS = {
   frameWhite: { color: '#f1f1ee', roughness: 0.4 },
   doorWhite: { color: '#e9e9e6', roughness: 0.5 },
   letters: { color: '#7d7468', roughness: 0.6 },
-  flagstone: { color: '#b9b1a5', roughness: 0.9, texture: 'stone', uvScale: 2 },
+  flagstone: { color: '#b9b1a5', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
 } as const satisfies Record<string, MaterialSpec>;
 type M = keyof typeof OGDEN_MATERIALS;
 
