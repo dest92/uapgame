@@ -38,12 +38,12 @@ type M = keyof typeof PORTICO_MATERIALS;
 export const ARCH = {
   pillarSpacing: 7.2,
   pillarHeight: 5.6,
-  pillarBase: 1.7,
-  pillarTop: 1.15,
+  pillarBase: 2.0,
+  pillarTop: 1.35,
   beamY: 4.85,
   archRise: 3.0,
-  ribbonWidth: 1.15,
-  ribbonThickness: 0.24,
+  ribbonWidth: 1.6,
+  ribbonThickness: 0.3,
 } as const;
 
 /** Eje largo del polígono (SO → NE) y punto donde lo cruza el camino de acceso. */
