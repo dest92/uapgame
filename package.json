@@ -27,7 +27,8 @@
     "assets:polyhaven": "tsx tools/fetch-polyhaven.ts",
     "data:vegetation": "tsx tools/build-vegetation-models.ts",
     "data:facades": "tsx tools/build-facade-photos.ts",
-    "data:hero": "tsx tools/build-hero.ts"
+    "data:hero": "tsx tools/build-hero.ts",
+    "data:proc-textures": "tsx tools/build-proc-textures.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.21.0",

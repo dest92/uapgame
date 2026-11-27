@@ -3,7 +3,6 @@ import type { Node } from 'three/webgpu';
 import type { PbrSet } from '../../textures/TextureLibrary';
 import { FACADE } from '@shared/world/facadeGrammar';
 import { sceneUniforms } from './sharedUniforms';
-import { brickPattern, bumpNormal } from './buildingNodes';
 
 type F = Node<'float'>;
 
@@ -18,8 +17,6 @@ export interface FacadeParams {
   readonly keepTexture: number;
   /** Luminancia media aproximada de la textura (para normalizar el tinte). */
   readonly textureLuma: number;
-  /** Aparejo de ladrillo procedural con color por pieza. */
-  readonly bricks?: boolean;
 }
 
 export interface FacadeNodes {
@@ -52,16 +49,9 @@ export function facadeNodes(set: PbrSet, p: FacadeParams): FacadeNodes {
   // Muro: textura tintada conservando su detalle de luminancia.
   const tex = texture(set.color, tuv).rgb;
   const tint = vertexColor().rgb.mul(luminance(tex).div(p.textureLuma));
-  let wall = mix(tint, tex.mul(vertexColor().rgb.div(max(luminance(vertexColor().rgb), 0.05)).mul(0.5)), p.keepTexture);
-  let brickH: F = float(0);
-  if (p.bricks) {
-    const br = brickPattern(u, v);
-    const pieceTint = mix(float(0.72), float(1.18), br.seed).mul(mix(float(1), luminance(tex).div(p.textureLuma), 0.35));
-    const burnt = step(0.93, br.seed);
-    const brick = vertexColor().rgb.mul(pieceTint).mul(mix(float(1), float(0.6), burnt));
-    wall = mix(brick, color('#b3ab9e').mul(0.8), br.mortar);
-    brickH = br.height;
-  }
+  // keepTexture: cuánto del color propio de la textura (tono por ladrillo, mortero) se conserva,
+  // llevado al brillo del color del edificio.
+  let wall = mix(tint, tex.mul(luminance(vertexColor().rgb).div(p.textureLuma)), p.keepTexture);
   // Suciedad en la base y leve degradé de altura (lectura de escala, "grime").
   wall = wall.mul(mix(float(0.72), float(1), smoothstep(0.0, 0.9, v)));
   // Manchas de humedad/polución a gran escala (rompen la uniformidad del muro).
@@ -118,7 +108,7 @@ export function facadeNodes(set: PbrSet, p: FacadeParams): FacadeNodes {
   const wallRough = texture(set.rough, tuv).g;
   const roughness = mix(wallRough, float(0.06), glassOnly);
   const metalness = mix(float(0), float(0.0), glassOnly);
-  const nWall = p.bricks ? bumpNormal(brickH, normalMap(texture(set.normal, tuv))) : normalMap(texture(set.normal, tuv));
+  const nWall = normalMap(texture(set.normal, tuv));
   const warm = mix(vec3(1.0, 0.72, 0.42), vec3(0.85, 0.92, 1.0), hash(seed.mul(91.7)).mul(0.6));
   const emissive = warm.mul(glassOnly).mul(lit).mul(min(float(1), seed.sub(0.52).mul(6).add(0.4))).mul(2.2);
   return { color: c, roughness, normal: nWall, emissive, metalness };

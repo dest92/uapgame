@@ -1,7 +1,9 @@
 import { RepeatWrapping, SRGBColorSpace, type Texture } from 'three/webgpu';
 import type { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
 
-export type TextureSetName = 'grass' | 'dirt' | 'asphalt' | 'paving' | 'concrete' | 'brick' | 'plaster' | 'rooftiles' | 'bark' | 'metal';
+export type TextureSetName = 'grass' | 'dirt' | 'asphalt' | 'paving' | 'concrete' | 'brick' | 'plaster' | 'rooftiles' | 'bark' | 'metal'
+  /** Horneadas por texel (tools/build-proc-textures.ts, mismo generador que los hero assets). */
+  | 'procbrick' | 'procplaster';
 
 export interface PbrSet {
   readonly color: Texture;
@@ -9,7 +11,7 @@ export interface PbrSet {
   readonly rough: Texture;
 }
 
-const SETS: readonly TextureSetName[] = ['grass', 'dirt', 'asphalt', 'paving', 'concrete', 'brick', 'plaster', 'rooftiles', 'bark', 'metal'];
+const SETS: readonly TextureSetName[] = ['grass', 'dirt', 'asphalt', 'paving', 'concrete', 'brick', 'plaster', 'rooftiles', 'bark', 'metal', 'procbrick', 'procplaster'];
 
 /** Carga los sets PBR KTX2 de public/textures (generados por tools/fetch-textures.ts). */
 export class TextureLibrary {

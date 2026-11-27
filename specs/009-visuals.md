@@ -16,7 +16,7 @@
 - **FAC-2** A menos de ~60 m (LOD por celda de 72 m): ventanas con retiro real de 18 cm, marco, parante, travesaño, vidrio (reflejo + interior falso + luz nocturna), alféizar saliente y dintel. Un vidrio por vano.
 - **FAC-3** Muro cercano = rectángulos macizos alrededor de los vanos (cubren exactamente la pared menos los vanos); normales hacia afuera.
 - **FAC-4** Puerta en la pared más cercana a `entrance`, alineada a la bahía, con umbral a la cota del terreno de la entrada y marquesina. Siempre visibles: zócalo, coronamiento de parapeto o friso bajo alero, pilastras en esquinas convexas. Lejos, `facadeNode` pinta la misma grilla (constantes compartidas) con chorreaduras bajo alféizares y suciedad de salpicado.
-- **MAT-2** Techos: chapa acanalada procedural (onda 7,6 cm con relieve por derivadas, juntas, óxido, chorreaduras), tejas orientadas con la pendiente, membrana con manchas de agua. Ladrillo procedural por pieza (junta de 1 cm, color y piezas quemadas por hash).
+- **MAT-2** Techos: chapa acanalada procedural (onda 7,6 cm con relieve por derivadas, juntas, óxido, chorreaduras), tejas orientadas con la pendiente, membrana con manchas de agua. Ladrillo y revoque horneados por texel (`tools/build-proc-textures.ts`, mismo generador `proctex` que los hero assets: tono por ladrillo, juntas hundidas → normal map) llevados al color del edificio.
 
 ## Decisiones técnicas
 - AO: GTAO a media resolución multiplicando el color final (una sola pasada de geometría con MRT), en vez de `builtinAOContext` (que requiere pre-pasada).

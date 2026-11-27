@@ -23,22 +23,6 @@ export function bumpNormal(h: F, base: V3 = normalView): V3 {
   return normalize(abs(det).mul(base).sub(grad));
 }
 
-/** Aparejo de ladrillo procedural (soga, junta de 1 cm) con color por pieza. */
-export function brickPattern(u: F, v: F) {
-  const H = 0.075;
-  const L = 0.25;
-  const row = floor(v.div(H));
-  const shift = fract(row.mul(0.5)).mul(L);
-  const bu = u.add(shift).div(L);
-  const id = vec2(floor(bu), row);
-  const fu = fract(bu).mul(L);
-  const fv = fract(v.div(H)).mul(H);
-  const J = 0.011;
-  const inside = smoothstep(0, J, fu).mul(smoothstep(0, J, float(L).sub(fu))).mul(smoothstep(0, J, fv)).mul(smoothstep(0, J, float(H).sub(fv)));
-  const seed = hash(id.x.mul(12.9898).add(id.y.mul(78.233)));
-  return { mortar: float(1).sub(inside), seed, height: inside.mul(0.006) };
-}
-
 /**
  * Techos (ROOF-*): `facade.x` elige el material — 0 tejas (textura alineada a la pendiente),
  * 1 chapa acanalada procedural (onda de 7,6 cm con relieve, juntas de chapa, óxido), 2 membrana.

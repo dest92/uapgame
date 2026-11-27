@@ -9,8 +9,8 @@ import { glassNodes, roofNodes2, trimNodes } from './nodes/buildingNodes';
 
 /** Textura y parámetros de fachada por tipo de pared (derivado de las referencias, MAT-1). */
 const WALLS: Readonly<Record<WallMaterial, { set: TextureSetName; params: FacadeParams }>> = {
-  brick: { set: 'concrete', params: { tile: 2.5, keepTexture: 0, textureLuma: 0.42, bricks: true } },
-  plaster: { set: 'plaster', params: { tile: 3, keepTexture: 0, textureLuma: 0.62 } },
+  brick: { set: 'procbrick', params: { tile: 1, keepTexture: 0.8, textureLuma: 0.13 } },
+  plaster: { set: 'procplaster', params: { tile: 3, keepTexture: 0, textureLuma: 0.78 } },
   concrete: { set: 'concrete', params: { tile: 3, keepTexture: 0.15, textureLuma: 0.42 } },
   stone: { set: 'concrete', params: { tile: 2, keepTexture: 0.3, textureLuma: 0.42 } },
   glass: { set: 'plaster', params: { tile: 3, keepTexture: 0, textureLuma: 0.62 } },

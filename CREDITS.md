@@ -37,6 +37,7 @@ Generadas por `tools/fetch-textures.ts` (KTX2/Basis ETC1S en `public/textures/`)
 | rooftiles | [RoofingTiles006](https://ambientcg.com/view?id=RoofingTiles006) | ambientCG | CC0 1.0 | techos de tejas |
 | bark | [Bark012](https://ambientcg.com/view?id=Bark012) | ambientCG | CC0 1.0 | troncos de árboles |
 | metal | [Metal032](https://ambientcg.com/view?id=Metal032) | ambientCG | CC0 1.0 | faroles, techos metálicos |
+| procbrick, procplaster | generadas por código (`tools/build-proc-textures.ts` con `tools/hero/lib/proctex.ts`) | propio | igual que el repo | muros de ladrillo y revoque de los edificios procedurales |
 
 ## Hero assets (modelos detallados de edificios)
 Generados por código (`npm run data:hero`, `tools/build-hero.ts`) a partir del footprint de OSM (ODbL) y de las
