@@ -16,7 +16,7 @@ function clumpGeometry() {
     const base = g.positions.length / 3;
     for (let s = 0; s <= 3; s++) {
       const t = s / 3;
-      const w = 0.045 * (1 - t * 0.85);
+      const w = 0.028 * (1 - t * 0.9);
       for (const side of [-1, 1]) {
         pushVertex(g, { p: [dx * w * side + lean * t, t, dz * w * side + lean * t * 0.5], n: [0, 1, 0], uv: [(side + 1) / 2, t], color: [1, 1, 1] });
       }

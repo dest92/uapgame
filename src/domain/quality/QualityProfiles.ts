@@ -21,15 +21,15 @@ export interface QualityProfile {
 export const QUALITY_PROFILES: Readonly<Record<QualityLevel, QualityProfile>> = {
   low: {
     level: 'low', pixelRatioCap: 1, renderScale: 0.75, shadows: true, shadowMapSize: 1024, cascades: 1,
-    shadowDistance: 60, ao: false, bloom: false, antialias: false, grassDensity: 1.5, grassDistance: 30, treeFillSpacing: 14,
+    shadowDistance: 60, ao: false, bloom: false, antialias: false, grassDensity: 3, grassDistance: 28, treeFillSpacing: 14,
   },
   medium: {
     level: 'medium', pixelRatioCap: 1.5, renderScale: 1, shadows: true, shadowMapSize: 2048, cascades: 3,
-    shadowDistance: 160, ao: true, bloom: true, antialias: true, grassDensity: 4, grassDistance: 50, treeFillSpacing: 10,
+    shadowDistance: 160, ao: true, bloom: true, antialias: true, grassDensity: 9, grassDistance: 45, treeFillSpacing: 10,
   },
   high: {
     level: 'high', pixelRatioCap: 2, renderScale: 1, shadows: true, shadowMapSize: 2048, cascades: 3,
-    shadowDistance: 260, ao: true, bloom: true, antialias: true, grassDensity: 8, grassDistance: 80, treeFillSpacing: 8,
+    shadowDistance: 260, ao: true, bloom: true, antialias: true, grassDensity: 14, grassDistance: 60, treeFillSpacing: 8,
   },
 };
 
