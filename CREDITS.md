@@ -54,6 +54,7 @@ PavingStones130, RoofingTiles006. Letras extruidas desde las tipografías DejaVu
 | Facultad de Ciencias de la Salud (`way/388495176`) | `public/models/hero/way-388495176.glb` |
 | Pabellón de Música OGDEN (`way/388510375`) | `public/models/hero/way-388510375.glb` |
 | Salón de los Pioneros (`way/388512621`) | `public/models/hero/way-388512621.glb` |
+| Auditorio Mayor (`way/388500965`, volumen desde la ortofoto IGN 2013) | `public/models/hero/way-388500965.glb` |
 
 ## Fotos reales de fachada (decisión del cliente)
 Se permitían fotos de los sitios institucionales de la UAP como textura de fachada (`data/facade-photos.json`).

@@ -51,7 +51,7 @@ Nunca se usan datos de Google Maps/Earth/Street View ni sus fotos. Las fotos de 
 Siete edificios icónicos se reemplazan por modelos generados **por código** con geometría real (vanos hundidos con
 marcos y parteluces, cornisas, marquesinas, pilastras, letras extruidas, techos de tejas con alero):
 Templo, Pórtico (arco + garita + plaza 2026) y el edificio de ladrillo vecino, Biblioteca/Edificio Fernando Chaij,
-FCS, Pabellón OGDEN y Salón de los Pioneros.
+FCS, Pabellón OGDEN, Salón de los Pioneros y Auditorio Mayor (este último desde la ortofoto IGN, sin fotos de fachada).
 
 ```bash
 npm run data:hero                    # regenera todos (public/models/hero/*.glb)

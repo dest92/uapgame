@@ -34,7 +34,7 @@
   vanos pasantes con derrames, carpinterías con parteluces/travesaños, arcos apuntados y óculos, placas con juntas,
   pilastras, cornisas, marquesinas, escalinatas con barandas, faldones de tejas, cintas de hormigón barridas y
   letras 3D extruidas (texto rasterizado con sharp → marching squares → extrusión).
-- 7 edificios: Templo, Pórtico (arco + garita + mástil + plaza 2026) y edificio de ladrillo vecino (relation/16816367,
+- 8 edificios: Auditorio Mayor (volumen y bóveda de cañón desde la ortofoto IGN; fachadas estimadas), Templo, Pórtico (arco + garita + mástil + plaza 2026) y edificio de ladrillo vecino (relation/16816367,
   con las letras "Universidad Adventista del Plata"), Biblioteca/Edificio Fernando Chaij, FCS, Pabellón OGDEN y
   Salón de los Pioneros. ~2.5 MB en total. Las fotos pegadas en fachadas ya no se usan.
 - Los hero assets se apoyan a la cota del acceso principal (el Templo tiene 3 m de desnivel bajo su footprint);
@@ -62,4 +62,4 @@
 4. **Árboles**: especies y ubicación de los ejemplares notables (o mapearlos en OSM como `natural=tree`).
 5. **Planos** (`reference/plans/`) del campus para validar caminos internos y veredas.
 6. **Textos institucionales verificados** para el panel (`data/buildings-info.json`, campo `description` con `source`).
-7. **Hero assets**: faltan Auditorio Mayor, Administración, Lincoln Hall y Torre UAP (sin fotos de referencia).
+7. **Hero assets**: fotos de fachada del Auditorio Mayor (hoy estimado desde la ortofoto); faltan Administración, Lincoln Hall y Torre UAP.
