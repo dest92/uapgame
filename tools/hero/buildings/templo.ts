@@ -9,12 +9,13 @@ import type { BuildingData } from '@shared/world/types';
 import { ensureCCW } from '@shared/geo/polygon';
 import type { Vec2 } from '@shared/geo/types';
 import { HeroBuilder } from '../lib/builder';
-import { angleOf, fitCircle, framesAlongArc, relativeTo } from '../lib/frame';
+import { type Frame2, add, angleOf, fitCircle, framesAlongArc, len, lerp2, norm, relativeTo, scale, sub } from '../lib/frame';
 import { BASE_MATERIALS, type MaterialSpec } from '../lib/materials';
 import { glazing } from '../lib/openings';
-import { type Opening, box, footprintPrism, profilePrism, roundedTopProfile, wallSlab } from '../lib/parts';
+import { type Opening, box, footprintPrism, loft, profilePrism, roundedTopProfile, wallSlab } from '../lib/parts';
 import { svgGeometry, textGeometry } from '../lib/text';
 import { flatRoofMass, windowRows } from '../lib/walls';
+import { insetPolygon, toWorld } from '../lib/frame';
 import { IASD_LOGO } from '../lib/logos';
 import type { BufferGeometry } from 'three';
 import type { HeroModel } from './types';
@@ -24,6 +25,8 @@ export const TEMPLO_MATERIALS = {
   stoneGrey: { color: '#a19e96', roughness: 0.9, texture: 'stone', uvScale: 1.5 },
   copper: { color: '#a8775a', roughness: 0.45, metalness: 0.6 },
   engraving: { color: '#3a2a20', roughness: 0.6, metalness: 0.2 },
+  roofSheet: { color: '#c8cbcc', roughness: 0.45, metalness: 0.6 },
+  floorPaint: { color: '#f2f2ef', roughness: 0.7 },
   plaza: { color: '#c2c2bf', roughness: 0.85, texture: 'plazaTiles', uvScale: 6 },
   stainedGlass: { color: '#163070', roughness: 0.1, metalness: 0.1, emissive: '#081636' },
 } as const satisfies Record<string, MaterialSpec>;
@@ -49,6 +52,7 @@ export const TEMPLO_FACADE: readonly Element[] = [
 
 const SLAB = 0.9;
 const FACADE_WIDTH = TEMPLO_FACADE.reduce((s, e) => s + e.w, 0);
+const FACADE_RADIUS = 62;
 const MASS_DEPTH = 9;
 
 /** Cuerpo con vanos: puertas vidriadas, marquesina, banda vidriada y 3 ventanas apuntadas. */
@@ -134,18 +138,31 @@ function plaza(b: HeroBuilder<M>, c: Vec2, r: number, a0: number, a1: number): v
     const t0 = a0 + ((a1 - a0) * i) / steps;
     const t1 = a0 + ((a1 - a0) * (i + 1)) / steps;
     const ring = (rad: number, t: number): Vec2 => ({ x: c.x + Math.cos(t) * rad, z: c.z + Math.sin(t) * rad });
-    const quad = ensureCCW([ring(r - 0.5, t0), ring(r + 15, t0), ring(r + 15, t1), ring(r - 0.5, t1)]);
+    const quad = ensureCCW([ring(r - 0.5, t0), ring(r + 21, t0), ring(r + 21, t1), ring(r - 0.5, t1)]);
     b.add('plaza', footprintPrism(quad, -1.2, 0.03));
   }
+}
+
+/** Arco de la fachada y marcos de cada pieza (coordenadas del modelo). */
+export function templeFacade(bd: BuildingData): { center: Vec2; radius: number; aLeft: number; frames: Frame2[] } {
+  const fp = relativeTo(bd.footprint, bd.centroid);
+  // Fachada: arco por los extremos del footprint (vértices 3 y 8) con radio FACADE_RADIUS, más plano que
+  // el ajuste al footprint (R ≈ 34 m): la aérea 2026 (15.jpg) muestra el frente casi recto.
+  const fit = fitCircle(fp.slice(ARC[0], ARC[1] + 1));
+  const pA = fp[ARC[0]]!, pB = fp[ARC[1]]!;
+  const mid = lerp2(pA, pB, 0.5);
+  const half = len(sub(pB, pA)) / 2;
+  const inward = norm(sub(fit.center, mid));
+  const radius = FACADE_RADIUS;
+  const center = add(mid, scale(inward, Math.sqrt(radius * radius - half * half)));
+  const aLeft = angleOf(center, mid) + FACADE_WIDTH / 2 / radius;
+  return { center, radius, aLeft, frames: framesAlongArc(center, radius, aLeft, TEMPLO_FACADE.map((e) => e.w)) };
 }
 
 export async function buildTemplo(bd: BuildingData): Promise<HeroModel<M>> {
   const b = new HeroBuilder<M>();
   const fp = relativeTo(bd.footprint, bd.centroid);
-  const arcPts = fp.slice(ARC[0], ARC[1] + 1);
-  const { center, radius } = fitCircle(arcPts);
-  const aLeft = angleOf(center, fp[ARC[0]]!);
-  const frames = framesAlongArc(center, radius, aLeft, TEMPLO_FACADE.map((e) => e.w));
+  const { center, radius, aLeft, frames } = templeFacade(bd);
   const decor: Promise<void>[] = [];
   TEMPLO_FACADE.forEach((e, i) => {
     const local = b.at(frames[i]!, 0, 0, e.z);
@@ -169,7 +186,12 @@ export async function buildTemplo(bd: BuildingData): Promise<HeroModel<M>> {
     return { x: center.x + Math.cos(a) * (radius - 2), z: center.z + Math.sin(a) * (radius - 2) };
   });
   const nave = ensureCCW([...back, ...fp.slice(ARC[1] + 1, NAVE_END + 1)]);
-  flatRoofMass(b, nave, { wall: 'plasterWhite', roof: 'roofMembrane', coping: 'concreteWhite', height: 11.6, parapet: 0.7 });
+  flatRoofMass(b, nave, { wall: 'plasterWhite', roof: 'roofMembrane', coping: 'concreteWhite', height: 10.6, parapet: 0.35 });
+  // Cubierta de chapa clara a varias aguas sobre la planta en abanico (aérea 15.jpg): faldones desde el
+  // borde de la nave hasta una cumbrera corta detrás del cuerpo central, el punto más alto.
+  const focus = toWorld(frames[3]!, 0, -9);
+  const roofEdge = insetPolygon(nave, 0.3, true);
+  b.add('roofSheet', loft(roofEdge, roofEdge.map((p) => lerp2(focus, p, 0.1)), 10.75, 13.2));
   // Laterales de la nave: ventanas altas y angostas como las de las alas (se omite el frente retirado).
   const naveFront = new Set(nave.map((p, i) => (back.includes(p) && back.includes(nave[(i + 1) % nave.length]!) ? i : -1)).filter((i) => i >= 0));
   windowRows(b, nave, { glass: 'glassBlue', frame: 'bronze', rows: [4.4], width: 0.7, height: 5.0, spacing: 4.5, margin: 2, minEdge: 6 }, naveFront);
@@ -182,5 +204,9 @@ export async function buildTemplo(bd: BuildingData): Promise<HeroModel<M>> {
   });
   windowRows(b, west, { glass: 'glassDark', frame: 'aluminium', sill: 'concreteWhite', rows: [1.0, 4.3], width: 1.5, height: 1.6, spacing: 2.6 }, new Set([shared]));
   plaza(b, center, radius, aLeft + 0.05, aRight - 0.05);
+  // "¡VEN SEÑOR JESÚS!" pintado en blanco sobre la explanada (aéreas 12.jpg y 15.jpg), legible desde la calle.
+  const motto = await textGeometry('¡VEN SEÑOR JESÚS!', { height: 4.6, depth: 0.02, font: 'DejaVu Sans', weight: 'bold', ppm: 30 });
+  motto.rotateX(-Math.PI / 2);
+  b.at(frames[3]!, 0.04, 0, 13).add('floorPaint', motto);
   return { builder: b, materials: TEMPLO_MATERIALS };
 }
