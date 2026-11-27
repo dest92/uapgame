@@ -8,13 +8,17 @@ export interface InputState {
   jump: boolean;
   /** Disparo único (flanco) de interactuar. */
   interact: boolean;
+  /** Subir/bajar de la bici (flanco). */
+  mount: boolean;
+  /** Aparecer una bici (flanco). */
+  spawnBike: boolean;
   lookDX: number;
   lookDY: number;
   zoom: number;
 }
 
 export const InputState = {
-  empty: (): InputState => ({ moveX: 0, moveY: 0, run: false, jump: false, interact: false, lookDX: 0, lookDY: 0, zoom: 0 }),
+  empty: (): InputState => ({ moveX: 0, moveY: 0, run: false, jump: false, interact: false, mount: false, spawnBike: false, lookDX: 0, lookDY: 0, zoom: 0 }),
 };
 
 /** Una fuente de input (teclado/mouse, táctil, gamepad…). `poll` consume deltas acumulados. */
@@ -31,6 +35,8 @@ export function mergeSources(sources: readonly InputSource[]): InputState {
     out.run ||= p.run;
     out.jump ||= p.jump;
     out.interact ||= p.interact;
+    out.mount ||= p.mount;
+    out.spawnBike ||= p.spawnBike;
     out.lookDX += p.lookDX;
     out.lookDY += p.lookDY;
     out.zoom += p.zoom;

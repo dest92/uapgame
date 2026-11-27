@@ -1,4 +1,4 @@
-export type KeyAction = 'forward' | 'back' | 'left' | 'right' | 'run' | 'jump' | 'interact' | 'debug' | 'menu';
+export type KeyAction = 'forward' | 'back' | 'left' | 'right' | 'run' | 'jump' | 'interact' | 'mount' | 'spawnBike' | 'debug' | 'menu';
 
 const DEFAULT_BINDINGS: Readonly<Record<KeyAction, readonly string[]>> = {
   forward: ['KeyW', 'ArrowUp'],
@@ -8,6 +8,8 @@ const DEFAULT_BINDINGS: Readonly<Record<KeyAction, readonly string[]>> = {
   run: ['ShiftLeft', 'ShiftRight'],
   jump: ['Space'],
   interact: ['KeyE', 'Enter'],
+  mount: ['KeyF'],
+  spawnBike: ['KeyB'],
   debug: ['F3'],
   menu: ['Escape', 'KeyM'],
 };

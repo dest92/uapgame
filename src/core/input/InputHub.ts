@@ -11,6 +11,8 @@ export class InputHub implements GameSystem {
   private current = InputState.empty();
   private jumpLatched = false;
   private interactLatched = false;
+  private mountLatched = false;
+  private spawnLatched = false;
   /** INT-6: mientras hay un panel abierto el jugador no se mueve. */
   movementBlocked = false;
 
@@ -23,6 +25,8 @@ export class InputHub implements GameSystem {
     this.current = mergeSources(this.sources);
     this.jumpLatched ||= this.current.jump;
     this.interactLatched ||= this.current.interact;
+    this.mountLatched ||= this.current.mount;
+    this.spawnLatched ||= this.current.spawnBike;
   }
 
   get state(): Readonly<InputState> {
@@ -38,6 +42,18 @@ export class InputHub implements GameSystem {
     const j = this.jumpLatched && !this.movementBlocked;
     this.jumpLatched = false;
     return j;
+  }
+
+  consumeMount(): boolean {
+    const m = this.mountLatched && !this.movementBlocked;
+    this.mountLatched = false;
+    return m;
+  }
+
+  consumeSpawnBike(): boolean {
+    const b = this.spawnLatched && !this.movementBlocked;
+    this.spawnLatched = false;
+    return b;
   }
 
   consumeInteract(): boolean {

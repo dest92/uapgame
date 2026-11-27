@@ -21,5 +21,7 @@ describe('input (INP-1/2)', () => {
     expect(km.isAction('interact', 'KeyE')).toBe(true);
     expect(km.isAction('jump', 'Space')).toBe(true);
     expect(km.isAction('run', 'ShiftLeft')).toBe(true);
+    expect(km.isAction('mount', 'KeyF')).toBe(true);
+    expect(km.isAction('spawnBike', 'KeyB')).toBe(true);
   });
 });

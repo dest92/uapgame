@@ -6,7 +6,7 @@ import { dominantBone, regionForBone } from './clothingRegions';
 
 /** Clip de UAL por estado de animación (MOV-5). */
 const CLIP_FOR: Readonly<Record<AnimState, string>> = {
-  idle: 'Idle_Loop', walk: 'Walk_Loop', jog: 'Jog_Fwd_Loop', run: 'Sprint_Loop', jump: 'Jump_Start', fall: 'Jump_Loop',
+  idle: 'Idle_Loop', walk: 'Walk_Loop', jog: 'Jog_Fwd_Loop', run: 'Sprint_Loop', jump: 'Jump_Start', fall: 'Jump_Loop', ride: 'Driving_Loop',
 };
 
 /** Representación visual del jugador: modelo, ropa y animaciones. Lee estado, no lo escribe. */
@@ -71,9 +71,11 @@ export class CharacterView {
     if (this.current) this.current.timeScale = ref > 0 ? Math.min(1.6, Math.max(0.6, speed / ref)) : 1;
   }
 
-  sync(position: Vec3, yaw: number, dt: number): void {
-    this.root.position.set(position.x, position.y, position.z);
-    this.root.rotation.y = yaw;
+  /** `lift`/`roll`: en bici el cuerpo se eleva al asiento y se inclina con la curva. */
+  sync(position: Vec3, yaw: number, dt: number, lift = 0, roll = 0): void {
+    this.root.position.set(position.x, position.y + lift, position.z);
+    this.root.rotation.set(0, yaw, 0);
+    this.root.rotateZ(-roll);
     this.mixer.update(dt);
   }
 }

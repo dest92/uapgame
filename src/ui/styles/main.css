@@ -97,3 +97,15 @@ a.panel__src { color: var(--ui-accent); }
 .menu__value { font-variant-numeric: tabular-nums; color: var(--ui-text); }
 .menu__meta { color: var(--ui-muted); font-size: 11px; }
 @media (pointer: coarse) { .menu__toggle { left: auto; right: 156px; top: 16px; bottom: auto; } .menu { left: auto; right: 16px; top: 66px; bottom: auto; } }
+.tbtn--bike { right: 120px; bottom: 136px; }
+
+/* Ayuda contextual y toasts */
+.ctxhint { position: absolute; left: 50%; bottom: 140px; transform: translateX(-50%); padding: 8px 14px; font-size: 13px; white-space: nowrap; pointer-events: none; }
+.toasts { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
+.toast { padding: 10px 16px; font-size: 14px; font-weight: 600; transition: opacity .5s, transform .5s; }
+.toast--out { opacity: 0; transform: translateY(-8px); }
+.quest { position: absolute; left: 18px; top: 40px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 200px; pointer-events: none; }
+.quest__title { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ui-accent); font-weight: 700; }
+.quest__count { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.quest__next { font-size: 12px; color: var(--ui-muted); max-width: 240px; }
+@media (pointer: coarse) { .quest { top: 36px; min-width: 0; } }

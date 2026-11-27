@@ -13,6 +13,8 @@ export class KeyboardMouseSource implements InputSource {
   private zoom = 0;
   private jump = false;
   private interact = false;
+  private mount = false;
+  private spawnBike = false;
   private dragging = false;
 
   constructor(
@@ -50,6 +52,8 @@ export class KeyboardMouseSource implements InputSource {
     if (this.keys.isAction('menu', e.code) && !e.repeat) this.bus.emit('ui:escape', undefined);
     if (!e.repeat && this.keys.isAction('jump', e.code)) this.jump = true;
     if (!e.repeat && this.keys.isAction('interact', e.code)) this.interact = true;
+    if (!e.repeat && this.keys.isAction('mount', e.code)) this.mount = true;
+    if (!e.repeat && this.keys.isAction('spawnBike', e.code)) this.spawnBike = true;
     if (e.code === 'Space' || e.code.startsWith('Arrow')) e.preventDefault();
     this.pressed.add(e.code);
   };
@@ -63,12 +67,14 @@ export class KeyboardMouseSource implements InputSource {
       run: this.keys.held('run', this.pressed),
       jump: this.jump,
       interact: this.interact,
+      mount: this.mount,
+      spawnBike: this.spawnBike,
       lookDX: -this.lookDX * MOUSE_SENSITIVITY,
       lookDY: this.lookDY * MOUSE_SENSITIVITY,
       zoom: this.zoom,
     };
     this.lookDX = this.lookDY = this.zoom = 0;
-    this.jump = this.interact = false;
+    this.jump = this.interact = this.mount = this.spawnBike = false;
     return s;
   }
 }

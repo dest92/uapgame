@@ -2,6 +2,7 @@ import type { InputHub } from '../core/input/InputHub';
 import type { GameSystem } from '../core/loop/GameLoop';
 import type { GameState, Vec3 } from '../core/state/GameState';
 import { MovementModel, initialMoveState, type MoveState } from '../domain/player/MovementModel';
+import { BikeModel, type BikeState } from '../domain/vehicles/BikeModel';
 import type { CharacterBody } from '../physics/PhysicsWorld';
 
 /** Altura del centro de la cápsula sobre los pies. */
@@ -16,6 +17,9 @@ const FOOT_OFFSET = CAPSULE_HALF_HEIGHT + CAPSULE_RADIUS;
 export class PlayerController implements GameSystem {
   private move: MoveState;
   private readonly model = new MovementModel();
+  private readonly bikeModel = new BikeModel();
+  /** Estado de la bici si el jugador está montado (VEH-5). */
+  private bike: BikeState | null = null;
   private prev: Vec3;
   private curr: Vec3;
 
@@ -37,7 +41,53 @@ export class PlayerController implements GameSystem {
     return { x: p.x, y: p.y - FOOT_OFFSET, z: p.z };
   }
 
+  get riding(): BikeState | null {
+    return this.bike;
+  }
+
+  get feetPosition(): Vec3 {
+    return this.curr;
+  }
+
+  get facing(): number {
+    return this.move.yaw;
+  }
+
+  mount(bike: BikeState): void {
+    this.bike = bike;
+  }
+
+  /** Baja de la bici y devuelve su estado (para dejarla estacionada). */
+  dismount(): BikeState | null {
+    const b = this.bike;
+    this.bike = null;
+    if (b) this.move = { ...initialMoveState(), yaw: b.heading, grounded: true };
+    return b;
+  }
+
+  private rideStep(dt: number): void {
+    const m = this.input.movement();
+    const r = this.bikeModel.step(this.bike!, { throttle: m.moveY, steer: m.moveX, sprint: m.run }, dt);
+    const moved = this.body.move({ x: r.displacement.x, y: -2 * dt, z: r.displacement.z });
+    this.stepPhysics(dt);
+    // Si choca, la velocidad cae (la bici no atraviesa paredes ni sigue empujando).
+    const p0 = this.curr;
+    this.prev = p0;
+    this.curr = this.feet();
+    const real = Math.hypot(this.curr.x - p0.x, this.curr.z - p0.z) / dt;
+    const speed = Math.abs(r.state.speed) > real + 0.5 ? Math.sign(r.state.speed) * real : r.state.speed;
+    this.bike = { ...r.state, speed };
+    void moved;
+    this.state.update(this.entityId, { position: this.curr, yaw: r.state.heading, speed: Math.abs(speed), anim: 'ride' });
+    this.state.tick();
+  }
+
   fixedUpdate(dt: number): void {
+    if (this.bike) {
+      this.input.consumeJump();
+      this.rideStep(dt);
+      return;
+    }
     const result = this.model.step(this.move, { ...this.input.movement(), jump: this.input.consumeJump() }, this.cameraYaw(), dt);
     const moved = this.body.move(result.displacement);
     this.stepPhysics(dt);

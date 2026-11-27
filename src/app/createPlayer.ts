@@ -22,8 +22,8 @@ function spawnPoint(world: WorldData): { x: number; z: number; yaw: number } {
   const b = world.buildings.find((x) => x.id === (requested ?? APP_CONFIG.spawnBuildingId));
   if (!b) return { x: 0, z: 0, yaw: 0 };
   const { position: p, normal: n } = b.entrance;
-  // 16 m frente a la entrada, mirando hacia el edificio (encuadre amplio al iniciar).
-  return { x: p.x + n.x * 16, z: p.z + n.z * 16, yaw: Math.atan2(-n.x, -n.z) };
+  // 9 m frente a la entrada del Pórtico, mirando hacia el edificio (encuadre amplio al iniciar).
+  return { x: p.x + n.x * 9, z: p.z + n.z * 9, yaw: Math.atan2(-n.x, -n.z) };
 }
 
 /** Crea el jugador local: estado, física, vista animada y cámara. */
@@ -57,7 +57,8 @@ export async function createPlayer(
       if (!e) return;
       view.play(e.anim);
       view.setSpeed(e.anim, e.speed);
-      view.sync(controller.interpolated(alpha), e.yaw, dt);
+      const bike = controller.riding;
+      view.sync(controller.interpolated(alpha), e.yaw, dt, bike ? 0.42 : 0, bike ? bike.lean : 0);
     },
   });
   return { controller, camera: rig };

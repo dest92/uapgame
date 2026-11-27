@@ -11,6 +11,10 @@ export interface GameEvents extends Record<string, unknown> {
   'settings:quality': QualityLevel;
   'settings:timeOfDay': number;
   'debug:toggle': undefined;
+  /** Texto de ayuda contextual (bici, objetivos) o null para ocultarlo. */
+  'hud:hint': string | null;
+  /** Aviso breve (toast). */
+  'hud:toast': string;
   /** Esc / M: cerrar panel o abrir menú. */
   'ui:escape': undefined;
 }

@@ -13,6 +13,7 @@ export class TouchControls implements InputSource {
   private look = { dx: 0, dy: 0, lastX: 0, lastY: 0 };
   private jump = false;
   private interact = false;
+  private mount = false;
   private run = false;
   private readonly knob: HTMLElement;
   private readonly base: HTMLElement;
@@ -33,7 +34,7 @@ export class TouchControls implements InputSource {
       runBtn.classList.toggle('tbtn--on', this.run);
     });
     parent.appendChild(el('div', { className: 'touch' }, [
-      this.base, btn('Saltar', 'tbtn--jump', () => (this.jump = true)), runBtn, btn('E', 'tbtn--use', () => (this.interact = true)),
+      this.base, btn('Saltar', 'tbtn--jump', () => (this.jump = true)), runBtn, btn('E', 'tbtn--use', () => (this.interact = true)), btn('Bici', 'tbtn--bike', () => (this.mount = true)),
     ]));
     surface.addEventListener('pointerdown', this.onDown);
     surface.addEventListener('pointermove', this.onMove);
@@ -91,11 +92,12 @@ export class TouchControls implements InputSource {
       run: this.run,
       jump: this.jump,
       interact: this.interact,
+      mount: this.mount,
       lookDX: -this.look.dx * LOOK_SENSITIVITY,
       lookDY: this.look.dy * LOOK_SENSITIVITY,
     };
     this.look.dx = this.look.dy = 0;
-    this.jump = this.interact = false;
+    this.jump = this.interact = this.mount = false;
     return s;
   }
 }

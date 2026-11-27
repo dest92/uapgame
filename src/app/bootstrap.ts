@@ -7,9 +7,11 @@ import { EventBus } from '../core/events/EventBus';
 import type { GameEvents } from '../core/events/GameEvents';
 import { InputHub } from '../core/input/InputHub';
 import { KeyboardMouseSource } from '../core/input/KeyboardMouseSource';
+import { GamepadSource } from '../core/input/GamepadSource';
 import { GameLoop } from '../core/loop/GameLoop';
 import { GameState } from '../core/state/GameState';
 import { InteractionSystem } from '../gameplay/InteractionSystem';
+import { VehicleSystem } from '../gameplay/VehicleSystem';
 import { AssetLoader } from '../render/assets/AssetLoader';
 import { backendLabel } from '../render/backend';
 import { PbrMaterialLibrary } from '../render/materials/PbrMaterialLibrary';
@@ -90,13 +92,19 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     const bus = new EventBus<GameEvents>();
     const state = new GameState();
     const touch = isTouch();
-    const input = new InputHub().add(new KeyboardMouseSource(canvas, bus));
+    const input = new InputHub().add(new KeyboardMouseSource(canvas, bus)).add(new GamepadSource());
     const loop = new GameLoop().add(input);
 
     stage('Cargando personaje…', 0.62);
     const player = await createPlayer({ world, terrain: built.terrain, physics, state, input, assets, ctx, loop });
     const targets = world.buildings.map((b) => ({ id: b.id, name: b.name, entrance: b.entrance.position }));
     loop.add(new InteractionSystem(bus, input, state, APP_CONFIG.playerEntityId, targets));
+    // VEH-6: una bici estacionada junto al jugador al empezar, frente al Pórtico.
+    const vehicles = new VehicleSystem(ctx.scene, player.controller, input, built.terrain, bus);
+    const start = player.controller.feetPosition;
+    const f = player.controller.facing;
+    vehicles.spawn(start.x + Math.cos(f) * 1.8, start.z - Math.sin(f) * 1.8, f);
+    loop.add(vehicles);
 
     const ui = createUi({
       container, bus, world, info, state, touch, backendLabel: backendName,

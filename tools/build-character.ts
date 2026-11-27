@@ -18,7 +18,7 @@ const HAIR = '.cache/quaternius/ubc/Universal Base Characters[Standard]/Hairstyl
 const UAL = '.cache/quaternius/ual/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb';
 const OUT = 'public/models/character';
 /** Clips que usa el juego (MOV-5) + interacción. */
-export const CLIPS = ['Idle_Loop', 'Walk_Loop', 'Jog_Fwd_Loop', 'Sprint_Loop', 'Jump_Start', 'Jump_Loop', 'Jump_Land', 'Interact'];
+export const CLIPS = ['Idle_Loop', 'Walk_Loop', 'Jog_Fwd_Loop', 'Sprint_Loop', 'Jump_Start', 'Jump_Loop', 'Jump_Land', 'Interact', 'Driving_Loop'];
 
 /** El pack referencia `X_png.png` en lugar de `X.png`: genera una copia con URIs válidas. */
 function patchMissingUris(gltfPath: string): string {

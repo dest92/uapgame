@@ -10,6 +10,9 @@ import { el } from '../ui/dom';
 import { InfoPanel } from '../ui/InfoPanel';
 import { InteractionHint } from '../ui/InteractionHint';
 import { Minimap } from '../ui/Minimap';
+import { mountHudMessages } from '../ui/HudMessages';
+import { mountQuestPanel } from '../ui/QuestPanel';
+import { VisitQuest } from '../domain/quests/VisitQuest';
 import { APP_CONFIG } from './config';
 
 export interface UiDeps {
@@ -31,11 +34,15 @@ export function createUi(d: UiDeps): { hud: HTMLElement; system: GameSystem } {
   new InteractionHint(hud, d.bus, d.touch);
   new InfoPanel(hud, d.bus, d.info);
   const minimap = new Minimap(hud, d.world);
+  mountHudMessages(hud, d.bus);
+  // Edificios con referencias fotográficas = los más representativos del campus.
+  const KEY = ['way/388521996', 'way/388500961', 'way/388495172', 'way/388495176', 'way/388510375', 'way/388512621', 'way/388500965', 'way/388521982'];
+  mountQuestPanel(hud, d.bus, new VisitQuest(KEY.map((id) => d.world.buildings.find((b) => b.id === id)).filter((b) => b !== undefined).map((b) => ({ id: b.id, name: b.name }))));
   const debug = new DebugOverlay(hud, d.bus, d.stats);
   mountAttribution(hud, `Elevación: IGN Argentina · ${d.backendLabel}`);
   hud.appendChild(el('div', { className: 'brand', text: 'ACHE SYSTEMS' }));
   if (!d.touch) {
-    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E interactuar · F3 debug' }));
+    hud.appendChild(el('div', { className: 'help glass', text: 'WASD mover · Shift correr · Espacio saltar · Mouse mirar · E entrar · F bici · B aparecer bici · M ajustes' }));
   }
   return {
     hud,
