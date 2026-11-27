@@ -47,6 +47,8 @@ Recomendado: confirmar por escrito el OK del área de comunicación de la UAP an
 | `way/388500961` | https://amy.uap.edu.ar/wp-content/uploads/2018/07/templo_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388500961.webp` |
 | `way/388510375` | https://uap.edu.ar/wp-content/uploads/2025/02/Escuela-de-Musica-UAP_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388510375.webp` |
 | `way/388521996` | https://uap.edu.ar/wp-content/uploads/2026/08/portico-nuevo_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388521996.webp` |
+| `way/388495172` | https://uap.edu.ar/wp-content/uploads/2025/07/slide03.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388495172.webp` |
+| `way/388495176` | https://uap.edu.ar/wp-content/uploads/2026/04/Medicina_EDIT_PORTADA.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388495176.webp` |
 
 ## Referencias fotográficas
 Las fotos de `reference/web/` se usan **solo como referencia visual** (proporciones, pisos, techos, colores) y

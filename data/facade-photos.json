@@ -38,5 +38,33 @@
     "sourcePage": "https://uap.edu.ar/ (noticia sobre nota de Infobae, 2026-08)",
     "owner": "Universidad Adventista del Plata (sitio institucional)",
     "note": "Estado 2026 (post remodelación). Vista en 3/4: perspectiva aproximada."
+  },
+  {
+    "building": "way/388495172",
+    "image": "reference/web/way-388495172/05.jpg",
+    "crop": [
+      0.135,
+      0.225,
+      0.553,
+      0.66
+    ],
+    "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/slide03.jpg",
+    "sourcePage": "https://uap.edu.ar/ (slider de la página de inicio, 'slide03', 2025-07)",
+    "owner": "Universidad Adventista del Plata (sitio institucional)",
+    "note": "2025, fachada principal frontal (eje), recortada en la línea de techo de las alas (frontón excluido); palmeras delante ocluyen parcialmente."
+  },
+  {
+    "building": "way/388495176",
+    "image": "reference/web/way-388495176/02.jpg",
+    "crop": [
+      0.235,
+      0.27,
+      0.405,
+      0.395
+    ],
+    "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/Medicina_EDIT_PORTADA.jpg",
+    "sourcePage": "https://uap.edu.ar/a-pocos-pasos-de-la-reacreditacion-de-la-especialidad-universitaria-en-cardiologia-uap/",
+    "owner": "Universidad Adventista del Plata (sitio institucional)",
+    "note": "2026, bloque de acceso (revoque blanco + hall vidriado) casi frontal; el ala de ladrillo a la derecha queda fuera por estar muy oblicua."
   }
 ]

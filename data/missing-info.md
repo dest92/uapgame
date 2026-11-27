@@ -1,6 +1,6 @@
 # Información faltante
 
-Generado por `tools/build-world.ts` el 2026-11-26T23:14:51.712Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
+Generado por `tools/build-world.ts` el 2026-11-27T02:26:47.725Z. Completar en OSM, en `reference/` o en `data/buildings-info.json`.
 
 ## Edificios sin nombre en OSM (6)
 
@@ -51,7 +51,7 @@ Generado por `tools/build-world.ts` el 2026-11-26T23:14:51.712Z. Completar en OS
 - `way/1123197238` — Edificio sin identificar (OSM way 1123197238): materiales genéricos por tipo.
 - `way/1230711279` — Edificio sin identificar (OSM way 1230711279): materiales genéricos por tipo.
 
-## Alturas estimadas (sin `height`/`building:levels` ni referencia) (37)
+## Alturas estimadas (sin `height`/`building:levels` ni referencia) (38)
 
 - `relation/16816367` — Edificio sin identificar (OSM relation 16816367): 2 niveles por defecto (college).
 - `way/327779295` — Terminal de Ómnibus y Colectivos: 2 niveles por defecto (yes).
@@ -69,6 +69,7 @@ Generado por `tools/build-world.ts` el 2026-11-26T23:14:51.712Z. Completar en OS
 - `way/388510374` — Centro de Apoyo Estudiantil (CAE): 2 niveles por defecto (school).
 - `way/388512618` — Edificio Humanidades: 2 niveles por defecto (school).
 - `way/388512619` — Edificio de Tutorías: 2 niveles por defecto (school).
+- `way/388521981` — Aulas Nuevas (Ex Teológico): 2 niveles por defecto (college).
 - `way/388521982` — Lincoln Hall: 2 niveles por defecto (yes).
 - `way/388521983` — Aulas Humanidades: 2 niveles por defecto (yes).
 - `way/388521993` — Administración UAP: 2 niveles por defecto (yes).

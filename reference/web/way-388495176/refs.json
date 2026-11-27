@@ -18,6 +18,24 @@
         "patio de hormigón lavado marrón rojizo con bancos de hormigón ondulados",
         "al fondo a la izquierda: volumen alto con revestimiento terracota y cubierta de chapa gris verdosa"
       ]
+    },
+    {
+      "file": "02.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/04/Medicina_EDIT_PORTADA.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/a-pocos-pasos-de-la-reacreditacion-de-la-especialidad-universitaria-en-cardiologia-uap/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "extracted": [
+        "acceso de la Facultad de Ciencias de la Salud, vista casi frontal del bloque de acceso (2026)",
+        "bloque de revoque blanco con logo y letras 'Universidad Adventista del Plata – Facultad de Ciencias de la Salud'",
+        "hall vidriado de doble altura (2 pisos) con carpintería de aluminio gris y losa/alero gris verdoso entre pisos",
+        "franja vidriada vertical angosta a la izquierda del bloque blanco",
+        "a la izquierda, volumen retirado de revoque rojo terracota con cubierta de chapa gris verdosa",
+        "a la derecha, ala larga de ladrillo visto rojo con banda superior de revoque blanco (vista muy oblicua)",
+        "patio de hormigón lavado rojizo con bancos de hormigón ondulados"
+      ],
+      "year": 2026
     }
   ],
   "summary": {
@@ -29,6 +47,6 @@
     "trimColor": "#ece5cf",
     "windowStyle": "hall de acceso con muro cortina en retícula; puertas-ventana blancas en planta baja",
     "confidence": "medium",
-    "notes": "Una sola foto del acceso; combina ladrillo visto rojo y revoque crema. No se verificó la extensión completa del polígono OSM."
+    "notes": "Una sola foto del acceso; combina ladrillo visto rojo y revoque crema. No se verificó la extensión completa del polígono OSM. Foto 02.jpg (2026) confirma el estado actual del acceso; usada para la textura del bloque de acceso."
   }
 }

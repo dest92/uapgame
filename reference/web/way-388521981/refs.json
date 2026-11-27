@@ -20,14 +20,14 @@
     }
   ],
   "summary": {
-    "levels": 2,
-    "roof": "flat",
+    "levels": null,
+    "roof": null,
     "roofColor": null,
-    "wallMaterial": "plaster",
-    "wallColor": "#efeae0",
-    "trimColor": "#f7f7f5",
-    "windowStyle": "ventanas rectangulares; acceso vidriado bajo pórtico curvo con columnas",
+    "wallMaterial": null,
+    "wallColor": null,
+    "trimColor": null,
+    "windowStyle": null,
     "confidence": "low",
-    "notes": "La foto muestra el cartel 'Facultad de Teología' (2018) pero no se pudo confirmar que corresponda al polígono OSM 'Aulas Nuevas (Ex Teológico)'. Niveles estimados."
+    "notes": "Atribución dudosa: la foto 2018 de \"Facultad de Teología\" probablemente corresponde al volumen del Templo (OSM ubica la Facultad de Teología dentro del polígono del Templo). Resumen anulado hasta confirmar; se usan materiales genéricos."
   }
 }

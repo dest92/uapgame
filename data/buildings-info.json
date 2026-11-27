@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T23:21:41.607Z",
+  "generatedAt": "2026-11-27T02:26:48.336Z",
   "note": "Archivo editable a mano. Para que el generador no pise una entrada, poné \"manual\": true; los campos con \"source\": \"manual\" y las descripciones manuales también se preservan. No inventar datos institucionales.",
   "buildings": {
     "relation/16816367": {
@@ -63,7 +63,9 @@
         "https://biblioteca.uap.edu.ar/ (biblioteca de medios WordPress, título 'EdificioChaij_UAP')",
         "https://amy.uap.edu.ar/ (biblioteca de medios WordPress)",
         "https://uap.edu.ar/ (noticia 'La UAP celebra su Biblioteca abierta', 2025-10)",
-        "https://uap.edu.ar/ (noticia concurso lema del centenario de la Biblioteca E. Irving Mohr, 2026-06)"
+        "https://uap.edu.ar/ (noticia concurso lema del centenario de la Biblioteca E. Irving Mohr, 2026-06)",
+        "https://uap.edu.ar/ (slider de la página de inicio; adjunto https://uap.edu.ar/inicio/slide03/, 2025-07)",
+        "https://uap.edu.ar/se-llevo-a-cabo-el-retiro-espiritual-de-la-facultad-de-teologia/"
       ]
     },
     "way/388495176": {
@@ -98,7 +100,8 @@
         }
       ],
       "references": [
-        "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)"
+        "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Fachada FCS', 2025-01)",
+        "https://uap.edu.ar/a-pocos-pasos-de-la-reacreditacion-de-la-especialidad-universitaria-en-cardiologia-uap/"
       ]
     },
     "way/388500961": {
@@ -431,13 +434,7 @@
         "value": null,
         "source": null
       },
-      "fields": [
-        {
-          "label": "Pisos",
-          "value": "2",
-          "source": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Facultad de Teología_edit', 2018)"
-        }
-      ],
+      "fields": [],
       "references": [
         "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'Facultad de Teología_edit', 2018)"
       ]

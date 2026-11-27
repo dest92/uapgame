@@ -61,6 +61,39 @@
         "confirma silueta: cuerpo central con frontón a dos aguas, muro cortina en retícula, alas laterales planas",
         "escalones al frente y palmeras"
       ]
+    },
+    {
+      "file": "05.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/07/slide03.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/ (slider de la página de inicio; adjunto https://uap.edu.ar/inicio/slide03/, 2025-07)",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "extracted": [
+        "vista FRONTAL del edificio Fernando Chaij desde la fuente (2025), colores naturales",
+        "3 niveles; alas laterales con techo plano y paneles de revestimiento beige claro en retícula (2 pisos superiores)",
+        "planta baja retranqueada con galería: ladrillo visto rojo y ventanas oscuras entre pilares",
+        "cuerpo central: dos pilastras/torres color rosa viejo (malva) que suben por encima del techo; frontón triangular beige sobre el acceso",
+        "muro cortina central de 2 alturas con carpintería negra; letras 'EDIFICIO FERNANDO CHAIJ' en dintel beige sobre puerta vidriada",
+        "una ventana vertical angosta oscura en cada ala junto al cuerpo central",
+        "escalinata de hormigón con baranda, fuente circular, palmeras pindó delante (oclusión parcial)"
+      ],
+      "year": 2025
+    },
+    {
+      "file": "06.jpg",
+      "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/06/RetiroEspTeologia_EDIT_PORTADA.jpg",
+      "sourcePageUrl": "https://uap.edu.ar/se-llevo-a-cabo-el-retiro-espiritual-de-la-facultad-de-teologia/",
+      "author": null,
+      "license": null,
+      "accessedAt": "2026-11-27",
+      "extracted": [
+        "detalle frontal del cuerpo central (2026) con grupo de personas delante",
+        "pilastras color rosa viejo/malva, muro cortina de 4x4 paños con carpintería negra",
+        "dintel beige con letras metálicas oscuras 'EDIFICIO FERNANDO CHAIJ'",
+        "alas: revestimiento claro en paneles y planta baja con columnas de revoque y ladrillo"
+      ],
+      "year": 2026
     }
   ],
   "summary": {
@@ -72,6 +105,6 @@
     "trimColor": "#2e3236",
     "windowStyle": "muro cortina vidriado oscuro en el cuerpo central; bandas horizontales de ventanas en las alas",
     "confidence": "medium",
-    "notes": "Edificio Fernando Chaij (inaugurado 2001 según búsqueda web). Alas con techo plano; el cuerpo central del acceso remata en frontón triangular (tipo gable frontal). Color de muro varía entre fotos (beige en 2015, más claro en 2025). Niveles estimados visualmente."
+    "notes": "Edificio Fernando Chaij (inaugurado 2001 según búsqueda web). Alas con techo plano; el cuerpo central del acceso remata en frontón triangular (tipo gable frontal). Color de muro varía entre fotos (beige en 2015, más claro en 2025). Niveles estimados visualmente. Fotos 05 (2025) y 06 (2026) confirman colores actuales: paneles beige claro en alas, pilastras centrales rosa viejo (#b58f8c aprox.), planta baja de ladrillo rojo; 05.jpg es la vista frontal usada para textura."
   }
 }
