@@ -28,7 +28,7 @@ export const QUALITY_PROFILES: Readonly<Record<QualityLevel, QualityProfile>> = 
     shadowDistance: 160, ao: true, bloom: true, antialias: true, grassDensity: 4, grassDistance: 50, treeFillSpacing: 10,
   },
   high: {
-    level: 'high', pixelRatioCap: 2, renderScale: 1, shadows: true, shadowMapSize: 4096, cascades: 4,
+    level: 'high', pixelRatioCap: 2, renderScale: 1, shadows: true, shadowMapSize: 2048, cascades: 3,
     shadowDistance: 260, ao: true, bloom: true, antialias: true, grassDensity: 8, grassDistance: 80, treeFillSpacing: 8,
   },
 };

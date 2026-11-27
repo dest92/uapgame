@@ -28,7 +28,8 @@ export class TreeSystem {
       if (!list.length || !variant) continue;
       const make = (lod: 0 | 1): InstancedMesh[] => variant.lods[lod].map((part) => {
         const m = new InstancedMesh(part.geometry, part.material, list.length);
-        m.castShadow = true;
+        // Solo el LOD cercano proyecta sombra: los lejanos no aportan y multiplican el costo por cascada.
+        m.castShadow = lod === 0;
         m.receiveShadow = true;
         m.frustumCulled = false;
         m.count = 0;
