@@ -32,6 +32,7 @@ import { buildVegetation } from '../world/vegetation/VegetationBuilder';
 import { FallbackTreeProvider, ProceduralTreeProvider } from '../world/vegetation/TreeVariant';
 import { ModelTreeProvider } from '../world/vegetation/ModelTreeProvider';
 import { buildProps } from '../world/props/PropsBuilder';
+import { LampLightPool } from '../world/props/LampLightPool';
 import { loadWorld } from '../world/WorldLoader';
 import { buildWorldScene } from '../world/WorldBuilder';
 import { HeroAssetSystem } from '../world/buildings/HeroAssetSystem';
@@ -129,6 +130,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
     bus.on('settings:quality', (q) => quality.apply(q, true));
     bus.on('settings:timeOfDay', (h) => sky.setTimeOfDay(h));
 
+    const lampLights = new LampLightPool(ctx.scene, vegetation.lamps, built.terrain, ctx.camera, () => sceneUniforms.night.value);
     sky.setTimeOfDay(initialHour());
     quality.apply();
     loop.add({
@@ -137,6 +139,7 @@ export async function bootstrap(container: HTMLElement): Promise<void> {
         if (p) sky.setFollowTarget(p.x, p.y, p.z);
         sky.update();
         vegetation.trees.update(dt);
+        lampLights.update(dt);
       },
     }).add(ui.system).add(renderSystem);
 
