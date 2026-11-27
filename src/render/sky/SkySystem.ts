@@ -39,9 +39,9 @@ export class SkySystem implements GameSystem {
     this.pmrem = new PMREMGenerator(renderer);
     for (const s of [this.sky, this.envSky]) {
       s.scale.setScalar(4500);
-      s.turbidity.value = 3.2;
-      s.rayleigh.value = 1.4;
-      s.mieCoefficient.value = 0.004;
+      s.turbidity.value = 2.2;
+      s.rayleigh.value = 2.2;
+      s.mieCoefficient.value = 0.0025;
       s.mieDirectionalG.value = 0.82;
       s.cloudCoverage.value = 0.32;
       s.cloudDensity.value = 0.45;
@@ -106,8 +106,8 @@ export class SkySystem implements GameSystem {
     this.hemi.intensity = 0.12 + 0.3 * mix.sun + 0.45 * mix.night;
     this.hemi.color.copy(lerpColor('#3d5585', '#bcd6ff', mix.sun));
     this.hemi.groundColor.copy(lerpColor('#111418', '#5b5140', mix.sun));
-    this.fog.color.copy(lerpColor('#0d1422', '#cbd9e3', mix.sun).lerp(new Color('#e3b48a'), mix.golden * 0.6));
-    this.fog.density = 0.0007 + 0.0003 * mix.golden;
+    this.fog.color.copy(lerpColor('#0d1422', '#a9c2d8', mix.sun).lerp(new Color('#e3b48a'), mix.golden * 0.6));
+    this.fog.density = 0.00035 + 0.0003 * mix.golden;
     this.scene.environmentIntensity = 0.06 + 0.5 * mix.sun;
     this.renderer.toneMappingExposure = 0.72 + 0.6 * mix.night;
     sceneUniforms.night.value = mix.night;
