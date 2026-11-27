@@ -1,18 +1,5 @@
 [
   {
-    "building": "way/388500961",
-    "image": "reference/web/way-388500961/01.jpg",
-    "crop": [
-      0.1,
-      0.22,
-      0.82,
-      0.62
-    ],
-    "imageUrl": "https://amy.uap.edu.ar/wp-content/uploads/2018/07/templo_edit.jpg",
-    "sourcePage": "https://amy.uap.edu.ar/ (biblioteca de medios WordPress, 'templo_edit')",
-    "owner": "Universidad Adventista del Plata (sitio institucional)"
-  },
-  {
     "building": "way/388510375",
     "image": "reference/web/way-388510375/01.jpg",
     "crop": [
@@ -24,20 +11,6 @@
     "imageUrl": "https://uap.edu.ar/wp-content/uploads/2025/02/Escuela-de-Musica-UAP_edit.jpg",
     "sourcePage": "https://uap.edu.ar/ (biblioteca de medios WordPress, 'Edificio de la Escuela de Música UAP', 2025-02)",
     "owner": "Universidad Adventista del Plata (sitio institucional)"
-  },
-  {
-    "building": "way/388521996",
-    "image": "reference/web/way-388521996/03.jpg",
-    "crop": [
-      0.585,
-      0.4,
-      0.415,
-      0.38
-    ],
-    "imageUrl": "https://uap.edu.ar/wp-content/uploads/2026/08/portico-nuevo_edit.jpg",
-    "sourcePage": "https://uap.edu.ar/ (noticia sobre nota de Infobae, 2026-08)",
-    "owner": "Universidad Adventista del Plata (sitio institucional)",
-    "note": "Estado 2026 (post remodelación). Vista en 3/4: perspectiva aproximada."
   },
   {
     "building": "way/388495172",
