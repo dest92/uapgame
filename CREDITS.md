@@ -38,17 +38,27 @@ Generadas por `tools/fetch-textures.ts` (KTX2/Basis ETC1S en `public/textures/`)
 | bark | [Bark012](https://ambientcg.com/view?id=Bark012) | ambientCG | CC0 1.0 | troncos de árboles |
 | metal | [Metal032](https://ambientcg.com/view?id=Metal032) | ambientCG | CC0 1.0 | faroles, techos metálicos |
 
-## Fotos reales de fachada (decisión del cliente)
-Por decisión de Ache Systems (equipo vinculado a la UAP) se usan como textura fotos de los **sitios institucionales de la UAP**.
-Recomendado: confirmar por escrito el OK del área de comunicación de la UAP antes de publicar. Nunca se usan Google Maps/Street View/Earth.
+## Hero assets (modelos detallados de edificios)
+Generados por código (`npm run data:hero`, `tools/build-hero.ts`) a partir del footprint de OSM (ODbL) y de las
+fotos de referencia (solo como guía de proporciones y colores; ninguna foto entra en los modelos).
+Texturas de detalle CC0 de ambientCG embebidas en cada GLB (KTX2): PaintedPlaster017, Concrete034,
+[Bricks099](https://ambientcg.com/view?id=Bricks099) (piedra laja), [Bricks097](https://ambientcg.com/view?id=Bricks097) (ladrillo visto),
+PavingStones130, RoofingTiles006. Letras extruidas desde las tipografías DejaVu (licencia libre Bitstream Vera/DejaVu).
 
-| Edificio | Imagen original | Titular | Textura |
-|---|---|---|---|
-| `way/388500961` | https://amy.uap.edu.ar/wp-content/uploads/2018/07/templo_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388500961.webp` |
-| `way/388510375` | https://uap.edu.ar/wp-content/uploads/2025/02/Escuela-de-Musica-UAP_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388510375.webp` |
-| `way/388521996` | https://uap.edu.ar/wp-content/uploads/2026/08/portico-nuevo_edit.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388521996.webp` |
-| `way/388495172` | https://uap.edu.ar/wp-content/uploads/2025/07/slide03.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388495172.webp` |
-| `way/388495176` | https://uap.edu.ar/wp-content/uploads/2026/04/Medicina_EDIT_PORTADA.jpg | Universidad Adventista del Plata (sitio institucional) | `public/textures/facades/way-388495176.webp` |
+| Edificio | Archivo |
+|---|---|
+| Templo UAP (`way/388500961`) | `public/models/hero/way-388500961.glb` |
+| Pórtico — arco, garita, plaza 2026 (`way/388521996`) | `public/models/hero/way-388521996.glb` |
+| Edificio de ladrillo junto al Pórtico (`relation/16816367`) | `public/models/hero/relation-16816367.glb` |
+| Biblioteca / Edificio Fernando Chaij (`way/388495172`) | `public/models/hero/way-388495172.glb` |
+| Facultad de Ciencias de la Salud (`way/388495176`) | `public/models/hero/way-388495176.glb` |
+| Pabellón de Música OGDEN (`way/388510375`) | `public/models/hero/way-388510375.glb` |
+| Salón de los Pioneros (`way/388512621`) | `public/models/hero/way-388512621.glb` |
+
+## Fotos reales de fachada (decisión del cliente)
+Se permitían fotos de los sitios institucionales de la UAP como textura de fachada (`data/facade-photos.json`).
+Desde que esos edificios tienen hero asset **ya no se usa ninguna foto pegada** (la lista está vacía); el mecanismo
+sigue disponible. Nunca se usan Google Maps/Street View/Earth.
 
 ## Referencias fotográficas
 Las fotos de `reference/web/` se usan **solo como referencia visual** (proporciones, pisos, techos, colores) y
