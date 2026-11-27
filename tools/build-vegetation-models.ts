@@ -80,7 +80,7 @@ async function applyAlphaMaps(doc: Document, id: string, size: number): Promise<
     if (!tex?.getImage() || !file) continue;
     const base = sharp(tex.getImage()!);
     const { width, height } = await base.metadata();
-    const alpha = await sharp(readFileSync(`${dir}/${file}`)).resize(width, height).greyscale().raw().toBuffer();
+    const alpha = await sharp(readFileSync(`${dir}/${file}`)).resize(width, height).extractChannel(0).raw().toBuffer();
     const rgba = await sharp(await base.removeAlpha().joinChannel(alpha, { raw: { width: width!, height: height!, channels: 1 } }).png().toBuffer())
       .resize(size, size, { fit: 'fill' }).webp({ quality: 82, alphaQuality: 90 }).toBuffer();
     // WebP conserva el alfa (el ETC1S de KTX2 lo descartaba); GLTFLoader lo soporta vía EXT_texture_webp.

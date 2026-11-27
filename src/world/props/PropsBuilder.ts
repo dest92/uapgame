@@ -7,6 +7,8 @@ import { partsOf } from '../vegetation/modelParts';
 import { distanceToPolyline, pointInPolygon } from '@shared/geo/polygon';
 import type { VegetationMaterials } from '../vegetation/VegetationMaterials';
 
+const ENABLE_SCANNED_SHRUBS = new URLSearchParams(location.search).has('shrubs');
+
 interface PropSpec {
   readonly url: string;
   /** Altura objetivo en metros (los escaneos vienen a escalas distintas). */
@@ -49,8 +51,12 @@ export async function buildProps(
     roads.every((r) => distanceToPolyline(p, r.points) > r.width / 2 + 1.5) && !hardAreas.some((a) => pointInPolygon(p, a.polygon));
   const benches = benchPositions(paths, 45).filter(clearOfRoads);
   const specs: PropSpec[] = [
-    { url: 'models/vegetation/shrub_03_lod0.glb', height: 0.9, placements: shrubs.slice(0, half), castShadow: true },
-    { url: 'models/vegetation/shrub_04_lod0.glb', height: 1.1, placements: shrubs.slice(half), castShadow: true },
+    // Arbustos escaneados desactivados hasta validarlos en GPU real: en el render por software
+    // (sin MSAA) se leen como bloques. Para reactivar: ENABLE_SCANNED_SHRUBS = true.
+    ...(ENABLE_SCANNED_SHRUBS ? [
+      { url: 'models/vegetation/shrub_03_lod0.glb', height: 0.9, placements: shrubs.slice(0, half), castShadow: true },
+      { url: 'models/vegetation/shrub_04_lod0.glb', height: 1.1, placements: shrubs.slice(half), castShadow: true },
+    ] : []),
     { url: 'models/vegetation/painted_wooden_bench_lod0.glb', height: 0.89, placements: benches, castShadow: true },
   ];
   await Promise.all(specs.map(async (spec) => {
