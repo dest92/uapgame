@@ -27,7 +27,7 @@ export function createPostPipeline(renderer: WebGPURenderer, scene: Scene, camer
     result = result.mul(mix(float(1), occlusion, float(0.9)));
   }
 
-  if (q.bloom) result = result.add(bloom(color, 0.12, 0.35, 2.2).rgb);
+  if (q.bloom) result = result.add(bloom(color, 0.1, 0.3, 5.0).rgb);
 
   // Grading (técnica de Voidlight): sombras frías y algo desaturadas, luces cálidas, + saturación global.
   const lum = luminance(result);
